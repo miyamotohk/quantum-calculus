@@ -1,0 +1,6 @@
+\babel@toc {english}{}
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}
+\contentsline {paragraph}{Bloch spehre.}{2}{section*.2}
+\contentsline {paragraph}{Measurements.}{2}{section*.3}
+\contentsline {paragraph}{Unitary operations.}{3}{section*.4}
+\contentsline {section}{\numberline {2}Quantum algorithms}{3}{section.2}
