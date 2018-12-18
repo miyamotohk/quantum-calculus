@@ -23,17 +23,18 @@ from projectq.meta import Control
 from projectq.ops import (All, BasicMathGate, get_inverse, H, Measure, QFT, R,
                           Swap, X)
 
-
+def int2bit(a):
+    na = int(math.ceil(math.log(a, 2)))
+    La = [int(x) for x in bin(a)[2:]]
+    La.reverse()
+    return [La, na]
 
 def run_adder(eng, a = 13, b = 1):
 
-    #Initialisation
-    na = int(math.ceil(math.log(a, 2)))
-    nb = int(math.ceil(math.log(b, 2)))
+    # Initialisation
+    [La, na] = int2bit(a)
+    [Lb, nb] = int2bit(b)
     n = max(nb, na)
-
-    La = [int(x) for x in bin(a)[2:]]
-    Lb = [int(x) for x in bin(b)[2:]]
 
     if nb < na:
         for i in range(na-nb):
@@ -44,12 +45,25 @@ def run_adder(eng, a = 13, b = 1):
 
     xa = eng.allocate_qureg(n)
     xb = eng.allocate_qureg(n)
-    measurementsa = [0] * n
-    measurementsb = [0] * n
-    # initialisation de a et b
-    X | xa[1]
+    measurements_a = [0] * n
+    measurements_b = [0] * n
 
-    X | xb[1]
+    # initialisation de a et b
+    for i in range(n):
+        if La[i]:
+            X | xa[i]
+
+        if Lb[i]:
+            X | xb[i]
+
+    All(Measure) | xa
+    All(Measure) | xb
+
+    for k in range(n):
+        measurements_a[k] = int(xa[k])
+        measurements_b[k] = int(xb[k])
+
+    return [measurements_a, measurements_b]
 
     # On passe de a a phi(a)
     for i in range(n):
@@ -80,10 +94,10 @@ def run_adder(eng, a = 13, b = 1):
     All(Measure) | xb
 
     for k in range(n):
-        measurementsa[k] = int(xa[k])
-        measurementsb[k] = int(xb[k])
+        measurements_a[k] = int(xa[k])
+        measurements_b[k] = int(xb[k])
 
-    return [measurementsa, measurementsb]
+    return [measurements_a, measurements_b]
 
 
 if __name__ == "__main__":
