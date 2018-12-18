@@ -26,10 +26,10 @@ from projectq.ops import (All, BasicMathGate, get_inverse, H, Measure, QFT, R,
 def int2bit(a):
     na = int(math.ceil(math.log(a, 2)))
     La = [int(x) for x in bin(a)[2:]]
-    La.reverse()
+    #La.reverse()
     return [La, na]
 
-def run_adder(eng, a = 13, b = 1):
+def run_adder(eng, a = 13, b = 2):
 
     # Initialisation
     [La, na] = int2bit(a)

@@ -1,6 +1,16 @@
 \babel@toc {english}{}
-\contentsline {section}{\numberline {1}Introduction}{2}{section.1}
+\contentsline {section}{\numberline {1}Basic concepts}{2}{section.1}
 \contentsline {paragraph}{Bloch spehre.}{2}{section*.2}
-\contentsline {paragraph}{Measurements.}{2}{section*.3}
+\contentsline {paragraph}{Measurements.}{3}{section*.3}
 \contentsline {paragraph}{Unitary operations.}{3}{section*.4}
-\contentsline {section}{\numberline {2}Quantum algorithms}{3}{section.2}
+\contentsline {paragraph}{Tensor product.}{3}{section*.5}
+\contentsline {paragraph}{Two or more qubits systems.}{4}{section*.6}
+\contentsline {paragraph}{Quantum entanglement.}{5}{section*.7}
+\contentsline {paragraph}{Quantum circuits}{5}{section*.8}
+\contentsline {section}{\numberline {2}Shor's algorithm}{5}{section.2}
+\contentsline {paragraph}{Factorisation.}{5}{section*.9}
+\contentsline {paragraph}{Order finding.}{7}{section*.10}
+\contentsline {paragraph}{\color {red} TO DO: Quantum Fourier transform.}{7}{section*.11}
+\contentsline {paragraph}{Quantum phase estimation.}{8}{section*.12}
+\contentsline {section}{\numberline {3}Quantum addition}{9}{section.3}
+\contentsline {section}{\numberline {4}Implementation}{9}{section.4}

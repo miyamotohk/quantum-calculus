@@ -2,7 +2,7 @@
 
 \usepackage[english]{babel}
 \usepackage[latin1]{inputenc}
-\usepackage{empheq, amsmath, amssymb, amsthm, amssymb, indentfirst, setspace, hyperref, graphics, graphicx, verbatim, pgfplots, listings, xcolor, multicol}
+\usepackage{empheq, amsmath, amssymb, amsthm, amssymb, indentfirst, setspace, hyperref, graphics, graphicx, verbatim, pgfplots, listings, xcolor, multicol, stmaryrd}
 \usepackage[super]{nth}
 \usepackage[ruled, linesnumbered]{algorithm2e}
 \usepackage{tikz}
@@ -20,26 +20,24 @@
 		\includegraphics[width=4cm]{Figures/cs}
 	\end{figure}
 	\vspace{4cm}
-	{\scshape\Huge Applications of\\ quantum calculus\par}
+	{\scshape\Huge Applications of\\ Quantum Calculus\par}
 	\vspace{1cm}
-	{\Large Project Long \nth{2} year\par}
+	{\Large Long Project \nth{2} year\par}
 	\vspace{3cm}
-	{\large Ahmed Ben Aissa\\
+	{\large \textit{Students:}\\
+			Ahmed Ben Aissa\\
 			Elie Mokbel\\
 			Henrique Miyamoto\\
 			Pierre Minssen\par}
 	\vspace{2cm}
-	{\large Prof. Benoît Valiron \par}
+	{\large \textit{Supervisor:}\\
+			Prof. Benoît Valiron \par}
 	\vfill
 	\large \today
 \end{titlepage}
 
 %\tableofcontents
-
-%\title{Applications of quantum calculus}
-%\author{Ahmed Ben Aissa, Elie Mokbel, Henrique Miyamoto, Pierre Minssen}
-%\date{}
-%\maketitle
+%\newpage
 
 \section{Basic concepts}
 
@@ -88,7 +86,7 @@ Some usual gates are NOT, Hadamard, phase-shift and phase-flip:
 	1 & 0\\
 	0 & e^{i\theta}
 	\end{pmatrix} $$
-	\item Phase-flip\footnote{In fact, $Z$ is just $V_\pi$.}
+	\item Phase-flip\footnote{Note that, in fact, $Z=V_\pi$.}
 	$$ Z = \begin{pmatrix}
 	1 & 0\\
 	0 & -1
@@ -191,7 +189,7 @@ The advantage of quantum algorithms over classical ones appears when using some 
 
 In fact, quantum algorithms are based on a few ``real'' quantum constructions, such as quantum Fourier transform, quantum walk and amplitude amplification. The rest is composed of classical analysis and possibly an \textit{oracle}: a quantum circuit corresponding to a reversible operation.
 
-Some interesting problems in algebra and number theory reduce to the problem of order finding. For example, the problem of factorising an integer number, which is addressed by Shor's algorithm.
+Some interesting problems in algebra and number theory reduce to the problem of order finding. For example, the problem of factorising an integer number, which is addressed by Shor's algorithm \cite{shor}.
 
 \paragraph{Factorisation.} The objective of the \textit{factorisation problem} is to factorise a big number $N$ into prime numbers. Note that at least $n=\lceil\log_2N\rceil$ qubits are needed to store $N$ and that $n$ is the maximum number of prime factors. We will show how this problem reduces to the problem of finding the order of a randomly generated integer $x<N$ generated randomly.
 
@@ -220,11 +218,11 @@ The \textit{order finding problem} is to find $r$, given $x$ and $N$ coprimes. T
 
 \begin{theorem}
 	Suppose $N = p_{1}^{\alpha_1}...p_{m}^{\alpha_m}$ is the prime factorisation of and odd composite positive integer. Let $x$ be an integer chose uniformly at random such that $1 \le x\le N-1$ and $\gcd(x,N)=1$. Let $r$ be the order of $x$ modulo $N$. Then
-	$$ \text{Pr}\{\text{$r$ is even and $x^{r/2}\not\equiv\pm1\mod N$}\} \ge 1-\frac{1}{2^m}. $$
+	$$ \mathrm{Pr}\{\text{$r$ is even and $x^{r/2}\not\equiv\pm1\mod N$}\} \ge 1-\frac{1}{2^m}. $$
 \end{theorem}
 
 \begin{proof}
-	See \cite{ekert}, p. 751-752.
+	See \cite{ekert}, pp. 751-752\footnote{Actually, these authors use a slightly different bound for the probability: $1-1/2^{m-1}$.}.
 \end{proof}
 
 The algorithm runs as follows.
@@ -246,7 +244,7 @@ Some remarks:
 	\item The problem is finding the order of $x$ modulo $N$, for which there is no efficient classical procedure available. This problem is addressed in the next part.
 \end{itemize}
 
-\paragraph{Order finding.} The problem of order finding, i.e., given $x$ and $N$ coprimes, to find $r$ such that $x^r \equiv 1 \mod N$ is related to the matrix eigendecomposition. An unitary $U$, being a Hermitian matrix, can be decomposed as
+\paragraph{Order finding.} The problem of order finding, i.e., given $x$ and $N$ coprimes, to find $r$ such that $x^r \equiv 1 \mod N$ is related to the matrix eigendecomposition. A unitary $U$, being a Hermitian matrix, can be decomposed as
 $$ U=\sum_j \lambda_ju_ju_j^\dagger, $$
 where $u_j$ are orthonormal eigenvectors and $\lambda_j$ are the associated eigenvalues.
 
@@ -261,25 +259,50 @@ $$ U|u_s\rangle = \exp\left(\frac{2\pi is}{r}\right)|u_s\rangle. $$
 
 An algorithm for finding such eigenvalues should be enough to find the order $r$ of $x$ modulo $N$\footnote{An alternative unitary could have been used: $V|j\rangle|k\rangle=|j\rangle|k+x^j\mod N\rangle$.}.
 
-\paragraph{Quantum Fourier transform.} The quantum Fourier transform (QFT) is the operation
-$$ |x\rangle \mapsto \frac{1}{\sqrt{2^n}}\sum_{y=0}^{2^n-1}e^{2\pi i\frac{x}{2^n}y}|y\rangle. $$
-Its inverse is $\mathrm{QFT}^{-1}: \frac{1}{\sqrt{2^n}}\sum_{y=0}^{2^n-1}e^{2\pi i\frac{x}{2^n}y}|y\rangle \mapsto |x\rangle$ and will help solving the problem.
+\paragraph{Quantum Fourier transform.} The Fourier transform is an operation that can be performed faster in quantum computers. The quantum Fourier transform (QFT) \cite{griffighs} is defined in analogy with the discrete Fourier transform. It is the linear mapping:
+\begin{align*}
+	\hat{f}\ :\ \mathbb{C}^N &\rightarrow \mathbb{C}^N\\
+	|j\rangle &\mapsto \frac{1}{\sqrt{N}}\sum_{k=0}^{N-1}e^{2\pi ijk/N}|k\rangle
+\end{align*}
 
-For the quantum phase estimation, we want to estimate $\omega$ in the state $|\phi\rangle = \frac{1}{\sqrt{2^n}}\sum_{y=0}^{2^n-1}e^{2\pi i\omega y}|y\rangle$. Without loss of generality, we will consider $\omega\in[0,1[$\footnote{We can do so because $e^{2\pi i}=1$.} and then decompose it as a floating number in binary notation: $\omega = \sum_{i=1}^{\infty}\frac{x_i}{2^i}$ or $\omega = 0.x_1x_2x_3...$ ($x_i\in\{0,1\}$).
+Let us consider $N=2^n$ with orthonormal basis $\{|0\rangle,\dots,|2^n-1\rangle\}$. We shall use the \textit{binary representation} $j =: j_1j_2\dots j_n$ to represent $j = \sum_{i=1}^{n}j_{i}2^{n-i}$ and the \textit{binary fraction} $j =: 0.j_1j_2\dots j_n$ to represent $j = \sum_{i=1}^{n}j_{i}2^{-i}$.
 
-\begin{itemize}
-	\item If $\omega=0.x_1$ ($n=1$), we have $|\phi\rangle = \frac{1}{\sqrt{2}}\sum_{y=0}^{1}e^{\pi i (x_1y)}|y\rangle$ and we can retrieve $\omega$ by computing $H|\phi\rangle = |x_1\rangle$.
-	\item If $\omega=0.x_1x_2$ ($n=2$), we can write $|\phi\rangle=\frac{1}{2}(|0\rangle+e^{2\pi i(0.x_2)}|1\rangle)\otimes(|0\rangle+e^{2\pi i(0.x_1x_2)}|1\rangle)$. To retrieve $\omega$, we consider $R_2 = \begin{pmatrix} 1 & 0\\ 0 & e^{2\pi i(0.01)} \end{pmatrix}$ and use the circuit
-	\begin{figure}[h!]
-		\centering
-		\includegraphics[width=6cm]{Figures/omega1}
-	\end{figure}
-	\item In general, it is possible to compute $|x_n...x_1\rangle$ from $|\phi\rangle$ by setting $R_n = \begin{pmatrix} 1 & 0\\ 0 & e^{2\pi i(0.0...01)} \end{pmatrix}$ and using the circuit
-	\begin{figure}[h!]
-		\centering
-		\includegraphics[width=6cm]{Figures/omega2}
-	\end{figure}
-\end{itemize}
+It will be useful to consider an alternative form of the QFT which is indeed so important that could be considered its definition itself:
+
+$$ |j_1\dots j_n\rangle \mapsto \frac{\left(|0\rangle+e^{2\pi i0.j_n}|1\rangle\right)\otimes\left(|0\rangle+e^{2\pi i0.j_{n-1}j_n}|1\rangle\right)\otimes\dots\otimes\left(|0\rangle+e^{2\pi i0.j_1\dots j_n}|1\rangle\right)}{2^{n/2}}. $$
+
+The equivalence between the two expressions can be shown as follows \cite{nielsen}:
+
+\begin{align*}
+	&\frac{1}{2^{n/2}}\sum_{k=0}^{2^n-1}e^{2\pi ijk/2^n}|k\rangle\\
+	=\ &\frac{1}{2^{n/2}}\sum_{k_1=0}^{1}\dots\sum_{k_n=0}^{1}e^{2\pi ij(\sum_{l=1}^{n}k_l/2^{l})}|k_1\dots k_n\rangle \ &\text{(write in binary representation)}\\
+	=\ &\frac{1}{2^{n/2}}\sum_{k_1=0}^{1}\dots\sum_{k_n=0}^{1}\prod_{l=1}^{n}\otimes e^{2\pi ijk_l/2^l}|k_l\rangle\ &\text{(tensor product decomposition)}\\
+	=\ &\frac{1}{2^{n/2}}\prod_{l=1}^{n}\otimes\left( \sum_{k_l=0}^{1} e^{2\pi ijk_l/2^l}|k_l\rangle \right)\ &\text{(factorise the binary powers)}\\
+	=\ &\frac{1}{2^{n/2}}\prod_{l=1}^{n}\otimes\left( |0\rangle + e^{2\pi ij/2^l} |1\rangle \right).
+\end{align*}
+
+The product representation allows one to implement the quantum circuit for the QFT using Hadamard and $R_k$ rotation gates, the latter being of the form\footnote{The attentive reader will notice that $R_k = V_{2\pi/2^k}$.}
+$$ R_k := \begin{pmatrix}1 & 0\\ 0 & e^{2\pi i/2^k}\end{pmatrix}. $$
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=12cm]{Figures/qft-circuit}
+	\caption{Quantum circuit that implements the QFT \cite{nielsen}.}
+	\label{fig-qft}
+\end{figure}
+
+To conclude this section, we remark that the QFT, as a linear operation, may be written in matrix form\cite{wiki}:
+
+$$ F_N = \frac{1}{\sqrt{N}}
+	\begin{pmatrix}
+	1 & 1 & 1 & 1 & \cdots & 1 \\
+	1 & \omega_n & \omega_n^2 & \omega_n^3 & \cdots & \omega_n^{N-1} \\
+	1&\omega_n^2&\omega_n^4&\omega_n^6&\cdots&\omega_n^{2(N-1)}\\ 1&\omega_n^3&\omega_n^6&\omega_n^9&\cdots&\omega_n^{3(N-1)}\\
+	\vdots&\vdots&\vdots&\vdots&&\vdots\\
+	1&\omega_n^{N-1}&\omega_n^{2(N-1)}&\omega_n^{3(N-1)}&\cdots&\omega_n^{(N-1)(N-1)}
+	\end{pmatrix}
+$$
+where $N=2^n$ and $\omega_n:=e^{2\pi i/2^n}$. This allows one to verify that $F_NF_N^{\dagger} = I = F_N^{\dagger}F_N$, therefore concluding that the Fourier transform is a unitary transformation.
 
 \paragraph{Quantum phase estimation.} Suppose a unitary operator $U$ has an eigenvector $|u\rangle$ with eigenvalue $e^{2\pi i\varphi}$, where $\varphi$ is unknown. The objective of the \textit{phase estimation subroutine} is to estimate the value of $\varphi$. We assume we have oracles capable of preparing the state $|u\rangle$ and performing controlled-$U^{2^j}$ operations.
 
@@ -299,9 +322,9 @@ The final state of the first register is
 	=\ &\frac{1}{2^{t/2}}\sum_{k=0}^{2^t-1}e^{2\pi i\varphi k}|k\rangle.
 \end{align*}
 
-The second step is to apply the inverse Fourier transform on the first register and the third step is to measure it. Note that, if we write the previous expression using the binary fraction representation, we have
+The second step is to apply the inverse Fourier transform on the first register\footnote{To do so, we just have to inverse the circuit for QFT on Figure \ref{fig-qft}.} and the third step is to measure it. Note that, if we write the previous expression using the binary fraction representation, we have
 $$ \frac{1}{2^{t/2}}\left(|0\rangle+e^{2\pi i0.\varphi_t}|1\rangle\right)\left(|0\rangle+e^{2\pi i0.\varphi_{t-1}\varphi_{t}}|1\rangle\right) \dots \left(|0\rangle+e^{2\pi i0.\varphi_1...\varphi_t}|1\rangle\right). $$
-Comparing it with the expression for the Fourier transform, one can see that the result of applying the inverse Fourier transform is the state $|\varphi_1\dots\varphi_r\rangle$ and a measurement in the computational basis gives exactly an estimation for $\varphi$!
+Comparing it with the (product) expression for the Fourier transform, one can see that the result of applying the inverse Fourier transform is the state $|\varphi_1\dots\varphi_r\rangle$ and a measurement in the computational basis gives exactly an estimation for $\varphi$!
 
 \begin{figure}[h!]
 	\centering
@@ -312,40 +335,119 @@ Comparing it with the expression for the Fourier transform, one can see that the
 Summarising, the phase estimation subroutine gives an estimation $\tilde{\varphi}$ to the phase of an eigenvalue of a unitary $U$, which is precisely what we wanted to implement the order finding algorithm. The inverse Fourier transform performs
 $$ \frac{1}{2^{t/2}}\sum_{j=0}^{2^{t-1}}e^{2\pi i\varphi j}|j\rangle|u\rangle \mapsto |\tilde{\varphi}\rangle|u\rangle. $$
 
-\begin{theorem}[Accuracy of $\varphi$ \cite{nielsen}]
+\begin{theorem}[Accuracy of $\varphi$ \cite{nielsen}, pp. 223-224]
 	To successfully obtain $\varphi$ accurate to $n$ bits with probability of success at least $1-\epsilon$, we choose
 	$$ t = n + \left\lceil \log\left(2+\frac{1}{2\epsilon}\right) \right\rceil. $$
 \end{theorem}
 
-TO DO:
-\begin{itemize}
-	\item Requirements for using phase estimation in order finding
-	\item Continued fractions
-\end{itemize}
+\paragraph{Continued fraction expansion.} Let us recapitulate what we have so far: we have reduced the factorisation problem to the order finding problem, which can be solved by calculating eigenvalues of a unitary $U$ of the form $e^{2\pi is/r}$. The quantum phase estimation procedure uses the QFT to estimate the phase $\varphi$ of an eigenvalue $e^{2\pi i\varphi}$. So we have an estimation
+$$ \tilde{\varphi} \approx \frac{s}{r}. $$
+
+It misses one building block in order to solve our problem: how to retrieve $r$ from $\tilde{\varphi}$. To do so, we shall use \textit{continued fraction expansions}. The results on this topic can be deepened in \cite{hardy}. 
+
+\begin{definition}
+	A finite simple continued fraction is an expression of the form
+	$$ a_0 + \dfrac{1}{a_1 + \dfrac{1}{a_2 + \dfrac{1}{\ddots+\dfrac{1}{a_N}}}} $$
+	which is denoted by $[a_0,  a_1, a_2, \cdots, a_N]$, with $a_i \in \mathbb{N}^*\ \forall i\in \llbracket 1, N\rrbracket$.\\
+	We define the $n$-th convergent to this continued fraction as $[a_0,\dots,a_n]$ for $0\le n \le N$.
+\end{definition}
+
+\begin{theorem}
+	The $n$-th convergent may be written as a fraction
+	$$[a_0,\dots,a_n]=\frac{p_n}{q_n}$$
+	whose coefficients are given by the following recurrence relation:
+	$$
+	\begin{array}{ll}
+		p_0:=a_0\\
+		q_0:=1
+	\end{array}\quad
+	\begin{array}{ll}
+		p_1:=a_1a_0+1\\
+		q_1:=a
+	\end{array}\quad
+	\begin{array}{ll}
+		p_n:=a_np_{n-1}+p_{n-2}\\
+		q_n:=a_nq_{n-1}+q_{n-2}
+	\end{array}\ (2\le n \le N).
+	$$
+\end{theorem}
+
+\begin{proof}
+	See \cite{hardy}, pp. 166-167.
+\end{proof}
+
+The next two theorems will present the \textit{continued fractions algorithm} to approximate $\tilde{\varphi}$ by a $n$-th convergent and explain why it suffices to solve our problem.
+
+\begin{theorem}[Continued fraction algorithm]
+	Any rational number $x$ can be represented by a finite simple continued fraction $[a_0,\dots,a_N]$.\\
+\end{theorem}
+
+\begin{proof}
+	See \cite{hardy}, pp. 173-174.
+\end{proof}
+
+The algorithm runs as follows.
+
+\begin{algorithm}[h!]
+	\caption{Continued fraction algorithm for rational $x$.}
+	Set $a_0 = \lfloor x \rfloor$. Then $x=a_0+\xi_0$, with $\xi_0\in[0,1[$.\\
+	While $\xi_i \neq 0$: $a_{i+1}=\lfloor1/\xi_{i}\rfloor$ and $1/\xi_{i}=a_{i+1}+\xi_{i+1}$, with $\xi_{i+1}\in[0,1[$.\\
+	The continued fraction is $[a_0,\dots,a_N]$, where $N$ is such that $\xi_N=0$.
+\end{algorithm}
+
+\begin{theorem}
+	Suppose $s/r$ is a rational number such that
+	$$ \left|\frac{s}{r}-\varphi\right| \le \frac{1}{2r^2}.$$
+	Then $s/r$ is a convergent of the continued fraction for $\varphi$.
+\end{theorem}
+
+\begin{proof}
+	See \cite{hardy}, pp. 196-197.
+\end{proof}
+
+Since $\tilde{\varphi}$ is an approximation of $s/r$ accurate to $n=\lceil\log_2N\rceil$ qubits, the theorem applies. Summarising, given $\tilde{\varphi}$, we can use the continued fraction algorithm to find an irreducible fraction $s'/r'=s/r$. Then, $r'$ is our candidate for the order. We check calculating $x^{r'} \mod N$; if the result is $1$, we are done!
+
+\section{Circuit implementation}
+
+Now that we know the quantum algorithm to factorise a number, we can devote our attention to the implementation in terms of quantum circuit. Although we have already provided a circuit for the QFT, the oracle remains a mysterious black box.
+
+TO DO: use \cite{draper, beauregard}.
 
 \section{Implementation}
 
-The implementations will be made using \textit{ProjectQ} \cite{projectq, steiger}.
+The implementations was be made using \textit{ProjectQ} \cite{projectq, steiger}.
 
-TO DO: Adder \cite{draper}.
+TO DO
+
+\newpage
 
 \begin{thebibliography}{10}
 
-%\bibitem{mermin} Mermin, N. David. \textit{Quantum computer science: an introduction}. Cambridge: Cambridge University Press, 2007. 
-
-\bibitem{valiron} Valiron, B. ``Quantum computation: a tutorial''. \textit{New Generation Computing}, vol. 30, issue 4, pp. 271-296, oct. 2012.
+\bibitem{valiron} Valiron, B. ``Quantum computation: a tutorial''. \textit{New Generation Computing}, vol. 30, no. 4, pp. 271-296, oct. 2012.
 
 \bibitem{portugal} Portugal, R. et al. \textit{Uma introdução à computação quântica}. São Carlos: SBMAC, 2004.
+
+\bibitem{nielsen} Nielsen, Michael A and Chuang, Isaac L. \textit{Quantum computation and quantum information}. 10th anniversary edition. Cambridge: Cambridge University Press, 2010.
+
+\bibitem{shor} Shor, Peter. ``Polynomial-Time Algorithms for Prime Factorization and Discrete Logarithms on a Quantum Computer''. \textit{SIAM Journal on Computing}, vol. 26, no. 5, pp. 1484-1509, 1997.
+
+\bibitem{ekert} Ekert, A. and Jozsa, R. ``Quantum computation and Shor's factoring algorithm''. \textit{Reviews of Modern Physics}, vol. 68, no. 3, pp. 733-753, 1996.
+
+\bibitem{griffighs} Griffiths, Robert B. and Niu, Chi-Sheng. ``Semiclassical Fourier Transform for Quantum Computation''. \textit{Physycal Review Letters}, vol. 76, no. 17, pp. 3228-3231, 1996.
+
+\bibitem{wiki} Wikipedia. \textit{Quantum Fourier transform}. Available in: \url{https://en.wikipedia.org/wiki/Quantum_Fourier_transform}. Access on: 18 dec. 2018.
+
+\bibitem{hardy} Hardy, G. H. and E. M. Wright. \textit{An introduction to the
+theory of numbers}. 6th edition. Oxford : Oxford University Press, 2008.
+
+\bibitem{draper} Draper, Thomas G. \textit{Addition on a quantum computer}. Available in: \url{https://arxiv.org/abs/quant-ph/0008033}. Access on: 14 dec. 2018.
+
+\bibitem{beauregard} Beauregard, Stephane. ``Circuit for Shor's algorithm using $2n+3$ qubits''. \textit{Quantum Information and Computation}, vol. 3, no. 2 (2003) pp. 175-185.
 
 \bibitem{projectq} ProjectQ. Availabe in: \url{https://projectq.ch/}. Access on: 28 nov. 2018.
 
 \bibitem{steiger} Steiger, Damian S.; Häner, Thomas and Troyer, Matthias. ``ProjectQ: an open source software framework for quantum computing''. \textit{Quantum}, vol. 2, p. 49, jan. 2018.
 
-\bibitem{nielsen} Nielsen, Michael A and Chuang, Isaac L. \textit{Quantum computation and quantum information}. 10th anniversary edition. Cambridge: Cambridge University Press, 2010.
-
-\bibitem{ekert} Ekert, A. and Jozsa, R. ``Quantum computation and Shor's factoring algorithm''. \textit{Reviews of Modern Physics}, vol. 68, no. 3, pp. 733-753, 1996.
-
-\bibitem{draper} Draper, Thomas G. \textit{Addition on a quantum computer}. Available in: \url{https://arxiv.org/abs/quant-ph/0008033}. Access on: 14 dec. 2018.
 
 \end{thebibliography}
 
