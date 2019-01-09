@@ -322,7 +322,7 @@ The final state of the first register is
 	=\ &\frac{1}{2^{t/2}}\sum_{k=0}^{2^t-1}e^{2\pi i\varphi k}|k\rangle.
 \end{align*}
 
-The second step is to apply the inverse Fourier transform on the first register\footnote{To do so, we just have to inverse the circuit for QFT on Figure \ref{fig-qft}.} and the third step is to measure it. Note that, if we write the previous expression using the binary fraction representation, we have
+The second step is to apply the inverse Fourier transform on the first register\footnote{To do so, we just have to invert the circuit for QFT on Figure \ref{fig-qft}.} and the third step is to measure it. Note that, if we write the previous expression using the binary fraction representation, we have
 $$ \frac{1}{2^{t/2}}\left(|0\rangle+e^{2\pi i0.\varphi_t}|1\rangle\right)\left(|0\rangle+e^{2\pi i0.\varphi_{t-1}\varphi_{t}}|1\rangle\right) \dots \left(|0\rangle+e^{2\pi i0.\varphi_1...\varphi_t}|1\rangle\right). $$
 Comparing it with the (product) expression for the Fourier transform, one can see that the result of applying the inverse Fourier transform is the state $|\varphi_1\dots\varphi_r\rangle$ and a measurement in the computational basis gives exactly an estimation for $\varphi$!
 
