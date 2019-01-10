@@ -23,7 +23,7 @@ from projectq.ops import (All, BasicMathGate, get_inverse, H, Measure, R,
 import initialisation
 import qft
 import iqft
-import phi_adder
+import modular_adder
 
 
 '''---------------------------------------------------------------------------------------'''
@@ -51,13 +51,10 @@ def modularMultiplier(eng, a, b, N, x):
     n = len(xx)
 
     
-   
-   
-
     # b --> phi(b)
     qft(eng, xb)
-
-
+    
+    # phi(b) --> qft(b+a*x(modN))
     for i in range(n):
         with Control(eng, c):
             with Control(eng, x[i]):
