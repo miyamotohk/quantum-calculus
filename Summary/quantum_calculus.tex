@@ -2,7 +2,7 @@
 
 \usepackage[english]{babel}
 \usepackage[latin1]{inputenc}
-\usepackage{empheq, amsmath, amssymb, amsthm, amssymb, indentfirst, setspace, hyperref, graphics, graphicx, verbatim, pgfplots, listings, xcolor, multicol, stmaryrd}
+\usepackage{empheq, amsmath, amssymb, amsthm, amssymb, indentfirst, setspace, hyperref, graphics, graphicx, verbatim, pgfplots, listings, xcolor, multicol, stmaryrd, fancyhdr, listings}
 \usepackage[super]{nth}
 \usepackage[ruled, linesnumbered]{algorithm2e}
 \usepackage{tikz}
@@ -10,6 +10,11 @@
 
 \newtheorem{theorem}{Theorem }[section]
 \newtheorem{definition}{Definition }[section]
+
+\pagestyle{fancy}
+\fancyhead[L]{\footnotesize  APPLICATIONS OF QUANTUM CALCULUS}
+\fancyhead[R]{\footnotesize  \leftmark}
+
 
 \begin{document}
 
@@ -36,8 +41,9 @@
 	\large \today
 \end{titlepage}
 
-%\tableofcontents
-%\newpage
+\tableofcontents
+
+\newpage
 
 \section{Basic concepts}
 
@@ -183,6 +189,7 @@ We say a quantum state is \textit{entangled} when it cannot be written as a tens
 	\caption{Example of quantum circuit representing $|\psi\rangle \mapsto (I\otimes H)(U|\psi\rangle)$ \cite{valiron}.}
 \end{figure}
 
+\newpage
 \section{Shor's algorithm}
 
 The advantage of quantum algorithms over classical ones appears when using some quantum property such as entanglement or the interference, brought by complex coefficients.
@@ -293,16 +300,16 @@ $$ R_k := \begin{pmatrix}1 & 0\\ 0 & e^{2\pi i/2^k}\end{pmatrix}. $$
 
 To conclude this section, we remark that the QFT, as a linear operation, may be written in matrix form\cite{wiki}:
 
-$$ F_N = \frac{1}{\sqrt{N}}
+$$ F = \frac{1}{\sqrt{N}}
 	\begin{pmatrix}
 	1 & 1 & 1 & 1 & \cdots & 1 \\
 	1 & \omega_n & \omega_n^2 & \omega_n^3 & \cdots & \omega_n^{N-1} \\
 	1&\omega_n^2&\omega_n^4&\omega_n^6&\cdots&\omega_n^{2(N-1)}\\ 1&\omega_n^3&\omega_n^6&\omega_n^9&\cdots&\omega_n^{3(N-1)}\\
-	\vdots&\vdots&\vdots&\vdots&&\vdots\\
+	\vdots&\vdots&\vdots&\vdots&\ddots&\vdots\\
 	1&\omega_n^{N-1}&\omega_n^{2(N-1)}&\omega_n^{3(N-1)}&\cdots&\omega_n^{(N-1)(N-1)}
 	\end{pmatrix}
 $$
-where $N=2^n$ and $\omega_n:=e^{2\pi i/2^n}$. This allows one to verify that $F_NF_N^{\dagger} = I = F_N^{\dagger}F_N$, therefore concluding that the Fourier transform is a unitary transformation.
+where $N=2^n$ and $\omega_n:=e^{2\pi i/2^n}$. This allows one to verify that $FF^{\dagger} = F^{\dagger}F = I$, therefore concluding that the Fourier transform is a unitary transformation.
 
 \paragraph{Quantum phase estimation.} Suppose a unitary operator $U$ has an eigenvector $|u\rangle$ with eigenvalue $e^{2\pi i\varphi}$, where $\varphi$ is unknown. The objective of the \textit{phase estimation subroutine} is to estimate the value of $\varphi$. We assume we have oracles capable of preparing the state $|u\rangle$ and performing controlled-$U^{2^j}$ operations.
 
@@ -313,7 +320,7 @@ The first step is to apply the following circuit to the registers.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=10cm]{Figures/phase-estimation-1}
-	\caption{Quantum circuit for first step of phase estimation (normalisation has been omitted on the right side) \cite{nielsen} .}
+	\caption{Quantum circuit for first step of phase estimation (normalisation has been omitted on the right side) \cite{nielsen}.}
 \end{figure}
 
 The final state of the first register is
@@ -407,20 +414,21 @@ The algorithm runs as follows.
 
 Since $\tilde{\varphi}$ is an approximation of $s/r$ accurate to $n=\lceil\log_2N\rceil$ qubits, the theorem applies. Summarising, given $\tilde{\varphi}$, we can use the continued fraction algorithm to find an irreducible fraction $s'/r'=s/r$. Then, $r'$ is our candidate for the order. We check calculating $x^{r'} \mod N$; if the result is $1$, we are done!
 
-\section{Circuit implementation}
+\newpage
+\section{Adder circuit}
 
-Now that we know the quantum algorithm to factorise a number, we can devote our attention to the implementation in terms of quantum circuit. Although we have already provided a circuit for the QFT, the oracle remains a mysterious black box.
+Now that we know the quantum algorithm to factorise a number, we can devote our attention to the implementation in terms of quantum circuit. Although we have already provided a circuit for the QFT, the oracle remains a mysterious black box. In this Section, we show how it can be implemented.
 
-TO DO: use \cite{draper, beauregard}.
+\paragraph{Adder circuit.} An initial version for the adder circuit is presented in \cite{draper}.
 
-\section{Implementation}
-
-The implementations was be made using \textit{ProjectQ} \cite{projectq, steiger}.
-
-TO DO
+Another version is presented in \cite{beauregard}.
 
 \newpage
+\section{Implementation}
 
+The implementations was made using \textit{ProjectQ} \cite{projectq, steiger}. In fact, they provide an example code for Shor's algorithm\footnote{Available in: \url{https://github.com/ProjectQ-Framework/ProjectQ/blob/develop/examples/shor.py}}.
+
+\newpage
 \begin{thebibliography}{10}
 
 \bibitem{valiron} Valiron, B. ``Quantum computation: a tutorial''. \textit{New Generation Computing}, vol. 30, no. 4, pp. 271-296, oct. 2012.
