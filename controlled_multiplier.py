@@ -20,7 +20,7 @@ from projectq.meta import (Control, Dagger)
 from projectq.ops import (All, BasicMathGate, get_inverse, H, Measure, R,
                           Swap, X)
 
-import initialisation
+import initialisation2
 import qft
 import iqft
 import modular_adder
@@ -43,7 +43,9 @@ N = 0
 '''---------------------------------------------------------------------------------------'''
 def modularMultiplier(eng, a, b, N, x):
 
-    #initialisation des registres
+    #initialisation des registres 
+    # la fonction initianisation2 ici est une version de la fonction initialisation originale, 
+    # qui initialise aussi le registre contenant x
     
     xb = initialisation2(eng, a, b, N, x)[1]
     xN = initialisation2(eng, a, b, N, x)[2]
