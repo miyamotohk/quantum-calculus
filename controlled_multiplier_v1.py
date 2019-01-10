@@ -50,7 +50,7 @@ def modularMultiplier(eng, a, b, N, x):
     xb = initialisation2(eng, a, b, N, x)[1]
     xN = initialisation2(eng, a, b, N, x)[2]
     xX = initialisation2(eng, a, b, N, x)[3]
-    n = len(xx)
+    n = len(xX)
 
     
     # b --> phi(b)
