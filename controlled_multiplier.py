@@ -49,7 +49,7 @@ def modularMultiplier(eng, a, b, N, x):
     
     xb = initialisation2(eng, a, b, N, x)[1]
     xN = initialisation2(eng, a, b, N, x)[2]
-    xx = initialisation2(eng, a, b, N, x)[3]
+    xX = initialisation2(eng, a, b, N, x)[3]
     n = len(xx)
 
     
@@ -59,7 +59,7 @@ def modularMultiplier(eng, a, b, N, x):
     # phi(b) --> qft(b+a*x(modN))
     for i in range(n):
         with Control(eng, c):
-            with Control(eng, x[i]):
+            with Control(eng, xX[i]):
                 modular_adder(eng, a*(2**i), b, N)
 
     # qft(b+a*x(modN)) --> b+a*x(modN)
