@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.16)  18 DEC 2018 18:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.16)  9 JAN 2019 22:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -805,6 +805,19 @@ Package: stmaryrd 1994/03/03 St Mary's Road symbol package
 LaTeX Font Info:    Overwriting symbol font `stmry' in version `bold'
 (Font)                  U/stmry/m/n --> U/stmry/b/n on input line 89.
 )
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2017/06/30 v3.9a Extensive control of page headers and footer
+s
+\f@nch@headwidth=\skip56
+\f@nch@O@elh=\skip57
+\f@nch@O@erh=\skip58
+\f@nch@O@olh=\skip59
+\f@nch@O@orh=\skip60
+\f@nch@O@elf=\skip61
+\f@nch@O@erf=\skip62
+\f@nch@O@olf=\skip63
+\f@nch@O@orf=\skip64
+)
 (/usr/share/texlive/texmf-dist/tex/generic/genmisc/nth.sty
 Package: nth 2002/02/27
 )
@@ -815,7 +828,7 @@ Package: algorithm2e 2017/07/18 v5.2 algorithms environments
 (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-\algocf@hangindent=\skip56
+\algocf@hangindent=\skip65
 
 (/usr/share/texlive/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
 Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
@@ -827,36 +840,36 @@ Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 (/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty
 Package: relsize 2013/03/29 ver 4.1
 )
-\skiptotal=\skip57
-\skiplinenumber=\skip58
-\skiprule=\skip59
-\skiphlne=\skip60
-\skiptext=\skip61
-\skiplength=\skip62
-\algomargin=\skip63
-\skipalgocfslide=\skip64
+\skiptotal=\skip66
+\skiplinenumber=\skip67
+\skiprule=\skip68
+\skiphlne=\skip69
+\skiptext=\skip70
+\skiplength=\skip71
+\algomargin=\skip72
+\skipalgocfslide=\skip73
 \algowidth=\dimen266
 \inoutsize=\dimen267
 \inoutindent=\dimen268
 \interspacetitleruled=\dimen269
 \interspacealgoruled=\dimen270
 \interspacetitleboxruled=\dimen271
-\algocf@ruledwidth=\skip65
+\algocf@ruledwidth=\skip74
 \algocf@inoutbox=\box70
 \algocf@inputbox=\box71
-\AlCapSkip=\skip66
-\AlCapHSkip=\skip67
-\algoskipindent=\skip68
+\AlCapSkip=\skip75
+\AlCapHSkip=\skip76
+\algoskipindent=\skip77
 \algocf@nlbox=\box72
 \algocf@hangingbox=\box73
 \algocf@untilbox=\box74
-\algocf@skipuntil=\skip69
+\algocf@skipuntil=\skip78
 \algocf@capbox=\box75
-\algocf@lcaptionbox=\skip70
-\algoheightruledefault=\skip71
-\algoheightrule=\skip72
-\algotitleheightruledefault=\skip73
-\algotitleheightrule=\skip74
+\algocf@lcaptionbox=\skip79
+\algoheightruledefault=\skip80
+\algoheightrule=\skip81
+\algotitleheightruledefault=\skip82
+\algotitleheightrule=\skip83
 \c@algocfline=\count165
 \c@algocfproc=\count166
 \c@algocf=\count167
@@ -881,22 +894,22 @@ File: tikzlibrarycalc.code.tex 2013/07/15 v3.0.1a (rcs-revision 1.9)
  (./quantum_calculus.aux)
 \openout1 = `quantum_calculus.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
 \AtBeginShipoutBox=\box78
-Package hyperref Info: Link coloring OFF on input line 14.
+Package hyperref Info: Link coloring OFF on input line 19.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -906,9 +919,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count170
 )
-LaTeX Info: Redefining \ref on input line 14.
-LaTeX Info: Redefining \pageref on input line 14.
-LaTeX Info: Redefining \nameref on input line 14.
+LaTeX Info: Redefining \ref on input line 19.
+LaTeX Info: Redefining \pageref on input line 19.
+LaTeX Info: Redefining \nameref on input line 19.
 
 (./quantum_calculus.out) (./quantum_calculus.out)
 \@outlinefile=\write4
@@ -950,123 +963,133 @@ ABD: EveryShipout initializing macros
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.15} into 
 your preamble.
- on input line 14.
+ on input line 19.
 
 \c@lstlisting=\count177
 <Figures/cs.jpg, id=23, 866.23625pt x 446.66875pt>
 File: Figures/cs.jpg Graphic file (type jpg)
 <use Figures/cs.jpg>
-Package pdftex.def Info: Figures/cs.jpg  used on input line 20.
+Package pdftex.def Info: Figures/cs.jpg  used on input line 25.
 (pdftex.def)             Requested size: 113.81102pt x 58.68237pt.
-LaTeX Font Info:    Try loading font information for U+msa on input line 25.
+LaTeX Font Info:    Try loading font information for U+msa on input line 30.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 25.
+LaTeX Font Info:    Try loading font information for U+msb on input line 30.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+stmry on input line 25.
+LaTeX Font Info:    Try loading font information for U+stmry on input line 30.
 
 (/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/Ustmry.fd) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./Figures/cs.jpg>]
-<Figures/bloch.png, id=35, 523.9575pt x 556.0775pt>
-File: Figures/bloch.png Graphic file (type png)
-<use Figures/bloch.png>
-Package pdftex.def Info: Figures/bloch.png  used on input line 61.
-(pdftex.def)             Requested size: 142.26378pt x 150.98294pt.
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./Figures/cs.jpg>] (./quan
+tum_calculus.toc)
+\tf@toc=\write5
+\openout5 = `quantum_calculus.toc'.
+
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.66 
-      [1 <./Figures/bloch.png>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 74.
+l.46 \newpage
+              [1]
+<Figures/bloch.png, id=46, 523.9575pt x 556.0775pt>
+File: Figures/bloch.png Graphic file (type png)
+<use Figures/bloch.png>
+Package pdftex.def Info: Figures/bloch.png  used on input line 67.
+(pdftex.def)             Requested size: 142.26378pt x 150.98294pt.
+ [2 <./Figures/bloch.png>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 80.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 74.
- [2] [3]
-<Figures/circuit.png, id=76, 333.245pt x 190.7125pt>
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 80.
+ [3] [4]
+<Figures/circuit.png, id=85, 333.245pt x 190.7125pt>
 File: Figures/circuit.png Graphic file (type png)
 <use Figures/circuit.png>
-Package pdftex.def Info: Figures/circuit.png  used on input line 182.
+Package pdftex.def Info: Figures/circuit.png  used on input line 188.
 (pdftex.def)             Requested size: 113.81102pt x 65.13239pt.
- [4 <./Figures/circuit.png>] [5]
-Overfull \hbox (3.16013pt too wide) in paragraph at lines 252--254
+ [5 <./Figures/circuit.png>] [6]
+Overfull \hbox (3.16013pt too wide) in paragraph at lines 259--261
 \OT1/cmr/m/n/10 The op-er-a-tor is uni-tary be-cause $\OML/cmm/m/it/10 x$ \OT1/
 cmr/m/n/10 and $\OML/cmm/m/it/10 N$ \OT1/cmr/m/n/10 are co-primes and the im-ag
 e of $\OMS/cmsy/m/n/10 f\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 ; :::; N \OMS/cmsy/m/
 n/10 ^^@
  []
 
-
-Overfull \hbox (23.85469pt too wide) detected at line 272
+[7]
+Overfull \hbox (23.85469pt too wide) detected at line 279
 \OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 j[] [] j[]\OMS/cmsy/m/n/10 i 7! []\OML/cmm/m
 /it/10 :
  []
 
 
-Overfull \hbox (2.98448pt too wide) detected at line 282
+Overfull \hbox (2.98448pt too wide) detected at line 289
 []
  []
 
-[6]
-<Figures/qft-circuit.png, id=131, 1701.35625pt x 419.5675pt>
+<Figures/qft-circuit.png, id=136, 1701.35625pt x 419.5675pt>
 File: Figures/qft-circuit.png Graphic file (type png)
 <use Figures/qft-circuit.png>
-Package pdftex.def Info: Figures/qft-circuit.png  used on input line 289.
+Package pdftex.def Info: Figures/qft-circuit.png  used on input line 296.
 (pdftex.def)             Requested size: 341.43306pt x 84.2001pt.
- [7 <./Figures/qft-circuit.png>]
-<Figures/phase-estimation-1.png, id=143, 937.5025pt x 447.6725pt>
-File: Figures/phase-estimation-1.png Graphic file (type png)
-<use Figures/phase-estimation-1.png>
-Package pdftex.def Info: Figures/phase-estimation-1.png  used on input line 315
-.
-(pdftex.def)             Requested size: 284.52756pt x 135.86023pt.
-<Figures/phase-estimation-2.png, id=148, 587.19376pt x 221.82875pt>
-File: Figures/phase-estimation-2.png Graphic file (type png)
-<use Figures/phase-estimation-2.png>
-Package pdftex.def Info: Figures/phase-estimation-2.png  used on input line 331
-.
-(pdftex.def)             Requested size: 170.71652pt x 64.49115pt.
-
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[8 <./Figures/phase-estimation-1.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 382--383
+[8]
+<Figures/phase-estimation-1.png, id=150, 937.5025pt x 447.6725pt>
+File: Figures/phase-estimation-1.png Graphic file (type png)
+<use Figures/phase-estimation-1.png>
+Package pdftex.def Info: Figures/phase-estimation-1.png  used on input line 322
+.
+(pdftex.def)             Requested size: 284.52756pt x 135.86023pt.
+ [9 <./Figures/qft-circuit.png> <./Figures/phase-estimation-1.png>]
+<Figures/phase-estimation-2.png, id=164, 587.19376pt x 221.82875pt>
+File: Figures/phase-estimation-2.png Graphic file (type png)
+<use Figures/phase-estimation-2.png>
+Package pdftex.def Info: Figures/phase-estimation-2.png  used on input line 338
+.
+(pdftex.def)             Requested size: 170.71652pt x 64.49115pt.
+ [10 <./Figures/phase-estimation-2.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 389--390
 
  []
 
-[9 <./Figures/phase-estimation-2.png>] [10]
-Underfull \hbox (badness 1442) in paragraph at lines 438--439
+[11] [12]
+Underfull \hbox (badness 10000) in paragraph at lines 429--429
+[][][]\OT1/cmr/m/n/8 Available in: []$\OT1/cmtt/m/n/8 https : / / github . com 
+/ ProjectQ-[]Framework / ProjectQ / blob / develop /
+ []
+
+[13]
+Underfull \hbox (badness 1442) in paragraph at lines 446--447
 []\OT1/cmr/m/n/10 Wikipedia. \OT1/cmr/m/it/10 Quan-tum Fourier trans-form\OT1/c
 mr/m/n/10 . Avail-able in: []$\OT1/cmtt/m/n/10 https : / / en .
  []
 
-[11]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 454.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 454.
+[14]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 462.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 462.
  (./quantum_calculus.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 454.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 454.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 462.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 462.
 Package rerunfilecheck Info: File `quantum_calculus.out' has not changed.
-(rerunfilecheck)             Checksum: BD3762655A24136B40AF05D3801AE7DC;206.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 454.
+(rerunfilecheck)             Checksum: 98842B51DF123423832A277DBB9B6973;197.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 462.
  ) 
 Here is how much of TeX's memory you used:
- 30199 strings out of 492982
- 703292 string characters out of 6134895
- 890396 words of memory out of 5000000
- 33175 multiletter control sequences out of 15000+600000
- 14592 words of font info for 57 fonts, out of 8000000 for 9000
+ 30340 strings out of 492982
+ 704928 string characters out of 6134895
+ 891432 words of memory out of 5000000
+ 33302 multiletter control sequences out of 15000+600000
+ 14760 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,11n,96p,743b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,12n,96p,743b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texli
@@ -1090,12 +1113,13 @@ msfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
 i10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/stmaryrd/stmary10.pfb>
-Output written on quantum_calculus.pdf (12 pages, 480451 bytes).
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/stmaryrd/stmary10.pfb>
+Output written on quantum_calculus.pdf (15 pages, 493842 bytes).
 PDF statistics:
- 310 PDF objects out of 1000 (max. 8388607)
- 254 compressed objects within 3 object streams
- 75 named destinations out of 1000 (max. 500000)
+ 338 PDF objects out of 1000 (max. 8388607)
+ 278 compressed objects within 3 object streams
+ 81 named destinations out of 1000 (max. 500000)
  75 words of extra memory for PDF output out of 10000 (max. 10000000)
 

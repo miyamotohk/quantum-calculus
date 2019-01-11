@@ -7,10 +7,12 @@
 \contentsline {paragraph}{Two or more qubits systems.}{4}{section*.6}
 \contentsline {paragraph}{Quantum entanglement.}{5}{section*.7}
 \contentsline {paragraph}{Quantum circuits}{5}{section*.8}
-\contentsline {section}{\numberline {2}Shor's algorithm}{5}{section.2}
-\contentsline {paragraph}{Factorisation.}{5}{section*.9}
+\contentsline {section}{\numberline {2}Shor's algorithm}{6}{section.2}
+\contentsline {paragraph}{Factorisation.}{6}{section*.9}
 \contentsline {paragraph}{Order finding.}{7}{section*.10}
-\contentsline {paragraph}{\color {red} TO DO: Quantum Fourier transform.}{7}{section*.11}
-\contentsline {paragraph}{Quantum phase estimation.}{8}{section*.12}
-\contentsline {section}{\numberline {3}Quantum addition}{9}{section.3}
-\contentsline {section}{\numberline {4}Implementation}{9}{section.4}
+\contentsline {paragraph}{Quantum Fourier transform.}{8}{section*.11}
+\contentsline {paragraph}{Quantum phase estimation.}{9}{section*.12}
+\contentsline {paragraph}{Continued fraction expansion.}{10}{section*.13}
+\contentsline {section}{\numberline {3}Adder circuit}{12}{section.3}
+\contentsline {paragraph}{Adder circuit.}{12}{section*.14}
+\contentsline {section}{\numberline {4}Implementation}{13}{section.4}
