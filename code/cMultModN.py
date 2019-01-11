@@ -1,47 +1,22 @@
-from __future__ import print_function
-from projectq.backends import CircuitDrawer
-import math
-import random
-import sys
-from fractions import Fraction
-try:
-    from math import gcd
-except ImportError:
-    from fractions import gcd
-
-import projectq.libs.math
-import projectq.setups.decompositions
-from projectq.backends import Simulator, ResourceCounter
-from projectq.cengines import (AutoReplacer, DecompositionRuleSet,
-                               InstructionFilter, LocalOptimizer,
-                               MainEngine, TagRemover)
-
 from projectq.meta import (Control, Dagger)
-from projectq.ops import (All, BasicMathGate, get_inverse, H, Measure, R,
-                          Swap, X)
-
-import initialisation
-import qft
-import iqft
-import phi_adder
-import modularAdder
-
+from projectq.ops import (All, Measure, QFT, Deallocate)
+from code.modularAdder import modularAdder
+from code.initialisation import initialisation
 
 '''---------------------------------------------------------------------------------------'''
 
-def cMultModN(eng, a, c, y, b, N): #|b> --> |b+(ax) mod N> si c=1
 
-    #Initialisation des registres
-    xy = initialisation(eng, y, b, N)[0]
-    xb = initialisation(eng, y, b, N)[1]
-    xN = initialisation(eng, y, b, N)[2]
+def cMultModN(eng, a, xc, xx, xb, xN): #|b> --> |b+(ax) mod N> si xc=1
 
+    aux = initialisation(eng, [0])
     #b-->phi(b)
-    qft(eng, xb)
+    QFT | xb
 
-    for i in range(len(xy)) :
-        with Control(eng, xy[i]):
-            modularAdder(eng, (2**i)*a, b, N)
+    for i in range(len(xx)):
+        xa = initialisation(eng, [(2**i)*a])
+        #TODO define xa in a iterative way just by adding a new qubit 0 as LSB
+        modularAdder(eng, xa, xb, xN,  xx[i], xc, aux)
+        Deallocate | xa
 
-
-    iqft(eng, xb)
+    with Dagger(eng):
+        QFT | xb

@@ -1,25 +1,6 @@
-from __future__ import print_function
-from projectq.backends import CircuitDrawer
 import math
-import random
-import sys
-from fractions import Fraction
-try:
-    from math import gcd
-except ImportError:
-    from fractions import gcd
-
-import projectq.libs.math
-import projectq.setups.decompositions
-from projectq.backends import Simulator, ResourceCounter
-from projectq.cengines import (AutoReplacer, DecompositionRuleSet,
-                               InstructionFilter, LocalOptimizer,
-                               MainEngine, TagRemover)
-
-from projectq.meta import (Control, Dagger)
-from projectq.ops import (All, BasicMathGate, get_inverse, H, Measure, R,
-                          Swap, X)
-
+from projectq.ops import X
+from numpy import argmax
 
 def int2bit(a):
     if a == 0:
@@ -33,45 +14,34 @@ def int2bit(a):
     La.reverse()
     return [La, na]
 
-def initialisation(eng, a, b, N):
+
+def initialisation(eng, args):
+    # TODO add flexibility to the inputs here only a list of int is accepted with *args
+    # Be carefull it returns a fixed length qubits so generate don't ancilla with other qubits
+
     # Initialisation
-    [La, na] = int2bit(a)
-    [Lb, nb] = int2bit(b)
-    [LN, nN] = int2bit(N)
-    n = max(nb, na, nN)
-
-    if n == na:
-        for i in range(na-nb):
-            Lb.append(0)
-        for i in range(na-nN):
-            LN.append(0)
-    elif n == nb:
-        for i in range(nb-na):
-            La.append(0)
-        for i in range(nb-nN):
-            LN.append(0)
-    else :
-        for i in range(nN-na):
-            La.append(0)
-        for i in range(nN-nb):
-            Lb.append(0)
-
-    xb = eng.allocate_qureg(n)
-    xa = eng.allocate_qureg(n)
-    xN = eng.allocate_qureg(n)
+    m = len(args)
+    L = []
+    N = []
+    Xreg = []
+    for i in range(m):
+        [Lx, nx] = int2bit(args[i])
+        L.append(Lx)
+        N.append(nx)
+    narg = argmax(N)
+    n = N[narg]
+    for i in range(m):
+        eps = n-N[i]
+        for _ in range(eps):
+            L[i].append(0)
+    for _ in range(m):
+        Xreg.append(eng.allocate_qureg(n))
 
     # initialisation de a, b et N
-    for i in range(n):
-        if La[i]:
-            X | xa[i]
+    for j in range(m):
+        for i in range(n):
+            if L[j][i]:
+                X | Xreg[j][i]
 
-        if Lb[i]:
-            X | xb[i]
-        
-        if LN[i]:
-            X | xN[i]
+    return Xreg
 
-    return [xa, xb, xN]
-
-eng = MainEngine()
-print(initialisation(eng, 11, 1, 32))

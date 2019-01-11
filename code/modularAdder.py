@@ -1,33 +1,11 @@
-from __future__ import print_function
-from projectq.backends import CircuitDrawer
-import math
-import random
-import sys
-from fractions import Fraction
-try:
-    from math import gcd
-except ImportError:
-    from fractions import gcd
-
-import projectq.libs.math
-import projectq.setups.decompositions
-from projectq.backends import Simulator, ResourceCounter
-from projectq.cengines import (AutoReplacer, DecompositionRuleSet,
-                               InstructionFilter, LocalOptimizer,
-                               MainEngine, TagRemover)
-
 from projectq.meta import (Control, Dagger)
-from projectq.ops import (All, BasicMathGate, get_inverse, H, Measure, R,
-                          Swap, X)
+from projectq.ops import (X, QFT, Measure)
 
-import initialisation
-import qft
-import iqft
-import phi_adder
-
-
+from code.phi_adder import phi_adder
+from code.inv_phi_adder import inv_phi_adder
+from projectq.types import Qureg
 '''---------------------------------------------------------------------------------------'''
-
+"""
 #Declare variables
 
 c1 = 1 #controlled qubit 1
@@ -39,57 +17,74 @@ b = 0  #b<N
 N = 0
 
 aux = 0
-
+"""
 '''---------------------------------------------------------------------------------------'''
 
 
-def modularAdder(eng, a, b, N):
+def modularAdder(eng, xa: Qureg, x_phi_b: Qureg, xN: Qureg, c1, c2, aux):
+    """
+    All input are Qubits
+    :param eng:
+    :param xa:
+    :param x_phi_b:
+    :param xN:
+    :param c1: control bit 1
+    :param c2: control bit 2
+    :param aux: |0> --> |0>
+    :return: x_phi_b = phi(xb+xa [xN])
+    """
 
-    #initialisation des registres
-    xa = initialisation(eng, a, b, N)[0]
-    xb = initialisation(eng, a, b, N)[1]
-    xN = initialisation(eng, a, b, N)[2]
+    n = xa.__len__()
 
-
-
-    # b --> phi(b)
-    qft(eng, xb)
-
-    #we need to compute a + b and subtract N if a + b ≥ N.
+    # we need to compute a + b and subtract N if a + b ≥ N.
 
     with Control(eng, c1):
         with Control(eng, c2):
-            phi_adder(eng, xa, xb) #we get phi(a+b)
-    
-    inv_phi_adder(eng, xN, xb) #we get phi(a+b-N)
-
-    MSB = iqft(eng, xb)[0] #we need the most significant bit to evaluate a+b-N
-
+            phi_adder(eng, xa, x_phi_b)  # we get phi(a+b)
+    eng.flush()
+    inv_phi_adder(eng, xN, x_phi_b)  # we get phi(a+b-N)
+    eng.flush()
+    with Dagger(eng):
+        QFT | x_phi_b
+    eng.flush()
+    MSB = x_phi_b[n - 1]  # we need the most significant bit to evaluate a+b-N
 
     with Control(eng, MSB):
-        X | aux 
+        X | aux
+
+    QFT | x_phi_b
 
     with Control(eng, aux):
-        phi_adder(eng, xN, xb) #if a + b < N we add back the value N that we subtracted earlier.   
-    #we now have phi(a+b mod N)
+        phi_adder(eng, xN, x_phi_b)  # if a + b < N we add back the value N that we subtracted earlier.
+    # we now have phi(a+b mod N)
 
-    #these next steps are for restoring aux to 0 using (a + b)mod N ≥ a ⇔ a + b < N (same logic as before)
+    # these next steps are for restoring aux to 0 using (a + b)mod N ≥ a ⇔ a + b < N (same logic as before)
+    eng.flush()
     with Control(eng, c1):
         with Control(eng, c2):
-            inv_phi_adder(eng, xa, xb)
+            inv_phi_adder(eng, xa, x_phi_b)
 
-    MSB2 = iqft(xb)[0]
+    eng.flush()
+    with Dagger(eng):
+        QFT | x_phi_b
+    eng.flush()
+    MSB2 = x_phi_b[n - 1]
 
-    X | aux
+    X | MSB2
 
     with Control(eng, MSB2):
         X | aux
 
-    X | aux
+    X | MSB2
+
+    QFT | x_phi_b
 
     with Control(eng, c1):
         with Control(eng, c2):
-            phi_adder(eng, xa, xb)
+            phi_adder(eng, xa, x_phi_b)
+    Measure | c1
+    Measure | c2
+    Measure | aux
 
-    return xb
+
 
