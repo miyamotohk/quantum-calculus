@@ -11,7 +11,7 @@ from projectq.cengines import (AutoReplacer, DecompositionRuleSet,
 
 from projectq.ops import (All, Measure, QFT)
 from homemade_code.modularAdder import modularAdder
-from homemade_code.initialisation import initialisation
+from homemade_code.initialisation import initialisation, meas2int
 
 
 def run(a=11, b=1, N = 12, param="simulation"):
@@ -39,6 +39,9 @@ def run(a=11, b=1, N = 12, param="simulation"):
         modularAdder(eng2, xa, xb, xN, c1, c2, aux)
         with Dagger(eng2):
             QFT | xb
+        Measure | c1
+        Measure | c2
+        Measure | aux
         All(Measure) | xa
         All(Measure) | xb
         All(Measure) | xN
@@ -53,7 +56,9 @@ def run(a=11, b=1, N = 12, param="simulation"):
         modularAdder(eng, xa, xb, xN, c1, c2, aux)
         with Dagger(eng):
             QFT | xb
-
+        Measure | c1
+        Measure | c2
+        Measure | aux
         All(Measure) | xa
         All(Measure) | xb
         All(Measure) | xN
@@ -69,3 +74,17 @@ def run(a=11, b=1, N = 12, param="simulation"):
             measurements_N[k] = int(xN[k])
 
         return [measurements_a, measurements_b, measurements_N]
+
+
+def run_complete():
+    # results in modularAdder.txt
+    # 1241 possibilities -> 155 error (care of undetected errors)
+    L =[]
+    for N in range(16):
+        for a in range(N):
+            for b in range(N):
+                X = run(a, b, N)
+                expected = (a+b) % N
+                if meas2int(X[1]) != expected:
+                    L.append([[a, b, N], X[1], expected])
+    return L

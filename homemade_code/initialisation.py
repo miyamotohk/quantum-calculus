@@ -2,6 +2,7 @@ import math
 from projectq.ops import X
 from numpy import argmax
 
+
 def int2bit(a):
     if a == 0:
         na = 1
@@ -13,6 +14,26 @@ def int2bit(a):
     La = [int(x) for x in bin(a)[2:]]
     La.reverse()
     return [La, na]
+
+
+def meas2int(L: list):
+    L.reverse()
+    res = ''
+    for i in range(len(L)):
+        res += str(L[i])
+    L.reverse()
+    return int(res, 2)
+
+def initialisation_n(eng, a, n):
+    [L, na] = int2bit(a)
+    eps = n-na
+    for i in range(eps):
+        L.append(0)
+    xa = eng.allocate_qureg(n)
+    for i in range(n):
+        if L[i]:
+            X | xa[i]
+    return xa
 
 
 def initialisation(eng, args):

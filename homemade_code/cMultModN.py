@@ -1,10 +1,10 @@
 from projectq.meta import (Control, Dagger)
-from projectq.ops import (All, Measure, QFT, Deallocate)
+from projectq.ops import (All, Measure, QFT, X, Deallocate)
 from homemade_code.modularAdder import modularAdder
-from homemade_code.initialisation import initialisation
+from homemade_code.initialisation import initialisation, initialisation_n
 
 
-def cMultModN(eng, a, xc, aux, xx, xb, xN):
+def cMultModN(eng, a, xb, xx, xN, aux, xc):
     """
     |b> --> |b+(ax) mod N> if xc=1; else |b> -> |b>
     :param eng:
@@ -17,15 +17,14 @@ def cMultModN(eng, a, xc, aux, xx, xb, xN):
     :return:
     """
 
-    #b-->phi(b)
+    # b-->phi(b)
     QFT | xb
-
-    for i in range(len(xx)):
-        xa = initialisation(eng, [(2**i)*a])
-        # TODO define xa in a iterative way just by
-        # adding a new qubit 0 as LSB
+    n = len(xx)
+    for i in range(n):
+        xa = initialisation_n(eng, (2**i)*a, n)
+        # TODO define xa in a iterative way just by adding a new qubit 0 as LSB
         modularAdder(eng, xa, xb, xN,  xx[i], xc, aux)
-        All(Measure) | xa
+        eng.flush()
 
     with Dagger(eng):
         QFT | xb

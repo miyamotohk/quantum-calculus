@@ -26,12 +26,12 @@ def modularAdder(eng, xa: Qureg, x_phi_b: Qureg, xN: Qureg, c1, c2, aux):
     All input are Qubits
     :param eng:
     :param xa:
-    :param x_phi_b:
+    :param x_phi_b: phi(|b>) = phi(|b+a> [N])
     :param xN:
     :param c1: control bit 1
     :param c2: control bit 2
     :param aux: |0> --> |0>
-    :return: x_phi_b = phi(xb+xa [xN])
+    :return:
     """
 
     n = xa.__len__()
@@ -82,9 +82,7 @@ def modularAdder(eng, xa: Qureg, x_phi_b: Qureg, xN: Qureg, c1, c2, aux):
     with Control(eng, c1):
         with Control(eng, c2):
             phi_adder(eng, xa, x_phi_b)
-    Measure | c1
-    Measure | c2
-    Measure | aux
+
 
 
 

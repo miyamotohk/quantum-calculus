@@ -11,10 +11,10 @@ from projectq.cengines import (AutoReplacer, DecompositionRuleSet,
 
 from projectq.ops import (All, Measure, QFT)
 from homemade_code.cMultModN import cMultModN
-from homemade_code.initialisation import initialisation
+from homemade_code.initialisation import initialisation, meas2int
 
 
-def run(a=4, b=6, N = 10, x=2, param="simulation"):
+def run(a=4, b=6, N = 7, x=2, param="simulation"):
     """
     Be careful this algo is a bit long to execute
     |b> --> |b+(ax) mod N>
@@ -42,11 +42,12 @@ def run(a=4, b=6, N = 10, x=2, param="simulation"):
     if param == "latex":
         drawing_engine = CircuitDrawer()
         eng2 = MainEngine(drawing_engine)
-        [xx, xb, xN] = initialisation(eng2, [x, b, N])
         [xc, aux] = initialisation(eng2, [1, 0])
-        cMultModN(eng2, a, xc, aux, xx, xb, xN)
-        All(Measure) | aux
-        All(Measure) | xc
+        [xb, xx, xN] = initialisation(eng2, [b, x, N])
+        cMultModN(eng2, a, xb, xx, xN, aux, xc)
+        eng2.flush()
+        Measure | aux
+        Measure | xc
         All(Measure) | xx
         All(Measure) | xb
         All(Measure) | xN
@@ -54,18 +55,39 @@ def run(a=4, b=6, N = 10, x=2, param="simulation"):
         print(drawing_engine.get_latex())
     else:
         eng = MainEngine(Simulator(), compilerengines)
-        [xx, xb, xN] = initialisation(eng, [x, b, N])
+        [xb, xx, xN] = initialisation(eng, [b, x, N])
         [xc, aux] = initialisation(eng, [1, 0])
-        cMultModN(eng, a, xc, aux, xx, xb, xN)
-        All(Measure) | aux
-        All(Measure) | xc
+        cMultModN(eng, a, xb, xx, xN, aux, xc)
+        Measure | aux
+        Measure | xc
         All(Measure) | xx
         All(Measure) | xb
         All(Measure) | xN
         n = xb.__len__()
         eng.flush()
         measurements_b = [0]*n
+        measurements_x = [0] * n
+        measurements_N = [0] * n
         for k in range(n):
             measurements_b[k] = int(xb[k])
+            measurements_x[k] = int(xx[k])
+            measurements_N[k] = int(xN[k])
+        mes_aux = int(aux[0])
+        mes_c = int(aux[0])
+        return [measurements_b, meas2int(measurements_b), (b+a*x) % N, measurements_x, measurements_N, mes_aux, mes_c]
 
-        return [measurements_b, [int(k) for k in bin((b + a*x) % N)[2:]].reverse()]
+"""
+637 cas
+299 faux listé dans cMult_try_14_01.txt
+L = []
+for N in range(7):
+    print(N)
+    for a in range(N):
+        for b in range(N):
+            for x in range(7):
+                X = run(a, b, N, x)
+                if X[1] != X[2]:
+                    L.append([[a, b, N, x], X[1], X[2]])
+"""
+
+
