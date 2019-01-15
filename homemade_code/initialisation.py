@@ -24,6 +24,7 @@ def meas2int(L: list):
     L.reverse()
     return int(res, 2)
 
+
 def initialisation_n(eng, a, n):
     [L, na] = int2bit(a)
     eps = n-na
@@ -50,7 +51,7 @@ def initialisation(eng, args):
         L.append(Lx)
         N.append(nx)
     narg = argmax(N)
-    n = N[narg]
+    n = N[narg] + 1  # +1 to counter overflow issues
     for i in range(m):
         eps = n-N[i]
         for _ in range(eps):

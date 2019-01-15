@@ -19,7 +19,7 @@ def cMultModN(eng, a, xb, xx, xN, aux, xc):
 
     # b-->phi(b)
     QFT | xb
-    n = len(xx)
+    n = len(xb)
     for i in range(n):
         xa = initialisation_n(eng, (2**i)*a, n)
         # TODO define xa in a iterative way just by adding a new qubit 0 as LSB

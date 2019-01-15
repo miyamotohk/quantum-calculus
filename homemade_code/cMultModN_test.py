@@ -11,13 +11,13 @@ from projectq.cengines import (AutoReplacer, DecompositionRuleSet,
 
 from projectq.ops import (All, Measure, QFT)
 from homemade_code.cMultModN import cMultModN
-from homemade_code.initialisation import initialisation, meas2int
+from homemade_code.initialisation import initialisation, meas2int, initialisation_n
 
 
 def run(a=4, b=6, N = 7, x=2, param="simulation"):
     """
     Be careful this algo is a bit long to execute
-    |b> --> |b+(ax) mod N>
+    |b> --> |b+(ax) mod N> works for
     :param a:
     :param b:
     :param N:
@@ -56,7 +56,8 @@ def run(a=4, b=6, N = 7, x=2, param="simulation"):
     else:
         eng = MainEngine(Simulator(), compilerengines)
         [xb, xx, xN] = initialisation(eng, [b, x, N])
-        [xc, aux] = initialisation(eng, [1, 0])
+        xc = initialisation_n(eng, 1, 1)
+        aux = initialisation_n(eng, 0, 1)
         cMultModN(eng, a, xb, xx, xN, aux, xc)
         Measure | aux
         Measure | xc
@@ -77,17 +78,32 @@ def run(a=4, b=6, N = 7, x=2, param="simulation"):
         return [measurements_b, meas2int(measurements_b), (b+a*x) % N, measurements_x, measurements_N, mes_aux, mes_c]
 
 """
-637 cas
-299 faux listé dans cMult_try_14_01.txt
+
+N = 4 -> 16 erreurs return [2**n - (2**n - (b + a*x))%N]
 L = []
-for N in range(7):
+#for N in range(8):
+if 1:
+    N=4
     print(N)
     for a in range(N):
+        print(a)
         for b in range(N):
-            for x in range(7):
+            for x in range(8):
                 X = run(a, b, N, x)
                 if X[1] != X[2]:
                     L.append([[a, b, N, x], X[1], X[2]])
+1 round 12h09
+6 ite en 10min -> 32 à faire donc 53min par round
+register the list
+score = [1,2,3,4,5]
+
+with open("file.txt", "w") as f:
+    for s in score:
+        f.write(str(s) +"\n")
+
+with open("file.txt", "r") as f:
+  for line in f:
+    score.append(int(line.strip()))
 """
 
 
