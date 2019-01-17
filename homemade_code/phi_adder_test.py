@@ -11,10 +11,10 @@ from projectq.cengines import (AutoReplacer, DecompositionRuleSet,
 
 from projectq.ops import (All, Measure, QFT)
 from homemade_code.phi_adder import phi_adder
-from homemade_code.initialisation import initialisation, meas2int
+from homemade_code.initialisation import initialisation, meas2int, initialisation_n
+import math
 
-
-def run(a=11, b=1, N = 12, param="simulation"):
+def run(a=11, b=1, param="simulation"):
     # build compilation engine list
     resource_counter = ResourceCounter()
     rule_set = DecompositionRuleSet(modules=[projectq.libs.math,
@@ -28,11 +28,19 @@ def run(a=11, b=1, N = 12, param="simulation"):
                        resource_counter]
 
     # create a main compiler engine
+    a1 = a
+    b1 = b
+    if a == 0:
+        a1 = 1
+    if b == 0:
+        b1 = 1
+    n = max(int(math.log(a1, 2)), int(math.log(b1, 2))) + 1
 
     if param == "latex":
         drawing_engine = CircuitDrawer()
         eng2 = MainEngine(drawing_engine)
-        [xa, xb, xN] = initialisation(eng2, [a, b, N])
+        xa= initialisation_n(eng2, a, n + 1)
+        xb= initialisation_n(eng2, b, n + 1)
         # b --> phi(b)
         QFT | xb
         phi_adder(eng2, xa, xb)
@@ -40,44 +48,116 @@ def run(a=11, b=1, N = 12, param="simulation"):
             QFT | xb
         All(Measure) | xa
         All(Measure) | xb
-        All(Measure) | xN
         eng2.flush()
         print(drawing_engine.get_latex())
     else:
         eng = MainEngine(Simulator(), compilerengines)
-        [xa, xb, xN] = initialisation(eng, [a, b, N])
-        [c1, c2, aux] = initialisation(eng, [1, 1, 0])
+        xa= initialisation_n(eng, a, n + 1)
+        xb= initialisation_n(eng, b, n + 1)
         # b --> phi(b)
         QFT | xb
-        phi_adder(eng, xa, xb, xN)
+        phi_adder(eng, xa, xb)
         with Dagger(eng):
             QFT | xb
         All(Measure) | xa
         All(Measure) | xb
-        All(Measure) | xN
         eng.flush()
         n = xa.__len__()
 
         measurements_a = [0]*n
         measurements_b = [0]*n
-        measurements_N = [0]*n
         for k in range(n):
             measurements_a[k] = int(xa[k])
             measurements_b[k] = int(xb[k])
-            measurements_N[k] = int(xN[k])
 
-        return [measurements_a, measurements_b, measurements_N]
+        return [measurements_a, meas2int(measurements_b), measurements_b]
 
 
-def run_complete():
-    # results in modularAdder.txt
-    # 1241 possibilities -> 155 error (care of undetected errors)
+def run_inv(a=11, b=1, param="simulation"):
+    # build compilation engine list
+    resource_counter = ResourceCounter()
+    rule_set = DecompositionRuleSet(modules=[projectq.libs.math,
+                                             projectq.setups.decompositions])
+    compilerengines = [AutoReplacer(rule_set),
+                       TagRemover(),
+                       LocalOptimizer(3),
+                       AutoReplacer(rule_set),
+                       TagRemover(),
+                       LocalOptimizer(3),
+                       resource_counter]
+
+    # create a main compiler engine
+    a1 = a
+    b1 = b
+    if a == 0:
+        a1 = 1
+    if b == 0:
+        b1 = 1
+    n = max(int(math.log(a1, 2)), int(math.log(b1, 2))) + 1
+
+    if param == "latex":
+        drawing_engine = CircuitDrawer()
+        eng2 = MainEngine(drawing_engine)
+        xa = initialisation_n(eng2, a, n + 1)
+        xb = initialisation_n(eng2, b, n + 1)
+        # b --> phi(b)
+        QFT | xb
+        phi_adder(eng2, xa, xb)
+        with Dagger(eng2):
+            QFT | xb
+        All(Measure) | xa
+        All(Measure) | xb
+        eng2.flush()
+        print(drawing_engine.get_latex())
+    else:
+        eng = MainEngine(Simulator(), compilerengines)
+        xa = initialisation_n(eng, a, n + 1)
+        xb = initialisation_n(eng, b, n + 1)
+        # b --> phi(b)
+        QFT | xb
+        with Dagger(eng):
+            phi_adder(eng, xa, xb)
+        with Dagger(eng):
+            QFT | xb
+        All(Measure) | xa
+        All(Measure) | xb
+        eng.flush()
+        n = n+1
+        measurements_a = [0] * n
+        measurements_b = [0] * n
+        for k in range(n):
+            measurements_a[k] = int(xa[k])
+            measurements_b[k] = int(xb[k])
+
+        return [measurements_a, meas2int(measurements_b), measurements_b]
+
+
+def run_complete(param=0):
+    """
+    :param param: 0 -> phi_adder; 1 -> inv_phi_adder
+    :return:
+    """
     L =[]
-    for N in range(16):
-        for a in range(N):
-            for b in range(N):
-                X = run(a, b, N)
+    c = 0
+    N = 8
+    for a in range(N):
+        for b in range(N):
+            if param:
+                a1 = a
+                b1 = b
+                if a == 0:
+                    a1 = 1
+                if b == 0:
+                    b1 =1
+                n = max(int(math.log(a1, 2)), int(math.log(b1, 2))) + 1
+                if a>b:
+                    expected = 2**(n+1) - (a-b)
+                else:
+                    expected = b-a
+                X = run_inv(a, b)
+
+            else:
                 expected = a+b
-                if meas2int(X[1]) != expected:
-                    L.append([[a, b, N], X[1], expected])
+            if X[1] != expected:
+                L.append([a, b, X[1], expected])
     return L

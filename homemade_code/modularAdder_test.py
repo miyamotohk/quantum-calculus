@@ -12,7 +12,7 @@ from projectq.cengines import (AutoReplacer, DecompositionRuleSet,
 from projectq.ops import (All, Measure, QFT)
 from homemade_code.modularAdder import modularAdder
 from homemade_code.initialisation import initialisation, meas2int, initialisation_n
-
+import math
 
 def run(a=11, b=1, N = 12, param="simulation"):
     # build compilation engine list
@@ -28,11 +28,14 @@ def run(a=11, b=1, N = 12, param="simulation"):
                        resource_counter]
 
     # create a main compiler engine
-
+    n = int(math.log(N, 2)) + 1
     if param == "latex":
         drawing_engine = CircuitDrawer()
         eng2 = MainEngine(drawing_engine)
-        [xa, xb, xN] = initialisation(eng2, [a, b, N])
+
+        xN = initialisation_n(eng2, N, n+1)
+        xa = initialisation_n(eng2, a, n+1)
+        xb = initialisation_n(eng2, b, n+1)
         c1 = initialisation_n(eng2, 1)
         c2 = initialisation_n(eng2, 1)
         aux = initialisation_n(eng2, 0)
@@ -51,10 +54,10 @@ def run(a=11, b=1, N = 12, param="simulation"):
         print(drawing_engine.get_latex())
     else:
         eng = MainEngine(Simulator(), compilerengines)
-        [xa, xb, xN] = initialisation(eng, [a, b, N])
-        c1 = initialisation_n(eng, 1, 1)
-        c2 = initialisation_n(eng, 1, 1)
-        aux = initialisation_n(eng, 0, 1)
+        xN = initialisation_n(eng, N, n+1)
+        xa = initialisation_n(eng, a, n+1)
+        xb = initialisation_n(eng, b, n+1)
+        [c1, c2, aux] = initialisation(eng, [1, 1, 0])
         # b --> phi(b)
         QFT | xb
         modularAdder(eng, xa, xb, xN, c1, c2, aux)
@@ -67,7 +70,6 @@ def run(a=11, b=1, N = 12, param="simulation"):
         All(Measure) | xb
         All(Measure) | xN
         eng.flush()
-        n = xa.__len__()
 
         measurements_a = [0]*n
         measurements_b = [0]*n
@@ -77,7 +79,7 @@ def run(a=11, b=1, N = 12, param="simulation"):
             measurements_b[k] = int(xb[k])
             measurements_N[k] = int(xN[k])
 
-        return [measurements_a, measurements_b, measurements_N]
+        return [measurements_a, measurements_b, int(xb[n]), measurements_N, int(aux[0]), int(c1[0]), int(c2[0])]
 
 
 def run_complete():
@@ -85,8 +87,9 @@ def run_complete():
     # N = 16 : 1241 possibilities -> 155 error (care of undetected errors)
     # erreur du phi_adder qui donne [(a+b)%2^n]%N et non (a+b)%N
     # corrige aucune erreur pour N=8
+    # run pour N = 8 le aux reste bien à 0
     L =[]
-    for N in range(8):
+    for N in range(1,8):
         print(N)
         print(len(L))
         for a in range(N):
@@ -95,4 +98,6 @@ def run_complete():
                 expected = (a+b) % N
                 if meas2int(X[1]) != expected:
                     L.append([[a, b, N], X[1], expected])
+                if X[4] != 0:
+                    L.append(X)
     return L

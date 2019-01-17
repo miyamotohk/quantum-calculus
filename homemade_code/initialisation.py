@@ -51,7 +51,7 @@ def initialisation(eng, args):
         L.append(Lx)
         N.append(nx)
     narg = argmax(N)
-    n = N[narg] + 1  # +1 to counter overflow issues
+    n = N[narg]
     for i in range(m):
         eps = n-N[i]
         for _ in range(eps):
@@ -67,3 +67,18 @@ def initialisation(eng, args):
 
     return Xreg
 
+
+def egcd(a, b):
+    if a == 0:
+        return (b, 0, 1)
+    else:
+        g, y, x = egcd(b % a, a)
+        return (g, x - (b // a) * y, y)
+
+
+def mod_inv(a, m):
+    g, x, y = egcd(a, m)
+    if g != 1:
+        raise Exception('modular inverse does not exist')
+    else:
+        return x % m

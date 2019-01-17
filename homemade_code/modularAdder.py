@@ -34,20 +34,19 @@ def modularAdder(eng, xa: Qureg, x_phi_b: Qureg, xN: Qureg, c1, c2, aux):
     :return:
     """
 
-    n = xa.__len__()
+    n = xN.__len__()
 
     # we need to compute a + b and subtract N if a + b ≥ N.
 
     with Control(eng, c1):
         with Control(eng, c2):
             phi_adder(eng, xa, x_phi_b)  # we get phi(a+b)
-    eng.flush()
-    inv_phi_adder(eng, xN, x_phi_b)  # we get phi(a+b-N)
-    eng.flush()
+    with Dagger(eng):
+        phi_adder(eng, xN, x_phi_b)  # we get phi(a+b-N)
     with Dagger(eng):
         QFT | x_phi_b
     eng.flush()
-    MSB = x_phi_b[n - 1]  # we need the most significant bit to evaluate a+b-N
+    MSB = x_phi_b[n-1]  # we need the most significant bit to evaluate a+b-N (reminder x_phi_b is coded on n+1 bits)
 
     with Control(eng, MSB):
         X | aux
@@ -59,16 +58,14 @@ def modularAdder(eng, xa: Qureg, x_phi_b: Qureg, xN: Qureg, c1, c2, aux):
     # we now have phi(a+b mod N)
 
     # these next steps are for restoring aux to 0 using (a + b)mod N ≥ a ⇔ a + b < N (same logic as before)
-    eng.flush()
     with Control(eng, c1):
         with Control(eng, c2):
             inv_phi_adder(eng, xa, x_phi_b)
 
-    eng.flush()
     with Dagger(eng):
         QFT | x_phi_b
     eng.flush()
-    MSB2 = x_phi_b[n - 1]
+    MSB2 = x_phi_b[n-1]   # reminder x_phi_b is coded on n+1 bits
 
     X | MSB2
 
