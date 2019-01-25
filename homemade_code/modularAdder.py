@@ -61,7 +61,9 @@ def modularAdder(eng, xa: Qureg, x_phi_b: Qureg, xN: Qureg, c1, c2, aux):
     # these next steps are for restoring aux to 0 using (a + b)mod N ≥ a ⇔ a + b < N (same logic as before)
     with Control(eng, c1):
         with Control(eng, c2):
-            inv_phi_adder(eng, xa, x_phi_b)
+            with Dagger(eng):
+                phi_adder(eng, xa, x_phi_b)
+            #inv_phi_adder(eng, xa, x_phi_b)
 
     with Dagger(eng):
         QFT | x_phi_b

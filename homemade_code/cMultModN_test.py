@@ -63,7 +63,7 @@ def run(a=4, b=6, N = 7, x=2, param="simulation"):
         xx = initialisation_n(eng, x, n+1)
         xb = initialisation_n(eng, b, n+1)
         [aux, xc] = initialisation(eng, [0, 1])
-        cMultModN(eng, a, xb, xx, xN, aux, xc)
+        cMultModN(eng, a, xb, xx, xN, aux, xc, N)
         Measure | aux
         Measure | xc
         All(Measure) | xx
