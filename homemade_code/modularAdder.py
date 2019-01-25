@@ -24,6 +24,7 @@ aux = 0
 def modularAdder(eng, xa: Qureg, x_phi_b: Qureg, xN: Qureg, c1, c2, aux):
     """
     All input are Qubits
+    if 2*N>b+a>N
     :param eng:
     :param xa:
     :param x_phi_b: phi(|b>) = phi(|b+a> [N])
@@ -46,7 +47,7 @@ def modularAdder(eng, xa: Qureg, x_phi_b: Qureg, xN: Qureg, c1, c2, aux):
     with Dagger(eng):
         QFT | x_phi_b
     eng.flush()
-    MSB = x_phi_b[n-1]  # we need the most significant bit to evaluate a+b-N (reminder x_phi_b is coded on n+1 bits)
+    MSB = x_phi_b[n-1]  # we need the most significant bit to evaluate a+b-N
 
     with Control(eng, MSB):
         X | aux

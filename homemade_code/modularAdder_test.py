@@ -79,25 +79,26 @@ def run(a=11, b=1, N = 12, param="simulation"):
             measurements_b[k] = int(xb[k])
             measurements_N[k] = int(xN[k])
 
-        return [measurements_a, measurements_b, int(xb[n]), measurements_N, int(aux[0]), int(c1[0]), int(c2[0])]
+        return [measurements_a, measurements_b, int(xb[n]), measurements_N, int(aux[0]), int(c1[0]), int(c2[0]), meas2int(measurements_b), (a+b)%N]
 
 
-def run_complete():
-    # results in modularAdder.txt
-    # N = 16 : 1241 possibilities -> 155 error (care of undetected errors)
-    # erreur du phi_adder qui donne [(a+b)%2^n]%N et non (a+b)%N
-    # corrige aucune erreur pour N=8
-    # run pour N = 8 le aux reste bien à 0
+def run_complete(n):
+    # n = 16 -> 0 error if a<N and b<N
+    # test avec c1 et c2 à 11, 01, 10, 00 (rappel en fonctionnement c'est à 11)
     L =[]
-    for N in range(1,8):
+    for N in range(1, n):
+        j = int(math.log(N, 2))+1
+        lim = 2**j
         print(N)
         print(len(L))
-        for a in range(N):
+        for a in range(lim):
             for b in range(N):
                 X = run(a, b, N)
                 expected = (a+b) % N
+                #expected = b % N si un des c1 ou c2 est à 0
                 if meas2int(X[1]) != expected:
-                    L.append([[a, b, N], X[1], expected])
+                    L.append([[a, b, N], X[1], meas2int(X[1]),expected])
                 if X[4] != 0:
                     L.append(X)
+
     return L
