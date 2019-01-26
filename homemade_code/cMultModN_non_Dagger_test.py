@@ -10,7 +10,7 @@ from projectq.cengines import (AutoReplacer, DecompositionRuleSet,
                                MainEngine, TagRemover)
 
 from projectq.ops import (All, Measure, QFT)
-from homemade_code.cMultModN import cMultModN
+from homemade_code.cMultModN_non_Dagger import cMultModN_non_Dagger
 from homemade_code.initialisation import initialisation, meas2int, initialisation_n
 import math
 
@@ -48,7 +48,7 @@ def run(a=4, b=6, N = 7, x=2, param="simulation"):
         xx = initialisation_n(eng2, x, n+1)
         xb = initialisation_n(eng2, b, n+1)
         [xc, aux] = initialisation(eng2, [1, 0])
-        cMultModN(eng2, a, xb, xx, xN, aux, xc)
+        cMultModN_non_Dagger(eng2, a, xb, xx, xN, aux, xc)
         eng2.flush()
         Measure | aux
         Measure | xc
@@ -63,7 +63,7 @@ def run(a=4, b=6, N = 7, x=2, param="simulation"):
         xx = initialisation_n(eng, x, n+1)
         xb = initialisation_n(eng, b, n+1)
         [aux, xc] = initialisation(eng, [0, 1])
-        cMultModN(eng, a, xb, xx, xN, aux, xc, N)
+        cMultModN_non_Dagger(eng, a, xb, xx, xN, aux, xc, N)
         Measure | aux
         Measure | xc
         All(Measure) | xx
@@ -80,7 +80,8 @@ def run(a=4, b=6, N = 7, x=2, param="simulation"):
 
         mes_aux = int(aux[0])
         mes_c = int(aux[0])
-        return [measurements_b, meas2int(measurements_b), (b+a*x) % N, measurements_N, measurements_x, mes_aux, mes_c]
+        return [measurements_b, meas2int(measurements_b), (b+a*x) % N, measurements_N, measurements_x, mes_aux, mes_c,
+                meas2int(measurements_b), meas2int(measurements_N), meas2int(measurements_x)]
 
 """
 import time

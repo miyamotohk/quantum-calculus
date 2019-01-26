@@ -4,9 +4,10 @@ from projectq.ops import (All, Measure, QFT, X, Deallocate)
 from homemade_code.modularAdder import modularAdder
 from homemade_code.initialisation import initialisation, initialisation_n
 
-import math
-def cMultModN(eng, a, xb, xx, xN, aux, xc,N):
+
+def cMultModN_non_Dagger(eng, a, xb, xx, xN, aux, xc, N):
     """
+    Cannot be Dagger as we allocate qubits on the fly
     |b> --> |b+(ax) mod N> if xc=1; else |b> -> |b>
     :param eng:
     :param a:
