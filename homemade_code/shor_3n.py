@@ -19,17 +19,16 @@ from projectq.cengines import (AutoReplacer, DecompositionRuleSet,
                                MainEngine, TagRemover)
 from projectq.libs.math import (AddConstant, AddConstantModN,
                                 MultiplyByConstantModN)
-from projectq.meta import Control
+from projectq.meta import Control, Dagger
 from projectq.ops import (All, BasicMathGate, get_inverse, H, Measure, QFT, R,
                           Swap, X)
 
 from homemade_code.gateUa import gateUa
 from homemade_code.initialisation import mod_inv, initialisation_n
 
-def run_shor(eng, N, a, verbose=True):
+def run_shor(eng, N, a, verbose=False):
     """
-    Runs the quantum subroutine of Shor's algorithm for factoring.
-    The 1 controling qubits version
+    Runs the quantum subroutine of Shor's algorithm for factoring. with 2n control qubits
 
     Args:
         eng (MainEngine): Main compiler engine to use.
@@ -46,42 +45,30 @@ def run_shor(eng, N, a, verbose=True):
     xN = initialisation_n(eng, N, n)
     xb = initialisation_n(eng, 0, n)
     aux = initialisation_n(eng, 0, 1)
-
-    X | x[0]
+    X | x[0]  # set x to 1
 
     measurements = [0] * (2 * n)  # will hold the 2n measurement results
 
-    ctrl_qubit = eng.allocate_qubit()
+    ctrl_qubit = eng.allocate_qureg(2*n)
 
     for k in range(2 * n):
-        current_a = pow(a, 1 << (2 * n - 1 - k), N)
+        current_a = pow(a, 1 << k, N)
         # one iteration of 1-qubit QPE
-        H | ctrl_qubit
-        """
-        with Control(eng, ctrl_qubit):
-            MultiplyByConstantModN(current_a, N) | x
-        """
-        gateUa(eng, current_a, mod_inv(current_a, N), x, xb, xN, aux, ctrl_qubit, N)
-        # perform inverse QFT --> Rotations conditioned on previous outcomes
-        for i in range(k):
-            if measurements[i]:
-                R(-math.pi/(1 << (k - i))) | ctrl_qubit
-        H | ctrl_qubit
+        H | ctrl_qubit[k]
+        gateUa(eng, current_a, mod_inv(current_a, N), x, xb, xN, aux, ctrl_qubit[k], N)
 
-        # and measure
-        Measure | ctrl_qubit
-        eng.flush()
-        measurements[k] = int(ctrl_qubit)
-        if measurements[k]:
-            X | ctrl_qubit
+    with Dagger(eng):
+        QFT | ctrl_qubit
 
-        if verbose:
-            print("\033[95m{}\033[0m".format(measurements[k]), end="")
-            sys.stdout.flush()
+    # and measure
+    All(Measure) | ctrl_qubit
+    eng.flush()
+    for k in range(2*n):
+        measurements[k] = int(ctrl_qubit[k])
 
     All(Measure) | x
     # turn the measured values into a number in [0,1)
-    y = sum([(measurements[2 * n - 1 - i]*1. / (1 << (i + 1)))
+    y = sum([(measurements[i]*1. / (1 << (i + 1)))
              for i in range(2 * n)])
 
     # continued fraction expansion to get denominator (the period?)
@@ -91,29 +78,12 @@ def run_shor(eng, N, a, verbose=True):
     return r
 
 
-# Filter function, which defines the gate set for the first optimization
-# (don't decompose QFTs and iQFTs to make cancellation easier)
-def high_level_gates(eng, cmd):
-    g = cmd.gate
-    if g == QFT or get_inverse(g) == QFT or g == Swap:
-        return True
-    if isinstance(g, BasicMathGate):
-        return False
-        if isinstance(g, AddConstant):
-            return True
-        elif isinstance(g, AddConstantModN):
-            return True
-        return False
-    return eng.next_engine.is_available(cmd)
-
-
 if __name__ == "__main__":
     # build compilation engine list
     resource_counter = ResourceCounter()
     rule_set = DecompositionRuleSet(modules=[projectq.libs.math,
                                              projectq.setups.decompositions])
     compilerengines = [AutoReplacer(rule_set),
-                       InstructionFilter(high_level_gates),
                        TagRemover(),
                        LocalOptimizer(3),
                        AutoReplacer(rule_set),
@@ -123,7 +93,7 @@ if __name__ == "__main__":
 
     # make the compiler and run the circuit on the simulator backend
     eng = MainEngine(Simulator(), compilerengines)
-    #eng = MainEngine(resource_counter)
+
     # print welcome message and ask the user for the number to factor
     print("\n\t\033[37mprojectq\033[0m\n\t--------\n\tImplementation of Shor"
           "\'s algorithm.", end="")
@@ -131,8 +101,7 @@ if __name__ == "__main__":
     print("\n\tFactoring N = {}: \033[0m".format(N), end="")
 
     # choose a base at random:
-    #a = random.randint(2,N)
-    a = 2
+    a = int(random.random()*N)
     print("\na is " + str(a))
     if not gcd(a, N) == 1:
         print("\n\n\t\033[92mOoops, we were lucky: Chose non relative prime"
@@ -141,15 +110,13 @@ if __name__ == "__main__":
     else:
         # run the quantum subroutine
         r = run_shor(eng, N, a, True)
-        print("\n\nr found : " + str(r))
+        print(r)
         # try to determine the factors
-
         if r % 2 != 0:
             r *= 2
         apowrhalf = pow(a, r >> 1, N)
         f1 = gcd(apowrhalf + 1, N)
         f2 = gcd(apowrhalf - 1, N)
-        print("f1 = {}, f2 = {}".format(f1, f2))
         if ((not f1 * f2 == N) and f1 * f2 > 1 and
                 int(1. * N / (f1 * f2)) * f1 * f2 == N):
             f1, f2 = f1*f2, int(N/(f1*f2))
