@@ -1,4 +1,3 @@
-
 from projectq.backends import CircuitDrawer
 from projectq.meta import Dagger
 
@@ -10,13 +9,13 @@ from projectq.cengines import (AutoReplacer, DecompositionRuleSet,
                                MainEngine, TagRemover)
 
 from projectq.ops import (All, Measure, QFT)
-from homemade_code.cMultModN import cMultModN
-from homemade_code.initialisation import initialisation, meas2int, initialisation_n
+from homemade_code.gateUa import gateUa
+from homemade_code.initialisation import initialisation, meas2int, initialisation_n, mod_inv, egcd
 import math
 
-def run(a=4, b=6, N = 7, x=2, param="simulation"):
+
+def run(a=4, N=7, x=2, param="simulation"):
     """
-    Be careful this algo is a bit long to execute
     |b> --> |b+(ax) mod N> works for
     :param a:
     :param b:
@@ -38,16 +37,18 @@ def run(a=4, b=6, N = 7, x=2, param="simulation"):
                        resource_counter]
 
     # create a main compiler engine
-    n = int(math.log(N, 2)) + 1
 
+    inv_a = mod_inv(a, N)
+    b = 0
+    n = int(math.log(N, 2)) + 1
     if param == "latex":
         drawing_engine = CircuitDrawer()
         eng2 = MainEngine(drawing_engine)
-        xN = initialisation_n(eng2, N, n+1)
-        xx = initialisation_n(eng2, x, n+1)
-        xb = initialisation_n(eng2, b, n+1)
+        xN = initialisation_n(eng2, N, n + 1)
+        xx = initialisation_n(eng2, x, n + 1)
+        xb = initialisation_n(eng2, b, n + 1)
         [xc, aux] = initialisation(eng2, [1, 0])
-        cMultModN(eng2, a, xb, xx, xN, aux, xc)
+        gateUa(eng2, a, inv_a, xx, xb, xN, aux, xc, N)
         eng2.flush()
         Measure | aux
         Measure | xc
@@ -58,59 +59,49 @@ def run(a=4, b=6, N = 7, x=2, param="simulation"):
         print(drawing_engine.get_latex())
     else:
         eng = MainEngine(Simulator(), compilerengines)
-        xN = initialisation_n(eng, N, n+1)
-        xx = initialisation_n(eng, x, n+1)
-        xb = initialisation_n(eng, b, n+1)
-        [aux, xc] = initialisation(eng, [0, 1])
-        cMultModN(eng, a, xb, xx, xN, aux, xc)
+        xN = initialisation_n(eng, N, n + 1)
+        xx = initialisation_n(eng, x, n + 1)
+        xb = initialisation_n(eng, b, n + 1)
+        [xc, aux] = initialisation(eng, [1, 0])
+        gateUa(eng, a, inv_a, xx, xb, xN, aux, xc, N)
         Measure | aux
         Measure | xc
         All(Measure) | xx
         All(Measure) | xb
         All(Measure) | xN
         eng.flush()
-        measurements_b = [0]*n
+        del eng
+        measurements_b = [0] * n
         measurements_x = [0] * n
         measurements_N = [0] * n
         for k in range(n):
             measurements_b[k] = int(xb[k])
             measurements_N[k] = int(xN[k])
             measurements_x[k] = int(xx[k])
+        assert int(xb[n]) == 0
+        assert int(xN[n]) == 0
+        assert int(xx[n]) == 0
 
         mes_aux = int(aux[0])
         mes_c = int(aux[0])
-        return [measurements_b, meas2int(measurements_b), (b+a*x) % N, measurements_x, measurements_N, mes_aux, mes_c]
+        return [measurements_b, (a * x) % N, meas2int(measurements_x), measurements_x, measurements_N, mes_aux, mes_c]
+
 
 """
-
-N = 3 pas d'erreur
+import time
+t1 = time.time()
 L = []
 #for N in range(8):
 if 1:
-    N=3
-    print(N)
-    for a in range(N):
-        print(a)
-        print(len(L))
-        for b in range(N):
-            for x in range(N):
-                X = run(a, b, N, x)
-                if X[1] != X[2]:
-                    L.append([[a, b, N, x], X[1], X[2], X[5]])
-1 round 12h09
-6 ite en 10min -> 32 à faire donc 53min par round
-register the list
-score = [1,2,3,4,5]
-
-with open("cMultMod5.txt", "w") as f:
-    for s in L:
-        f.write(str(s) +"\n")
-
-with open("file.txt", "r") as f:
-  for line in f:
-    score.append(int(line.strip()))
-    
-    16_01 N = 3 pas d'erreurs
+    N=7
+    print("N : " +str(N))
+    for a in range(1,N):
+        print("a : " +str(a))
+        print("len(L) : " + str(len(L)))
+        if egcd(a,N)[0]==1:
+            for x in range(1,N):
+                X = run(a, N, x)
+                if X[1] != X[2] or meas2int(X[0]) !=0:
+                    L.append([[a, N, x], X[0], X[1], X[3], X[5]])
+                    print(time.time()-t1)
 """
-
-

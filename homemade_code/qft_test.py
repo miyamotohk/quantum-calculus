@@ -159,6 +159,8 @@ def run_decompose(a=11, param = "draw"):
     qft_decompose(eng, xa)
 
     eng.flush()
+    with Dagger(eng):
+        qft_decompose(eng, xa)
 
     if param != "draw":
         amp_xa = []

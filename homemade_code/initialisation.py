@@ -30,6 +30,14 @@ def initialisation_n(eng, a, n):
     eps = n-na
     for i in range(eps):
         L.append(0)
+
+    # cas ou a > 2**n le dernier bit n'est pas à zéro
+    """
+    if L[-1] != 0 and eps <= 0:
+        print(a,n, L[-1])
+        L[-1] = 0
+    """
+
     xa = eng.allocate_qureg(n)
     for i in range(n):
         if L[i]:

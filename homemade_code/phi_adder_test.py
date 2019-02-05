@@ -9,7 +9,7 @@ from projectq.cengines import (AutoReplacer, DecompositionRuleSet,
                                InstructionFilter, LocalOptimizer,
                                MainEngine, TagRemover)
 
-from projectq.ops import (All, Measure, QFT)
+from projectq.ops import (All, Measure, QFT, R)
 from homemade_code.phi_adder import phi_adder
 from homemade_code.initialisation import initialisation, meas2int, initialisation_n
 import math
@@ -35,7 +35,6 @@ def run(a=11, b=1, param="simulation"):
     if b == 0:
         b1 = 1
     n = max(int(math.log(a1, 2)), int(math.log(b1, 2))) + 1
-
     if param == "latex":
         drawing_engine = CircuitDrawer()
         eng2 = MainEngine(drawing_engine)

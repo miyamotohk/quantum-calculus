@@ -1,10 +1,11 @@
 from math import pi
 from projectq.meta import Control
 from projectq.ops import R
-import math
+
 
 def phi_adder(eng, xa, x_phi_b):  # add a to phi(b) to get phi(a+b)
-    n = len(xa)
+    #n = len(xa)
+    n = len(x_phi_b)
     for i in range(n):
         N = n - i - 1
         for k in range(1, N+2):
