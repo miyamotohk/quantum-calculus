@@ -30,13 +30,13 @@
 	{\Large Long Project \nth{2} year\par}
 	\vspace{3cm}
 	{\large \textit{Students:}\\
-			Ahmed Ben Aissa\\
-			Elie Mokbel\\
-			Henrique Miyamoto\\
-			Pierre Minssen\par}
+			Ahmed BEN AISSA\\
+			Elie MOKBEL\\
+			Henrique MIYAMOTO\\
+			Pierre MINSSEN\par}
 	\vspace{2cm}
 	{\large \textit{Supervisor:}\\
-			Prof. Benoît Valiron \par}
+			Prof. Benoît VALIRON \par}
 	\vfill
 	\large \today
 \end{titlepage}
@@ -191,6 +191,7 @@ We say a quantum state is \textit{entangled} when it cannot be written as a tens
 
 \newpage
 \section{Shor's algorithm}
+\label{section2}
 
 The advantage of quantum algorithms over classical ones appears when using some quantum property such as entanglement or the interference, brought by complex coefficients.
 
@@ -255,11 +256,11 @@ Some remarks:
 $$ U=\sum_j \lambda_ju_ju_j^\dagger, $$
 where $u_j$ are orthonormal eigenvectors and $\lambda_j$ are the associated eigenvalues.
 
-Let us assume that $N=2^n$ and consider the operation $U_a$ on $n$ qubits that implements the mapping
-$$U : \quad |j\rangle \mapsto |j\cdot x\mod N\rangle.$$
-The operator is unitary because $x$ and $N$ are coprimes and the image of $\{0,...,N-1\}$ is the whole set. In particular, $U^k$ sends $|j\rangle \mapsto |j\cdot x^k \mod N\rangle$, so if $x^r \equiv 1 \mod N$, the map $U^r$ is the identity map.
+Let us assume that $N=2^n$ and consider the operation $U_x$ on $n$ qubits that implements the mapping
+$$U_x : \quad |j\rangle \mapsto |j\cdot x\mod N\rangle.$$
+The operator is unitary because $x$ and $N$ are coprimes and the image of $\{0,...,N-1\}$ is the whole set. In particular, $U_x^k$ sends $|j\rangle \mapsto |j\cdot x^k \mod N\rangle$, so if $x^r \equiv 1 \mod N$, the map $U_x^r$ is the identity map.
 
-The eigenstates of $U$ are of the form
+The eigenstates of $U$ are of the \footnote{To simplify notation, hereafter we shall denote $U_x$ by $U$ simply.}
 $$ |u_s\rangle = \frac{1}{\sqrt{r}} \sum_{k=0}^{r-1}\exp{\left(-\frac{2\pi i sk}{r}\right)}|x^k \mod N \rangle $$
 for $0 \le s \le r-1$. The eigenvalues are the $r$-th roots of the unity, having the form $e^{2\pi is/r}$, since
 $$ U|u_s\rangle = \exp\left(\frac{2\pi is}{r}\right)|u_s\rangle. $$
@@ -415,13 +416,112 @@ The algorithm runs as follows.
 Since $\tilde{\varphi}$ is an approximation of $s/r$ accurate to $n=\lceil\log_2N\rceil$ qubits, the theorem applies. Summarising, given $\tilde{\varphi}$, we can use the continued fraction algorithm to find an irreducible fraction $s'/r'=s/r$. Then, $r'$ is our candidate for the order. We check calculating $x^{r'} \mod N$; if the result is $1$, we are done!
 
 \newpage
-\section{Adder circuit}
+\section{Oracle circuit}
 
-Now that we know the quantum algorithm to factorise a number, we can devote our attention to the implementation in terms of quantum circuit. Although we have already provided a circuit for the QFT, the oracle remains a mysterious black box. In this Section, we show how it can be implemented.
+Now that we know the quantum algorithm to factorise a number, we can devote our attention to the implementation in terms of quantum circuit. Although we have already provided a circuit for the QFT, the oracle remains a mysterious black box. In this Section, we show how it can be implemented. In \cite{beauregard}, the author presents a circuit implementation that aims to reduce the number of qubits needed, while using a polynomial number of elementary quantum gates.
 
-\paragraph{Adder circuit.} An initial version for the adder circuit is presented in \cite{draper}.
+\paragraph{Adder gate.} An initial version for the adder circuit is presented by \cite{draper}. Instead of basing on classical circuits which use at least $3n$ qubits to sum two $n$-qubits number, by composing carry gates and sum gates, the author presents an implementation based on the QFT. The idea, in order to sum $a$ and $b$, is to compute the Quantum Fourier transform of $a$, $\phi(a)$, and then use $b$ to compute $\phi(a+b)$. The inverse QFT is then applied to recover the desired result.
 
-Another version is presented in \cite{beauregard}.
+Using the following notation\footnote{Here, understand $e\left(\frac{1}{2^k}\right)$ as $\exp\left(\frac{2\pi i}{2^k}\right)$.} to conditional rotation gates $R_k$, it is possible to describe the adder circuit as in Figure \ref{fig-adder}.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=6cm]{Figures/rotation-k}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=10cm]{Figures/adder1}
+	\caption{Quantum adder based on QFT, as presented in \cite{draper}. The QFT operator is denoted $\phi(\cdot)$.}
+	\label{fig-adder}
+\end{figure}
+
+The advantage of this method is that a quantum computer that can perform simultaneous calculations can decrease the time of execution, for instance, by executing all depth 1 rotations simultaneously, and then all depth 2 rotations and so on. In particular, in the case of using the Approximate Quantum Fourier Transform (AQFT)\footnote{This technique consists in reducing the rotations blocks as $k$ gets large, as for large values of $k$, the rotation block approaches an identity gate ($R_k \approx I$). The optimal value of $k$ is around $\log_2n$ \cite{draper}.}, this quantum addition can be computed in $n\log_2n$ operations.
+
+To follow what happens in this circuit, we shall resume the notation introduced in the presentation of the QFT (\S \ref{section2}).
+
+\begin{align*}
+	|\phi_n(a)\rangle &\rightarrow \frac{1}{\sqrt{2}}\left(|0\rangle+e^{2\pi i(0.a_na_{n-1}\cdots a_1+0.b_n)}|1\rangle\right)\quad&\text{($R_1$ rotation from $b_n$)}\\
+					  &\rightarrow \frac{1}{\sqrt{2}}\left(|0\rangle+e^{2\pi i(0.a_na_{n-1}\cdots a_1+0.b_nb_{n-1})}|1\rangle\right)\quad&\text{($R_2$ rotation from $b_{n-1}$)}\\
+					  &\qquad \vdots\\
+					  &\rightarrow \frac{1}{\sqrt{2}}\left(|0\rangle+e^{2\pi i(0.a_na_{n-1}\cdots a_1+0.b_nb_{n-1}\cdots b_1)}|1\rangle\right)\quad&\text{($R_n$ rotation from $b_1$)}\\
+					  & = |\phi(a+b)\rangle.
+\end{align*}
+
+A slight variation of the implementation presented so far is introduced by \cite{beauregard}, with the notation $\phi$-ADD($a$). As he points out, the objective of implementing this sum is to afterwards be able to retrieve the order modulo $N$ of $a$ (which plays the role of $x$ in the previous notation). Thus, $a$ is classical and the qubits that represent it may be replaced by classical bits. An additional qubit is added to prevent overflow.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=8cm]{Figures/adder2}
+	\caption{Circuit of $\phi$-adder as presented in \cite{beauregard}.}
+\end{figure}
+
+The reverse of this gate (denoted with the thick bar on the left) will be used to subtraction and comparison.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=6cm]{Figures/adder3}
+	\caption{Circuit of reverse $\phi$-ADD$(a)$ \cite{beauregard}.}
+\end{figure}
+
+\paragraph{Modular adder gate.} The goal now is to use the $\phi$-ADD$(a)$ to build a adder modulo $N$. This means that we have to subtract $N$ from the result if $a+b \ge N$. We will denote this block $\phi$-ADD$(a)$-mod-$N$. The whole block is controlled by two qubits.
+
+The circuit operation, depicted in Figure \ref{fig-modadd} is described as follows:
+
+\begin{itemize}
+	\item The circuit begins with $|\phi(b)\rangle$ as input.
+	\item After the $\phi$-ADD$(a)$ block, the value in the register is $\phi(a+b)$ (with no overflow, assuming there is an extra $|0\rangle$ qubit in $|b\rangle$).
+	\item Then, we apply a reverse $\phi$-ADD$N$, having $\phi(a+b-N)$ on the register. We apply this operation even without knowing if it was really necessary to subtract $N$ from the previous result.
+	\item Now we have to check if this operation was indeed necessary or not. But to access the most significant bit of it, we have to pass the whole value through an inverse QFT gate. The most significant bit is used to control a CNOT gate on the ancilla qubit $|0\rangle$.
+	\item The QFT is reapplied, so we come back to $\phi(a+b-N)$.
+	\item The value $N$ is added back if the subtraction was unnecessary, so that $a+b < N$. The value in the register is now $\phi(a+b)\mod N$.
+	\item Close to being satisfied, we just have to restore the ancilla to assure that our gate corresponds to a reversible operation. The trick is to note that $(a+b)\mod N \Leftrightarrow a+b<N$. So one can apply a circuit analogous to the previous one: subtract $a$, recover the most significant qubit of the result (which will be $|0\rangle$), invert it and use it on controlled-not over the ancilla, which will be restored to $|0\rangle$; at the end, restore $a$.
+\end{itemize}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=10cm]{Figures/modadder}
+	\caption{Circuit of $\phi$-adder modulo $N$ as presented in \cite{beauregard}.}
+	\label{fig-modadd}
+\end{figure}
+
+\paragraph{Controlled multiplier gate.} Now, we can use the previous $\phi$-ADD$(a)$-mod-$N$ to build a controlled multiplied gate, denoted CMULT$(a)$-mod-$N$. This gate has input $|c\rangle|x\rangle|b\rangle$ and is to compute $|c\rangle|x\rangle|(b+ax)\mod N\rangle$ if $|c\rangle=|1\rangle$, or not to alter any qubit otherwise.
+
+The implementation with $\phi$-ADD$(a)$-mod-$N$ is based on the fact that
+$$ (ax) \mod N = \sum_{i=0}^{n-1}2^{i}ax_i \mod N $$
+where the modulo $N$ has to be applied on each step of the summation. Thus all we need are $n$ successive $\phi$-ADD$(2^i a)$-mod-$N$ gates.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=8cm]{Figures/cmult}
+	\caption{Circuit of CMULT$(a)$-mod-$N$ as presented in \cite{beauregard}.}
+	\label{fig-cmult}
+\end{figure}
+
+\paragraph{Controlled $U$ gate.} In the previous step, we got a controlled gate that implements the mapping $|x\rangle|b\rangle \mapsto |x\rangle|b+(ax)\mod N\rangle$. However, in fact, we would like to implement $|x\rangle \mapsto |x\rangle|(ax)\mod N\rangle$, which corresponds to our $U$-gate unitary operation. The implementation is presented in Figure \ref{fig-ugate}.
+
+Let us follow the steps of the circuit:
+\begin{itemize}
+	\item Start by applying the CMULT$(a)$-mod-$N$ gate to the input $|c\rangle|x\rangle|0\rangle$.
+	\item Apply a controlled-SWAP gate (controlled by $|c\rangle$ as well). Indeed, it is only necessary to apply it on $n$ qubits, because the most significant one of $(ax) \mod N$ will always be $|0\rangle$ (to store the overflow of the $\phi$-adder).
+	\item Then, apply the inverse CMULT$(a^{-1})$-mod-$N$\footnote{The inverse modulo $N$ of $a$, $a^{-1}$, can be computed via Euclid's algorithm.}.
+\end{itemize}
+
+The sequence of performed operations is
+
+\begin{multline*}
+|x\rangle|0\rangle \rightarrow |x\rangle|(ax)\mod N\rangle \rightarrow |(ax)\mod N\rangle|x\rangle \rightarrow\\
+|(ax)\mod N\rangle|x-a^{-1}ax\rangle = |(ax)\mod N\rangle|0\rangle.
+\end{multline*}
+
+As a result, the controlled-$U$ gate implements $|x\rangle|0\rangle \mapsto |(ax) \mod N\rangle|0\rangle$. To compute a $(\text{control}-U_a)^n$, it is enough to apply $\text{control}-U_{a^n}$ instead of applying the same gate multiple times.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=8cm]{Figures/ugate}
+	\caption{Circuit of controlled $U$-gate as presented in \cite{beauregard}.}
+	\label{fig-ugate}
+\end{figure}
 
 \newpage
 \section{Implementation}
@@ -435,7 +535,7 @@ The implementations was made using \textit{ProjectQ} \cite{projectq, steiger}. I
 
 \bibitem{portugal} Portugal, R. et al. \textit{Uma introdução à computação quântica}. São Carlos: SBMAC, 2004.
 
-\bibitem{nielsen} Nielsen, Michael A and Chuang, Isaac L. \textit{Quantum computation and quantum information}. 10th anniversary edition. Cambridge: Cambridge University Press, 2010.
+\bibitem{nielsen} Nielsen, Michael A. and Chuang, Isaac L. \textit{Quantum computation and quantum information}. 10th anniversary edition. Cambridge: Cambridge University Press, 2010.
 
 \bibitem{shor} Shor, Peter. ``Polynomial-Time Algorithms for Prime Factorization and Discrete Logarithms on a Quantum Computer''. \textit{SIAM Journal on Computing}, vol. 26, no. 5, pp. 1484-1509, 1997.
 
@@ -448,9 +548,9 @@ The implementations was made using \textit{ProjectQ} \cite{projectq, steiger}. I
 \bibitem{hardy} Hardy, G. H. and E. M. Wright. \textit{An introduction to the
 theory of numbers}. 6th edition. Oxford : Oxford University Press, 2008.
 
-\bibitem{draper} Draper, Thomas G. \textit{Addition on a quantum computer}. Available in: \url{https://arxiv.org/abs/quant-ph/0008033}. Access on: 14 dec. 2018.
-
 \bibitem{beauregard} Beauregard, Stephane. ``Circuit for Shor's algorithm using $2n+3$ qubits''. \textit{Quantum Information and Computation}, vol. 3, no. 2 (2003) pp. 175-185.
+
+\bibitem{draper} Draper, Thomas G. \textit{Addition on a quantum computer}. Available in: \url{https://arxiv.org/abs/quant-ph/0008033}. Access on: 14 dec. 2018.
 
 \bibitem{projectq} ProjectQ. Availabe in: \url{https://projectq.ch/}. Access on: 28 nov. 2018.
 

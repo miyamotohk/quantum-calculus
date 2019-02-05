@@ -13,6 +13,9 @@
 \contentsline {paragraph}{Quantum Fourier transform.}{8}{section*.11}
 \contentsline {paragraph}{Quantum phase estimation.}{9}{section*.12}
 \contentsline {paragraph}{Continued fraction expansion.}{10}{section*.13}
-\contentsline {section}{\numberline {3}Adder circuit}{12}{section.3}
-\contentsline {paragraph}{Adder circuit.}{12}{section*.14}
-\contentsline {section}{\numberline {4}Implementation}{13}{section.4}
+\contentsline {section}{\numberline {3}Oracle circuit}{12}{section.3}
+\contentsline {paragraph}{Adder gate.}{12}{section*.14}
+\contentsline {paragraph}{Modular adder gate.}{13}{section*.15}
+\contentsline {paragraph}{Controlled multiplier gate.}{14}{section*.16}
+\contentsline {paragraph}{Controlled $U$ gate.}{15}{section*.17}
+\contentsline {section}{\numberline {4}Implementation}{16}{section.4}
