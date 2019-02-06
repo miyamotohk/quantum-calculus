@@ -221,7 +221,7 @@ The \textit{order finding problem} is to find $r$, given $x$ and $N$ coprimes. T
 \end{theorem}
 
 \begin{proof}
-	Note that $x^2 \equiv 1 \mod N \Leftrightarrow x^2-1 \equiv 0 \mod N \Leftrightarrow (x+1)(x-1) \equiv 0 \mod N$, which means that $N$ is a divisor of $(x+1)(x-1)$. If $1<x<N-1$, then $0<x-1<x+1<N$ and $N$ cannot be a divisor of $(x+1)$ neither of $(x-1)$ separately. So both $(y+1)$ and $(y-1)$ must have factors of $N$. In this case, at least one of $\gcd(y+1,N)$ and $\gcd(y-1,N)$ produce a non-trivial factor of $N$\footnote{Such factor can be computed by using Euclid's algorithm.}.
+	Note that $x^2 \equiv 1 \mod N \Leftrightarrow x^2-1 \equiv 0 \mod N \Leftrightarrow (x+1)(x-1) \equiv 0 \mod N$, which means that $N$ is a divisor of $(x+1)(x-1)$. If $1<x<N-1$, then $0<x-1<x+1<N$ and $N$ cannot be a divisor of $(x+1)$ neither of $(x-1)$ separately. So both $(x+1)$ and $(x-1)$ must have factors of $N$. In this case, at least one of $\gcd(x+1,N)$ and $\gcd(x-1,N)$ produce a non-trivial factor of $N$\footnote{Such factor can be computed by using Euclid's algorithm.}.
 \end{proof}
 
 \begin{theorem}
