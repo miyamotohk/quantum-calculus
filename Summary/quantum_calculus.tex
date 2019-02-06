@@ -504,6 +504,7 @@ Let us follow the steps of the circuit:
 \begin{itemize}
 	\item Start by applying the CMULT$(a)$-mod-$N$ gate to the input $|c\rangle|x\rangle|0\rangle$.
 	\item Apply a controlled-SWAP gate (controlled by $|c\rangle$ as well). Indeed, it is only necessary to apply it on $n$ qubits, because the most significant one of $(ax) \mod N$ will always be $|0\rangle$ (to store the overflow of the $\phi$-adder).
+<<<<<<< HEAD
 	\item Then, apply the inverse CMULT$(a^{-1})$-mod-$N$\footnote{The inverse modulo $N$ of $a$, $a^{-1}$, can be computed via Euclid's algorithm.}.
 \end{itemize}
 
@@ -514,6 +515,11 @@ The sequence of performed operations is
 |(ax)\mod N\rangle|x-a^{-1}ax\rangle = |(ax)\mod N\rangle|0\rangle.
 \end{multline*}
 
+=======
+	\item Then, apply the inverse CMULT$(a^{-1})$-mod-$N$\footnote{The inverse modulo $N$ of $a$, $a^{-1}$, can be computed using Euclid's algorithm.}.
+\end{itemize}
+
+>>>>>>> 4c25b75b28fffa6df527e8c9824d3121cb0994f2
 As a result, the controlled-$U$ gate implements $|x\rangle|0\rangle \mapsto |(ax) \mod N\rangle|0\rangle$. To compute a $(\text{control}-U_a)^n$, it is enough to apply $\text{control}-U_{a^n}$ instead of applying the same gate multiple times.
 
 \begin{figure}[h!]
