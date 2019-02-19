@@ -94,6 +94,7 @@ L = run()
 c = 0
 for k in L.gate_class_counts.keys():
     c+=L.gate_class_counts[k]
+print(c)
 """
 import time
 t1 = time.time()
