@@ -16,9 +16,7 @@ import math
 
 def run(a=4, b=6, N=7, x=2, param="simulation"):
     """
-    Last update 23/01
-    Be careful this algo is a bit long to execute
-    |b> --> |b+(ax) mod N> works for
+    |b> --> |b+(ax) mod N> works for N = 7
     :param a:
     :param b:
     :param N:
@@ -84,39 +82,18 @@ def run(a=4, b=6, N=7, x=2, param="simulation"):
                 mes_c]
 
 
-"""
-import time
-t1 = time.time()
-L = []
-#for N in range(8):
-if 1:
-    N=8
-    print(N)
-    for a in range(N):
-        print(a)
-        print(len(L))
-        for b in range(N):
-            for x in range(N):               
-                X = run(a, b, N, x)
-                if X[1] != X[2]:
-                    L.append([[a, b, N, x], X[1], X[2], X[5]])
-                
-    print(time.time()-t1)
-1 round 12h09
-6 ite en 10min -> 32 à faire donc 53min par round
-register the list
-score = [1,2,3,4,5]
-
-N = 5 lunched at 16:01 avec Youtube
-n = 7  : 251s ie 4min 11s
-C++ compiler
-with open("inverse_7", "w") as f:
-    for s in L:
-        f.write(str(s) +"\n")
-
-with open("file.txt", "r") as f:
-  for line in f:
-    score.append(int(line.strip()))
-"""
-
-
+def test_7():
+    L = []
+    # for N in range(8):
+    if 1:
+        N=7
+        print(N)
+        for a in range(N):
+            print(a)
+            print(len(L))
+            for b in range(N):
+                for x in range(N):
+                    X = run(a, b, N, x)
+                    if X[1] != X[2]:
+                        L.append([[a, b, N, x], X[1], X[2], X[5]])
+    return L

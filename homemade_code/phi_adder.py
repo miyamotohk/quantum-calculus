@@ -4,7 +4,6 @@ from projectq.ops import R
 
 
 def phi_adder(eng, xa, x_phi_b):  # add a to phi(b) to get phi(a+b)
-    #n = len(xa)
     n = len(x_phi_b)
     for i in range(n):
         N = n - i - 1

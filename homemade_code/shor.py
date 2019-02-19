@@ -63,9 +63,11 @@ def run_shor(eng, N, a, verbose=True):
         """
         gateUa(eng, current_a, mod_inv(current_a, N), x, xb, xN, aux, ctrl_qubit, N)
         # perform inverse QFT --> Rotations conditioned on previous outcomes
+        """
         for i in range(k):
             if measurements[i]:
                 R(-math.pi/(1 << (k - i))) | ctrl_qubit
+        """
         H | ctrl_qubit
 
         # and measure
@@ -78,7 +80,9 @@ def run_shor(eng, N, a, verbose=True):
         if verbose:
             print("\033[95m{}\033[0m".format(measurements[k]), end="")
             sys.stdout.flush()
-
+    Measure | aux
+    All(Measure) | xN
+    All(Measure) | xb
     All(Measure) | x
     # turn the measured values into a number in [0,1)
     y = sum([(measurements[2 * n - 1 - i]*1. / (1 << (i + 1)))
@@ -107,7 +111,8 @@ def high_level_gates(eng, cmd):
     return eng.next_engine.is_available(cmd)
 
 
-if __name__ == "__main__":
+#if __name__ == "__main__":
+def run():
     # build compilation engine list
     resource_counter = ResourceCounter()
     rule_set = DecompositionRuleSet(modules=[projectq.libs.math,
@@ -122,8 +127,8 @@ if __name__ == "__main__":
                        resource_counter]
 
     # make the compiler and run the circuit on the simulator backend
-    eng = MainEngine(Simulator(), compilerengines)
-    #eng = MainEngine(resource_counter)
+    #eng = MainEngine(Simulator(), compilerengines)
+    eng = MainEngine(resource_counter)
     # print welcome message and ask the user for the number to factor
     print("\n\t\033[37mprojectq\033[0m\n\t--------\n\tImplementation of Shor"
           "\'s algorithm.", end="")
@@ -131,8 +136,10 @@ if __name__ == "__main__":
     print("\n\tFactoring N = {}: \033[0m".format(N), end="")
 
     # choose a base at random:
-    #a = random.randint(2,N)
-    a = 2
+    a = N
+    while not gcd(a, N)==1:
+        a = random.randint(2,N)
+
     print("\na is " + str(a))
     if not gcd(a, N) == 1:
         print("\n\n\t\033[92mOoops, we were lucky: Chose non relative prime"
@@ -160,4 +167,4 @@ if __name__ == "__main__":
             print("\n\n\t\033[91mBad luck: Found {} and {}\033[0m".format(f1,
                                                                           f2))
 
-        print(resource_counter)  # print resource usage
+        return resource_counter  # print resource usage

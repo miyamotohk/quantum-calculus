@@ -4,21 +4,6 @@ from projectq.ops import (X, QFT, Measure)
 from homemade_code.phi_adder import phi_adder
 from homemade_code.inv_phi_adder import inv_phi_adder
 from projectq.types import Qureg
-'''---------------------------------------------------------------------------------------'''
-"""
-#Declare variables
-
-c1 = 1 #controlled qubit 1
-c2 = 1 #controlled qubit 2
-
-#numbers to add modulo N
-a = 0  #a<N
-b = 0  #b<N
-N = 0
-
-aux = 0
-"""
-'''---------------------------------------------------------------------------------------'''
 
 
 def modularAdder(eng, xa: Qureg, x_phi_b: Qureg, xN: Qureg, c1, c2, aux):

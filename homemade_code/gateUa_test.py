@@ -109,4 +109,5 @@ def test(n):
                     if X[0] != X[1]:
                         L.append([[a, N, x], X[0], X[1], X[2]])
     print(time()-t1)
+    return L
 
