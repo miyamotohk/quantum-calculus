@@ -19,3 +19,4 @@
 \contentsline {paragraph}{Controlled multiplier gate.}{14}{section*.16}
 \contentsline {paragraph}{Controlled $U$ gate.}{15}{section*.17}
 \contentsline {section}{\numberline {4}Implementation}{16}{section.4}
+\contentsline {section}{\numberline {5}Complexity Analysis}{17}{section.5}

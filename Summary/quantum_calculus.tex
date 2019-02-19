@@ -25,7 +25,7 @@
 		\includegraphics[width=4cm]{Figures/cs}
 	\end{figure}
 	\vspace{4cm}
-	{\scshape\Huge Applications of\\ Quantum Calculus\par}
+	{\scshape\Huge Applications of Quantum Calculus:  Implementation of Shor's Algorithm\par}
 	\vspace{1cm}
 	{\Large Long Project \nth{2} year\par}
 	\vspace{3cm}
@@ -241,7 +241,7 @@ The algorithm runs as follows.
 	Randomly choose $x$ such that $1 \le x \le N-1$.\\
 	If $\gcd(x,N)\neq1$, return the factor $\gcd(x,N)$.\\
 	Find the order $r$ of $x$ modulo $N$.\\
-	If $r$ is even and $x^{r/2}\not\equiv\pm 1\mod N$, then $\gcd(x^{r/2}+1)$ and $\gcd(x^{r/2}-1)$ are non-trivial factors.\\
+	If $r$ is even and $x^{r/2}\not\equiv\pm 1\mod N$, then $\gcd(x^{r/2}+1,N)$ and $\gcd(x^{r/2}-1,N)$ are non-trivial factors.\\
 	Else, restart the algorithm.
 \end{algorithm}
 
@@ -417,6 +417,7 @@ Since $\tilde{\varphi}$ is an approximation of $s/r$ accurate to $n=\lceil\log_2
 
 \newpage
 \section{Oracle circuit}
+\label{oracle-circuit}
 
 Now that we know the quantum algorithm to factorise a number, we can devote our attention to the implementation in terms of quantum circuit. Although we have already provided a circuit for the QFT, the oracle remains a mysterious black box. In this Section, we show how it can be implemented. In \cite{beauregard}, the author presents a circuit implementation that aims to reduce the number of qubits needed, while using a polynomial number of elementary quantum gates.
 
@@ -504,7 +505,6 @@ Let us follow the steps of the circuit:
 \begin{itemize}
 	\item Start by applying the CMULT$(a)$-mod-$N$ gate to the input $|c\rangle|x\rangle|0\rangle$.
 	\item Apply a controlled-SWAP gate (controlled by $|c\rangle$ as well). Indeed, it is only necessary to apply it on $n$ qubits, because the most significant one of $(ax) \mod N$ will always be $|0\rangle$ (to store the overflow of the $\phi$-adder).
-<<<<<<< HEAD
 	\item Then, apply the inverse CMULT$(a^{-1})$-mod-$N$\footnote{The inverse modulo $N$ of $a$, $a^{-1}$, can be computed via Euclid's algorithm.}.
 \end{itemize}
 
@@ -515,11 +515,6 @@ The sequence of performed operations is
 |(ax)\mod N\rangle|x-a^{-1}ax\rangle = |(ax)\mod N\rangle|0\rangle.
 \end{multline*}
 
-=======
-	\item Then, apply the inverse CMULT$(a^{-1})$-mod-$N$\footnote{The inverse modulo $N$ of $a$, $a^{-1}$, can be computed using Euclid's algorithm.}.
-\end{itemize}
-
->>>>>>> 4c25b75b28fffa6df527e8c9824d3121cb0994f2
 As a result, the controlled-$U$ gate implements $|x\rangle|0\rangle \mapsto |(ax) \mod N\rangle|0\rangle$. To compute a $(\text{control}-U_a)^n$, it is enough to apply $\text{control}-U_{a^n}$ instead of applying the same gate multiple times.
 
 \begin{figure}[h!]
@@ -534,6 +529,67 @@ As a result, the controlled-$U$ gate implements $|x\rangle|0\rangle \mapsto |(ax
 
 The implementations was made using \textit{ProjectQ} \cite{projectq, steiger}. In fact, they provide an example code for Shor's algorithm\footnote{Available in: \url{https://github.com/ProjectQ-Framework/ProjectQ/blob/develop/examples/shor.py}}.
 
+\newpage
+\section{Complexity Analysis}
+
+A complexity analysis is performed by \cite{beauregard}, presenting number of qubits, order of number of gates and order of depth for each part of the circuit proposed by them (cf. \S \ref{oracle-circuit}) to factorise an integer $N$ stored with $n=\lceil\log_2N\rceil$ bits. The results are summarised in Table \ref{table-complexity}.
+
+\begin{table}[h!]
+	\centering
+	\caption{Complexity analysis of circuit parts \cite{beauregard}.}
+		\label{table-complexity}
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			Circuit            		 & Number of qubits & Order of gates & Order of depth \\ \hline
+			$\phi$-ADD$(a)$          & $n+1$            & $O(n)$         & $O(1)$         \\ 
+			$\phi$-ADD$(a)$-mod-$N$  & $n+4$            & $O(nk_{\max})$   & $O(n)$         \\ 
+			CMULT$(a)$-mod-$N$    	 & $2n+3$           & $O(n^2k_{\max})$ & $O(n^2)$       \\ 
+			$U_a$ gate            	 & $2n+3$           & $O(n^2k_{\max})$ & $O(n^2)$       \\ 
+			Shor                  	 & $2n+3$           & $O(n^3k_{\max})$ & $O(n^3)$       \\ \hline
+		\end{tabular}
+		When using the exact QFT, $k_{\max}=n$.
+\end{table}
+
+We have compared the number of gates of some of the circuits we have implemented with the result proposed above. Using \texttt{MATLAB}, we fitted each set of data to a polynomial function of the respective degree (Table \ref{table-results}, Figures \ref{fit-cmult}, \ref{fit-ua}, \ref{fit-shor}). Note that, having used used the exact QFT approach in our implementation, we have $k_{\max}=n$\footnote{This relation can be reduced with the approximate QFT technique up to $k_{\max}=O(\log(n/\epsilon))$, for any $\epsilon$ polynomial in $1/n$ \cite{beauregard}.}.
+
+\begin{table}[h!]
+	\centering
+	\caption{Order and fitting polynomials for number of gates of different circuits.}
+	\label{table-results}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		Circuit            & Order & Fitting polynomial\\ \hline
+		CMULT$(a)$-mod-$N$ & $O(n^3)$ & $2.5\ n^3 + 7.5\ n^2 + 18\ n + 11$ 							 \\ 
+		$U_a$ gate         & $O(n^3)$ & $5\ n^3 + 15\ n^2 + 32\ n + 12$       						 \\
+		Shor               & $O(n^4)$ & $12.06\ n^4 + 3.558\ n^3 + 319.2\ n^2 - 547.3\ n + 603.8$    \\ \hline
+	\end{tabular}
+\end{table}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=8cm]{Figures/data-cmult}
+	\caption{Number of gates of CMULT$(a)$-mod-$N$ circuit as function of $n$.}
+	\label{fit-cmult}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=8cm]{Figures/data-Ua}
+	\caption{Number of gates of $U_a$ gate circuit as function of $n$.}
+	\label{fit-ua}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=8cm]{Figures/data-shor}
+	\caption{Number of gates of Shor's algorithm circuit as function of $n$.}
+	\label{fit-shor}
+\end{figure}
+
+
+We observe that all resulting polynomials fit well the sets of data, matching the theoretical results in Table \ref{table-complexity}.
+
+\clearpage
 \newpage
 \begin{thebibliography}{10}
 
@@ -554,7 +610,7 @@ The implementations was made using \textit{ProjectQ} \cite{projectq, steiger}. I
 \bibitem{hardy} Hardy, G. H. and E. M. Wright. \textit{An introduction to the
 theory of numbers}. 6th edition. Oxford : Oxford University Press, 2008.
 
-\bibitem{beauregard} Beauregard, Stephane. ``Circuit for Shor's algorithm using $2n+3$ qubits''. \textit{Quantum Information and Computation}, vol. 3, no. 2 (2003) pp. 175-185.
+\bibitem{beauregard} Beauregard, Stephane. ``Circuit for Shor's algorithm using $2n+3$ qubits''. \textit{Quantum Information and Computation}, vol. 3, no. 2 pp. 175-185, 2003.
 
 \bibitem{draper} Draper, Thomas G. \textit{Addition on a quantum computer}. Available in: \url{https://arxiv.org/abs/quant-ph/0008033}. Access on: 14 dec. 2018.
 
