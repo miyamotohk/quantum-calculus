@@ -91,7 +91,9 @@ def run(a=4, b=6, N = 7, x=2, param="count"):
 
 
 L = run()
-
+c = 0
+for k in L.gate_class_counts.keys():
+    c+=L.gate_class_counts[k]
 """
 import time
 t1 = time.time()
