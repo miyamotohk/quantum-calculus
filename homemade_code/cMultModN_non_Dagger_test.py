@@ -16,7 +16,7 @@ import math
 
 def run(a=4, b=6, N = 7, x=2, param="count"):
     """
-    Last update 23/01
+    Last update 19/02 : nb of gate linear in log(N)
     Be careful this algo is a bit long to execute
     |b> --> |b+(ax) mod N> works for
     :param a:
