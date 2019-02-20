@@ -14,9 +14,10 @@ from homemade_code.initialisation import initialisation, meas2int, initialisatio
 import math
 from time import time
 
-def run(a=4, N=7, x=2, param="simulation"):
+def run(a=4, N=7, x=2, param="count"):
     """
     |b> --> |b+(ax) mod N>
+    nb of gate ~454*log2(N)
     :param a: a<N and must be invertible mod[N]
     :param N:
     :param x:
@@ -58,7 +59,10 @@ def run(a=4, N=7, x=2, param="simulation"):
         eng2.flush()
         print(drawing_engine.get_latex())
     else:
-        eng = MainEngine(Simulator(), compilerengines)
+        if param == "count":
+            eng = MainEngine(resource_counter)
+        else:
+            eng = MainEngine(Simulator(), compilerengines)
         xN = initialisation_n(eng, N, n + 1)
         xx = initialisation_n(eng, x, n + 1)
         xb = initialisation_n(eng, b, n + 1)
@@ -70,7 +74,8 @@ def run(a=4, N=7, x=2, param="simulation"):
         All(Measure) | xb
         All(Measure) | xN
         eng.flush()
-        del eng
+        if param == "count":
+            return resource_counter
         measurements_b = [0] * n
         measurements_x = [0] * n
         measurements_N = [0] * n
@@ -91,7 +96,7 @@ def run(a=4, N=7, x=2, param="simulation"):
 
         return [(a * x) % N, meas2int(measurements_x), measurements_x, mes_c]
 
-
+"""
 def test(n):
 
     t1 = time()
@@ -111,3 +116,13 @@ def test(n):
     print(time()-t1)
     return L
 
+"""
+
+"""
+    L = run()
+    c = 0
+    for k in L.gate_class_counts.keys():
+        c+=L.gate_class_counts[k]
+    print(c)
+
+"""

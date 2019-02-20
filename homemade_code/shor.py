@@ -30,7 +30,8 @@ def run_shor(eng, N, a, verbose=True):
     """
     Runs the quantum subroutine of Shor's algorithm for factoring.
     The 1 controling qubits version
-
+    [2, 3, 4, 5, 6, 7, 8]
+    [1002,2926,6822,13802, 25257, 42548, 67868]
     Args:
         eng (MainEngine): Main compiler engine to use.
         N (int): Number to factor.
@@ -52,8 +53,12 @@ def run_shor(eng, N, a, verbose=True):
     measurements = [0] * (2 * n)  # will hold the 2n measurement results
 
     ctrl_qubit = eng.allocate_qubit()
-
+    # each iteration -> 454*log2(N) + c -> 2*n(454*log2(N) +c ) -> 908 * log2(N)^2 -> O(n^2)
+    # c = 3 ou 4
+    # last interation measurment -> 3*n
+    # donc 908*(n**2) + 3*n
     for k in range(2 * n):
+
         current_a = pow(a, 1 << (2 * n - 1 - k), N)
         # one iteration of 1-qubit QPE
         H | ctrl_qubit
@@ -62,6 +67,7 @@ def run_shor(eng, N, a, verbose=True):
             MultiplyByConstantModN(current_a, N) | x
         """
         gateUa(eng, current_a, mod_inv(current_a, N), x, xb, xN, aux, ctrl_qubit, N)
+        # nb of gate linear in log2(N) approx ~ 454*log2(N)
         # perform inverse QFT --> Rotations conditioned on previous outcomes
         """
         for i in range(k):

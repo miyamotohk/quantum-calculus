@@ -14,9 +14,10 @@ from homemade_code.initialisation import initialisation, meas2int, initialisatio
 import math
 
 
-def run(a=4, b=6, N=7, x=2, param="simulation"):
+def run(a=4, b=6, N=7, x=2, param="count"):
     """
     |b> --> |b+(ax) mod N> works for N = 7
+    nb of gates ~252*floor(log2(N)-1)
     :param a:
     :param b:
     :param N:
@@ -56,7 +57,10 @@ def run(a=4, b=6, N=7, x=2, param="simulation"):
         eng2.flush()
         print(drawing_engine.get_latex())
     else:
-        eng = MainEngine(Simulator(), compilerengines)
+        if param == "count":
+            eng = MainEngine(resource_counter)
+        else:
+            eng = MainEngine(Simulator(), compilerengines)
         xN = initialisation_n(eng, N, n + 1)
         xx = initialisation_n(eng, x, n + 1)
         xb = initialisation_n(eng, b, n + 1)
@@ -68,6 +72,8 @@ def run(a=4, b=6, N=7, x=2, param="simulation"):
         All(Measure) | xb
         All(Measure) | xN
         eng.flush()
+        if param == "count":
+            return resource_counter
         measurements_b = [0] * n
         measurements_x = [0] * n
         measurements_N = [0] * n
@@ -97,3 +103,9 @@ def test_7():
                     if X[1] != X[2]:
                         L.append([[a, b, N, x], X[1], X[2], X[5]])
     return L
+n = 7
+L = run(4,6,n)
+c = 0
+for k in L.gate_class_counts.keys():
+    c+=L.gate_class_counts[k]
+print(c)
