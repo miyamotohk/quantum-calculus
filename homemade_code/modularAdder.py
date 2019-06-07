@@ -22,7 +22,7 @@ def modularAdder(eng, xa: Qureg, x_phi_b: Qureg, xN: Qureg, c1, c2, aux):
 
     n = xN.__len__()
 
-    # we need to compute a + b and subtract N if a + b ≥ N.
+    # we need to compute a + b and subtract N if a + b >= N.
     with Control(eng, c1):
         with Control(eng, c2):
             phi_adder(eng, xa, x_phi_b)  # we get phi(a+b)
@@ -42,7 +42,7 @@ def modularAdder(eng, xa: Qureg, x_phi_b: Qureg, xN: Qureg, c1, c2, aux):
         phi_adder(eng, xN, x_phi_b)  # if a + b < N we add back the value N that we subtracted earlier.
     # we now have phi(a+b mod N)
 
-    # these next steps are for restoring aux to 0 using (a + b)mod N ≥ a ⇔ a + b < N (same logic as before)
+    # these next steps are for restoring aux to 0 using (a + b)mod N >= a <=> a + b < N (same logic as before)
     with Control(eng, c1):
         with Control(eng, c2):
             with Dagger(eng):
