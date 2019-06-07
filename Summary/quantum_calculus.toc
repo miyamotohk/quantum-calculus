@@ -1,22 +1,31 @@
 \babel@toc {english}{}
-\contentsline {section}{\numberline {1}Basic concepts}{2}{section.1}
-\contentsline {paragraph}{Bloch spehre.}{2}{section*.2}
-\contentsline {paragraph}{Measurements.}{3}{section*.3}
-\contentsline {paragraph}{Unitary operations.}{3}{section*.4}
-\contentsline {paragraph}{Tensor product.}{3}{section*.5}
-\contentsline {paragraph}{Two or more qubits systems.}{4}{section*.6}
-\contentsline {paragraph}{Quantum entanglement.}{5}{section*.7}
-\contentsline {paragraph}{Quantum circuits}{5}{section*.8}
-\contentsline {section}{\numberline {2}Shor's algorithm}{6}{section.2}
-\contentsline {paragraph}{Factorisation.}{6}{section*.9}
-\contentsline {paragraph}{Order finding.}{7}{section*.10}
-\contentsline {paragraph}{Quantum Fourier transform.}{8}{section*.11}
-\contentsline {paragraph}{Quantum phase estimation.}{9}{section*.12}
-\contentsline {paragraph}{Continued fraction expansion.}{10}{section*.13}
-\contentsline {section}{\numberline {3}Oracle circuit}{12}{section.3}
-\contentsline {paragraph}{Adder gate.}{12}{section*.14}
-\contentsline {paragraph}{Modular adder gate.}{13}{section*.15}
-\contentsline {paragraph}{Controlled multiplier gate.}{14}{section*.16}
-\contentsline {paragraph}{Controlled $U$ gate.}{15}{section*.17}
-\contentsline {section}{\numberline {4}Implementation}{16}{section.4}
-\contentsline {section}{\numberline {5}Complexity Analysis}{17}{section.5}
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}
+\contentsline {section}{\numberline {2}Basic concepts}{3}{section.2}
+\contentsline {subsection}{\numberline {2.1}Qubits}{3}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Bloch sphere}{3}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Measurements}{4}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Unitary operations}{4}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.5}Tensor product}{4}{subsection.2.5}
+\contentsline {subsection}{\numberline {2.6}Many qubits systems}{5}{subsection.2.6}
+\contentsline {subsection}{\numberline {2.7}Quantum entanglement}{6}{subsection.2.7}
+\contentsline {subsection}{\numberline {2.8}Quantum circuits}{6}{subsection.2.8}
+\contentsline {section}{\numberline {3}Shor's algorithm}{7}{section.3}
+\contentsline {subsection}{\numberline {3.1}Factorisation}{7}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Order finding}{8}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Quantum Fourier transform}{9}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Quantum phase estimation}{10}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.5}Continued fraction expansion}{12}{subsection.3.5}
+\contentsline {section}{\numberline {4}Oracle circuit}{14}{section.4}
+\contentsline {subsection}{\numberline {4.1}Adder gate}{14}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Modular adder gate}{15}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Controlled multiplier gate}{16}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Controlled $U$ gate}{17}{subsection.4.4}
+\contentsline {section}{\numberline {5}Results and discussion}{19}{section.5}
+\contentsline {subsection}{\numberline {5.1} }{19}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Complexity Analysis}{19}{subsection.5.2}
+\contentsline {section}{\numberline {6}Probability superpositions}{21}{section.6}
+\contentsline {paragraph}{Iterative method.}{21}{section*.2}
+\contentsline {paragraph}{Creating the evolution (\ref {eq:evo}).}{22}{section*.3}
+\contentsline {subsection}{\numberline {6.1}Proposed implementation}{22}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Circuit blocks}{24}{subsection.6.2}
+\contentsline {section}{\numberline {7}Final considerations}{25}{section.7}

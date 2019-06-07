@@ -1,5 +1,28 @@
-\BOOKMARK [1][-]{section.1}{Basic concepts}{}% 1
-\BOOKMARK [1][-]{section.2}{Shor's algorithm}{}% 2
-\BOOKMARK [1][-]{section.3}{Oracle circuit}{}% 3
-\BOOKMARK [1][-]{section.4}{Implementation}{}% 4
-\BOOKMARK [1][-]{section.5}{Complexity Analysis}{}% 5
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Basic concepts}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Qubits}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Bloch sphere}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Measurements}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.4}{Unitary operations}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.5}{Tensor product}{section.2}% 7
+\BOOKMARK [2][-]{subsection.2.6}{Many qubits systems}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.7}{Quantum entanglement}{section.2}% 9
+\BOOKMARK [2][-]{subsection.2.8}{Quantum circuits}{section.2}% 10
+\BOOKMARK [1][-]{section.3}{Shor's algorithm}{}% 11
+\BOOKMARK [2][-]{subsection.3.1}{Factorisation}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.2}{Order finding}{section.3}% 13
+\BOOKMARK [2][-]{subsection.3.3}{Quantum Fourier transform}{section.3}% 14
+\BOOKMARK [2][-]{subsection.3.4}{Quantum phase estimation}{section.3}% 15
+\BOOKMARK [2][-]{subsection.3.5}{Continued fraction expansion}{section.3}% 16
+\BOOKMARK [1][-]{section.4}{Oracle circuit}{}% 17
+\BOOKMARK [2][-]{subsection.4.1}{Adder gate}{section.4}% 18
+\BOOKMARK [2][-]{subsection.4.2}{Modular adder gate}{section.4}% 19
+\BOOKMARK [2][-]{subsection.4.3}{Controlled multiplier gate}{section.4}% 20
+\BOOKMARK [2][-]{subsection.4.4}{Controlled U gate}{section.4}% 21
+\BOOKMARK [1][-]{section.5}{Results and discussion}{}% 22
+\BOOKMARK [2][-]{subsection.5.1}{ }{section.5}% 23
+\BOOKMARK [2][-]{subsection.5.2}{Complexity Analysis}{section.5}% 24
+\BOOKMARK [1][-]{section.6}{Probability superpositions}{}% 25
+\BOOKMARK [2][-]{subsection.6.1}{Proposed implementation}{section.6}% 26
+\BOOKMARK [2][-]{subsection.6.2}{Circuit blocks}{section.6}% 27
+\BOOKMARK [1][-]{section.7}{Final considerations}{}% 28
