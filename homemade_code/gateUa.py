@@ -10,7 +10,7 @@ def gateUa(eng, a, inv_a, xx, xb, xN, aux, xc, N):
     """
 
     :param eng:
-    :param a:
+    :param a: int
     :param inv_a: inverse of a mod N
     :param xx: the modified bits : |x> -> |ax % N> if xc = 1; |x> else
     :param xb: equal to 0 before Ua and after Ua
