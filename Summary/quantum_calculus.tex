@@ -67,7 +67,7 @@
 			Pierre MINSSEN\par}
 	\vspace{1.5cm}
 	{\large \textit{Supervisor:}\\
-			Prof. Benoît VALIRON \par}
+			Prof. Benoï¿½t VALIRON \par}
 	\vfill
 	\large \today
 \end{titlepage}
@@ -77,6 +77,11 @@
 \newpage
 \section{Introduction}
 {\color{red} TO DO}
+In 2017, thirty years after Richard Feynman, David Deutsch and other renown scientists set the first concepts and definitions of quantum computing, IBM launched the IBM Q Experience the first commercially usable quantum computer. This put forward a new horizon of possibilities regarding this groundbreaking technology.\\
+A quantum computer uses quantum mechanics principles such as superposition and entanglement to perform computation. This type of computer provides an exponential speed growth compared to classical computer.\\
+One of the most famous quantum algorithms was developed by Peter Shor in 1994. It allows quantum computers to factorize integers exponentially quicker than the best classical algorithm. This could mean the end of the current cryptographic system that is largely based on the fact that classical algorithm takes an unrealistic amount of time to make such a factorization on large integers.\\
+Another example of a quantum algorithm is the creation of superpositions that corresponds to efficiently integrable probability distributions.\\
+In this paper, we explore these two algorithms on more depth, with an example of an implementation and a complexity study.\\
 
 \newpage
 \section{Basic concepts}
@@ -720,6 +725,14 @@ We observe that all resulting polynomials fit well the sets of data, matching th
 \subsection{Discussion}
 {\color{red} TO DO}
 
+We encounter some limitations while trying to run Shor's algorithm with big numbers because of the low capacities of our PC. We use the C++ simulator(instead of the Python simulator) to improve the testing.\\
+We are able to use 5 qubits of entry at best\\
+Here are the specifications of the PC we are using:\\
+Processor : AMD A9-9420 RADEON R5, 5 COMPUTE CORES 2C+3G 3.00 GHz\\
+RAM : 4 Gb (3,45 usable)
+
+
+
 \clearpage
 \newpage
 \section{Probability superpositions}
@@ -899,11 +912,21 @@ Indeed, this is promising news for our implementation idea, because the final ci
 \paragraph{Representation.}
 {\color{red} TO DO}
 
+Yet our measured qubits were integers written in binary. However now, we are interested in real numbers, thus we need a bijection from $\{0,1\}^{n}$ (set of infinite list of 0 and 1) to [0,1]. The dyadic development is such a bijection.\\
+$F(X)=\sum_{j=1}^\infty \frac{X_j}{2^j}$ , where $X_j$ is either 0 or 1. (Note there should not be a infinite sequence of 1 if we are not representing the number 1).\\
+Here we are limited to our qubits register size $N_{hat}$. Thus, our precision in [0,1] is $1/2^{N_{hat}}$ and our bijection is now:\\
+$F(X) =\sum_{j=1}^{N_{hat}} \frac{X_j}{2^j}$\\
+Our bijection F should have some nice properties like $f(X*Y) = f(X)*f(Y)$. However, as our number of qubits is finite, we encounter overflows issue. For example, $X = Y = \frac{1}{2^{N_{hat}}}$, $X*Y = \frac{1}{2^{(1+ N_{hat})}}$ is outside the definition set of F.\\
+Knowing that we managed to simulate quantum circuit with only 4 or 5 qubits. In our attempt to create an arcsin gate, we used the approximation $x + \frac{x^{3}}{6}$. Even with our biggest input $x = \frac{1}{2}$ we cannot correctly represent the $\frac{x^{3}}{6}$ term, since $\frac{x^{3}}{6}< \frac{x^{3}}{4} = \frac{1}{2^5}$ (our smallest number)
+
 \clearpage
 \newpage
 \section{Final considerations}
 {\color{red} TO DO}
 
+We have shown here an example of two quantum algorithm. Through this implementation, the basics and principles of quantum computation are presented. This also proves the importance of this new technology for the future of computer science and the incredible improvements it brings to calculations and problem solving.\\
+However, the limitations of classical computers prevent us from doing costly operations on a high number of qubits. Although some primary quantum computers have been developed, we do not yet have a concrete example of a completely functional one, due to the difficulties of mastering the creation of qubits and controlling quantum properties.\\
+A lot of investments are being dedicated to the buildup of quantum computing and the improvements rates are of the charts. Major companies claim to being close to introducing the first fully-working quantum computer in the near future.\\
 
 \newpage
 \begin{appendices}
@@ -944,7 +967,7 @@ This section presents the Pyhton codes with ProjectQ library used to implement S
 
 \bibitem{valiron} Valiron, B. ``Quantum computation: a tutorial''. \textit{New Generation Computing}, vol. 30, no. 4, pp. 271-296, oct. 2012.
 
-\bibitem{portugal} Portugal, R. et al. \textit{Uma introdução à computação quântica}. São Carlos: SBMAC, 2004.
+\bibitem{portugal} Portugal, R. et al. \textit{Uma introduï¿½ï¿½o ï¿½ computaï¿½ï¿½o quï¿½ntica}. Sï¿½o Carlos: SBMAC, 2004.
 
 \bibitem{nielsen} Nielsen, Michael A. and Chuang, Isaac L. \textit{Quantum computation and quantum information}. 10th anniversary edition. Cambridge: Cambridge University Press, 2010.
 
@@ -965,7 +988,7 @@ theory of numbers}. 6th edition. Oxford : Oxford University Press, 2008.
 
 \bibitem{projectq} ProjectQ. Availabe in: \url{https://projectq.ch/}. Access on: 28 nov. 2018.
 
-\bibitem{steiger} Steiger, Damian S.; Häner, Thomas and Troyer, Matthias. ``ProjectQ: an open source software framework for quantum computing''. \textit{Quantum}, vol. 2, p. 49, jan. 2018.
+\bibitem{steiger} Steiger, Damian S.; Hï¿½ner, Thomas and Troyer, Matthias. ``ProjectQ: an open source software framework for quantum computing''. \textit{Quantum}, vol. 2, p. 49, jan. 2018.
 
 \bibitem{git} GitHub. \textit{quantum-calculus}. Available in: \url{https://github.com/miyamotohk/quantum-calculus}. Access on: 11 jun. 2019.
 
