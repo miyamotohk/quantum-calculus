@@ -47,9 +47,9 @@ ylabel('Number of gates')
 hold off;
 
 %% Probability distributions
-n4 = [3, 4, 5, 6, 7, 8, 9];
-nG4 = [1343, 3180, 6490, 11905, 20205, 32374, 49238];
-fit4 = fit(n4', nG4', 'poly3')
+n4 = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+nG4 = [1343, 3180, 6490, 11905, 20205, 32374, 49238, 72193, 102262, 140821];
+fit4 = fit(n4', nG4', 'poly4')
 
 figure(4);
 title('Number of gates of approximate arcsin circuit')
