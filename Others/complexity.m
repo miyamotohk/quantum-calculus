@@ -1,5 +1,6 @@
-clear all;
+clear all
 
+%% Shor's algorithm
 % Shor ciruit
 n1 = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
 nG1 = [998, 2914, 6822, 13802, 25174, 42498, 67574, 102442, 149382, 210914, 289798, 389034, 511862, 661762, 842454, 1057898, 1312294];
@@ -13,6 +14,7 @@ plot(fit1);
 xlabel('n');
 ylabel('Number of gates')
 hold off;
+
 
 % Ua gate
 N2 = [7, 15, 31, 63, 127, 255, 511, 1023, 2047, 4095, 8191, 16383, 32767, 65535, 131071, 262143, 524287];
@@ -40,6 +42,20 @@ title('Number of gates of CMULT circuit')
 hold on;
 scatter(n3,nG3)
 plot(fit3);
+xlabel('n');
+ylabel('Number of gates')
+hold off;
+
+%% Probability distributions
+n4 = [3, 4, 5, 6, 7, 8, 9];
+nG4 = [1343, 3180, 6490, 11905, 20205, 32374, 49238];
+fit4 = fit(n4', nG4', 'poly3')
+
+figure(4);
+title('Number of gates of approximate arcsin circuit')
+hold on;
+scatter(n4,nG4)
+plot(fit4);
 xlabel('n');
 ylabel('Number of gates')
 hold off;
