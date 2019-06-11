@@ -1,29 +1,44 @@
 \documentclass[a4paper, 10pt]{article}
-
-\usepackage[english]{babel}
-\usepackage[latin1]{inputenc}
-\usepackage{empheq, amsmath, amssymb, amsthm, amssymb, indentfirst, setspace, hyperref, graphics, graphicx, verbatim, pgfplots, listings, xcolor, multicol, stmaryrd, fancyhdr, listings}
-\usepackage[super]{nth}
-\usepackage[ruled, linesnumbered]{algorithm2e}
-\usepackage{tikz}
-\usetikzlibrary{arrows,calc}
-
-\newtheorem{theorem}{Theorem }[section]
-\newtheorem{definition}{Definition }[section]
+\usepackage{fancyhdr}
 
 \pagestyle{fancy}
 \fancyhead[L]{\footnotesize  APPLICATIONS OF QUANTUM CALCULUS}
 \fancyhead[R]{\footnotesize  \leftmark}
 
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{empheq, amsmath, amssymb, amsthm, amssymb, indentfirst, setspace, hyperref, graphics, graphicx, verbatim, pgfplots, listings, xcolor, multicol, stmaryrd, listings, appendix}
+\usepackage[super]{nth}
+\usepackage[ruled, linesnumbered]{algorithm2e}
+\usepackage{tikz}
+\usepackage{courier}
+\usepackage[nottoc]{tocbibind}
+
+\newtheorem{theorem}{Theorem }[section]
+\newtheorem{definition}{Definition }[section]
+
 \numberwithin{equation}{section}
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
 
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+	backgroundcolor=\color{white},   % choose the background color
+	basicstyle=\footnotesize\ttfamily,        % size of fonts used for the code
+	breaklines=true,                 % automatic line breaking only at whitespace
+	captionpos=b,                    % sets the caption-position to bottom
+	commentstyle=\color{mygreen},    % comment style
+	escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+	keywordstyle=\color{blue},       % keyword style
+	stringstyle=\color{mymauve},     % string literal style
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %        TO DO:
-% Enumerate equations
-% Add Python codes
+% Comment Python codes
 % Add results for Shor
 % Finish section 6
 % Write Introduction
@@ -245,12 +260,16 @@ If $N$ is even, 2 is trivially a factor. In addition, if $x$ and $N$ have common
 
 \begin{definition}
 	The order of $x$ modulo $N$ is the least positive integer $r$ such that
-	$$ x^r \equiv 1 \mod N. $$
+	\begin{equation}
+		x^r \equiv 1 \mod N.
+	\end{equation}
 \end{definition}
 
 \begin{theorem}[Euler's Theorem]
 	If $x$ and $N$ are coprime positive integers, then
-	$$ x^{\varphi(N)} \equiv 1 \mod N, $$
+	\begin{equation}
+		x^{\varphi(N)} \equiv 1 \mod N,
+	\end{equation}
 	where $\varphi(N)$ is the Euler's totient function, i.e., it indicates the number of coprimes to $N$ which are less or equal to it.
 \end{theorem}
 
@@ -266,7 +285,9 @@ The \textit{order finding problem} is to find $r$, given $x$ and $N$ coprimes. T
 
 \begin{theorem}
 	Suppose $N = p_{1}^{\alpha_1}...p_{m}^{\alpha_m}$ is the prime factorisation of and odd composite positive integer. Let $x$ be an integer chose uniformly at random such that $1 \le x\le N-1$ and $\gcd(x,N)=1$. Let $r$ be the order of $x$ modulo $N$. Then
-	$$ \mathrm{Pr}\{\text{$r$ is even and $x^{r/2}\not\equiv\pm1\mod N$}\} \ge 1-\frac{1}{2^m}. $$
+	\begin{equation}
+		\mathrm{Pr}\{\text{$r$ is even and $x^{r/2}\not\equiv\pm1\mod N$}\} \ge 1-\frac{1}{2^m}.
+	\end{equation}
 \end{theorem}
 
 \begin{proof}
@@ -295,33 +316,42 @@ Some remarks:
 \subsection{Order finding}
 
 The problem of order finding, i.e., given $x$ and $N$ coprimes, to find $r$ such that $x^r \equiv 1 \mod N$ is related to the matrix eigendecomposition. A unitary $U$, being a Hermitian matrix, can be decomposed as
-$$ U=\sum_j \lambda_ju_ju_j^\dagger, $$
+\begin{equation}
+	U=\sum_j \lambda_ju_ju_j^\dagger,
+\end{equation}
 where $u_j$ are orthonormal eigenvectors and $\lambda_j$ are the associated eigenvalues.
 
 Let us assume that $N=2^n$ and consider the operation $U_x$ on $n$ qubits that implements the mapping
-$$U_x : \quad |j\rangle \mapsto |j\cdot x\mod N\rangle.$$
+\begin{equation}
+	U_x : \quad |j\rangle \mapsto |j\cdot x\mod N\rangle.
+\end{equation}
 The operator is unitary because $x$ and $N$ are coprimes and the image of $\{0,...,N-1\}$ is the whole set. In particular, $U_x^k$ sends $|j\rangle \mapsto |j\cdot x^k \mod N\rangle$, so if $x^r \equiv 1 \mod N$, the map $U_x^r$ is the identity map.
 
 The eigenstates of $U$ are of the \footnote{To simplify notation, hereafter we shall denote $U_x$ by $U$ simply.}
-$$ |u_s\rangle = \frac{1}{\sqrt{r}} \sum_{k=0}^{r-1}\exp{\left(-\frac{2\pi i sk}{r}\right)}|x^k \mod N \rangle $$
+\begin{equation}
+	|u_s\rangle = \frac{1}{\sqrt{r}} \sum_{k=0}^{r-1}\exp{\left(-\frac{2\pi i sk}{r}\right)}|x^k \mod N \rangle
+\end{equation}
 for $0 \le s \le r-1$. The eigenvalues are the $r$-th roots of the unity, having the form $e^{2\pi is/r}$, since
-$$ U|u_s\rangle = \exp\left(\frac{2\pi is}{r}\right)|u_s\rangle. $$
+\begin{equation}
+	U|u_s\rangle = \exp\left(\frac{2\pi is}{r}\right)|u_s\rangle.
+\end{equation}
 
 An algorithm for finding such eigenvalues should be enough to find the order $r$ of $x$ modulo $N$\footnote{An alternative unitary could have been used: $V|j\rangle|k\rangle=|j\rangle|k+x^j\mod N\rangle$.}.
 
 \subsection{Quantum Fourier transform}
 
 The Fourier transform is an operation that can be performed faster in quantum computers. The quantum Fourier transform (QFT) \cite{griffighs} is defined in analogy with the discrete Fourier transform. It is the linear mapping:
-\begin{align*}
-	\hat{f}\ :\ \mathbb{C}^N &\rightarrow \mathbb{C}^N\\
+\begin{align}
+	\hat{f}\ :\ \mathbb{C}^N &\rightarrow \mathbb{C}^N \nonumber \\
 	|j\rangle &\mapsto \frac{1}{\sqrt{N}}\sum_{k=0}^{N-1}e^{2\pi ijk/N}|k\rangle
-\end{align*}
+\end{align}
 
 Let us consider $N=2^n$ with orthonormal basis $\{|0\rangle,\dots,|2^n-1\rangle\}$. We shall use the \textit{binary representation} $j =: j_1j_2\dots j_n$ to represent $j = \sum_{i=1}^{n}j_{i}2^{n-i}$ and the \textit{binary fraction} $j =: 0.j_1j_2\dots j_n$ to represent $j = \sum_{i=1}^{n}j_{i}2^{-i}$.
 
 It will be useful to consider an alternative form of the QFT which is indeed so important that could be considered its definition itself:
-
-$$ |j_1\dots j_n\rangle \mapsto \frac{\left(|0\rangle+e^{2\pi i0.j_n}|1\rangle\right)\otimes\left(|0\rangle+e^{2\pi i0.j_{n-1}j_n}|1\rangle\right)\otimes\dots\otimes\left(|0\rangle+e^{2\pi i0.j_1\dots j_n}|1\rangle\right)}{2^{n/2}}. $$
+\begin{equation}
+	|j_1\dots j_n\rangle \mapsto \frac{\left(|0\rangle+e^{2\pi i0.j_n}|1\rangle\right)\otimes\left(|0\rangle+e^{2\pi i0.j_{n-1}j_n}|1\rangle\right)\otimes\dots\otimes\left(|0\rangle+e^{2\pi i0.j_1\dots j_n}|1\rangle\right)}{2^{n/2}}.
+\end{equation}
 
 The equivalence between the two expressions can be shown as follows \cite{nielsen}:
 
@@ -334,7 +364,9 @@ The equivalence between the two expressions can be shown as follows \cite{nielse
 \end{align*}
 
 The product representation allows one to implement the quantum circuit for the QFT using Hadamard and $R_k$ rotation gates, the latter being of the form\footnote{The attentive reader will notice that $R_k = V_{2\pi/2^k}$.}
-$$ R_k := \begin{pmatrix}1 & 0\\ 0 & e^{2\pi i/2^k}\end{pmatrix}. $$
+\begin{equation}
+	R_k := \begin{pmatrix}1 & 0\\ 0 & e^{2\pi i/2^k}\end{pmatrix}.
+\end{equation}
 
 \begin{figure}[h!]
 	\centering
@@ -345,7 +377,8 @@ $$ R_k := \begin{pmatrix}1 & 0\\ 0 & e^{2\pi i/2^k}\end{pmatrix}. $$
 
 To conclude this section, we remark that the QFT, as a linear operation, may be written in matrix form\cite{wiki}:
 
-$$ F = \frac{1}{\sqrt{N}}
+\begin{equation}
+	 F = \frac{1}{\sqrt{N}}
 	\begin{pmatrix}
 	1 & 1 & 1 & 1 & \cdots & 1 \\
 	1 & \omega_n & \omega_n^2 & \omega_n^3 & \cdots & \omega_n^{N-1} \\
@@ -353,7 +386,7 @@ $$ F = \frac{1}{\sqrt{N}}
 	\vdots&\vdots&\vdots&\vdots&\ddots&\vdots\\
 	1&\omega_n^{N-1}&\omega_n^{2(N-1)}&\omega_n^{3(N-1)}&\cdots&\omega_n^{(N-1)(N-1)}
 	\end{pmatrix}
-$$
+\end{equation}
 where $N=2^n$ and $\omega_n:=e^{2\pi i/2^n}$. This allows one to verify that $FF^{\dagger} = F^{\dagger}F = I$, therefore concluding that the Fourier transform is a unitary transformation.
 
 \subsection{Quantum phase estimation}
@@ -391,7 +424,9 @@ $$ \frac{1}{2^{t/2}}\sum_{j=0}^{2^{t-1}}e^{2\pi i\varphi j}|j\rangle|u\rangle \m
 
 \begin{theorem}[Accuracy of $\varphi$ \cite{nielsen}, pp. 223-224]
 	To successfully obtain $\varphi$ accurate to $n$ bits with probability of success at least $1-\epsilon$, we choose
-	$$ t = n + \left\lceil \log\left(2+\frac{1}{2\epsilon}\right) \right\rceil. $$
+	\begin{equation}
+		t = n + \left\lceil \log\left(2+\frac{1}{2\epsilon}\right) \right\rceil.
+	\end{equation}
 \end{theorem}
 
 \subsection{Continued fraction expansion}
@@ -403,14 +438,18 @@ It misses one building block in order to solve our problem: how to retrieve $r$ 
 
 \begin{definition}
 	A finite simple continued fraction is an expression of the form
-	$$ a_0 + \dfrac{1}{a_1 + \dfrac{1}{a_2 + \dfrac{1}{\ddots+\dfrac{1}{a_N}}}} $$
+	\begin{equation}
+		a_0 + \dfrac{1}{a_1 + \dfrac{1}{a_2 + \dfrac{1}{\ddots+\dfrac{1}{a_N}}}}
+	\end{equation}
 	which is denoted by $[a_0,  a_1, a_2, \cdots, a_N]$, with $a_i \in \mathbb{N}^*\ \forall i\in \llbracket 1, N\rrbracket$.\\
 	We define the $n$-th convergent to this continued fraction as $[a_0,\dots,a_n]$ for $0\le n \le N$.
 \end{definition}
 
 \begin{theorem}
 	The $n$-th convergent may be written as a fraction
-	$$[a_0,\dots,a_n]=\frac{p_n}{q_n}$$
+	\begin{equation}
+		[a_0,\dots,a_n]=\frac{p_n}{q_n}
+	\end{equation}
 	whose coefficients are given by the following recurrence relation:
 	$$
 	\begin{array}{ll}
@@ -453,7 +492,9 @@ The algorithm runs as follows.
 
 \begin{theorem}
 	Suppose $s/r$ is a rational number such that
-	$$ \left|\frac{s}{r}-\varphi\right| \le \frac{1}{2r^2}.$$
+	\begin{equation}
+		\left|\frac{s}{r}-\varphi\right| \le \frac{1}{2r^2}.
+	\end{equation}
 	Then $s/r$ is a convergent of the continued fraction for $\varphi$.
 \end{theorem}
 
@@ -465,7 +506,7 @@ Since $\tilde{\varphi}$ is an approximation of $s/r$ accurate to $n=\lceil\log_2
 
 \newpage
 \section{Oracle circuit}
-\label{oracle-circuit}
+\label{sec:oracle}
 
 Now that we know the quantum algorithm to factorise a number, we can devote our attention to the implementation in terms of quantum circuit. Although we have already provided a circuit for the QFT, the oracle remains a mysterious black box. In this Section, we show how it can be implemented. In \cite{beauregard}, the author presents a circuit implementation that aims to reduce the number of qubits needed, while using a polynomial number of elementary quantum gates.
 
@@ -533,7 +574,7 @@ The circuit operation, depicted in Figure \ref{fig-modadd} is described as follo
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=10cm]{Figures/modadder}
+	\includegraphics[width=9cm]{Figures/modadder}
 	\caption{Circuit of $\phi$-adder modulo $N$ as presented in \cite{beauregard}.}
 	\label{fig-modadd}
 \end{figure}
@@ -543,7 +584,9 @@ The circuit operation, depicted in Figure \ref{fig-modadd} is described as follo
 Now, we can use the previous $\phi$-ADD$(a)$-mod-$N$ to build a controlled multiplied gate, denoted CMULT$(a)$-mod-$N$. This gate has input $|c\rangle|x\rangle|b\rangle$ and is to compute $|c\rangle|x\rangle|(b+ax)\mod N\rangle$ if $|c\rangle=|1\rangle$, or not to alter any qubit otherwise.
 
 The implementation with $\phi$-ADD$(a)$-mod-$N$ is based on the fact that
-$$ (ax) \mod N = \sum_{i=0}^{n-1}2^{i}ax_i \mod N $$
+\begin{equation}
+	(ax) \mod N = \sum_{i=0}^{n-1}2^{i}ax_i \mod N
+\end{equation}
 where the modulo $N$ has to be applied on each step of the summation. Thus all we need are $n$ successive $\phi$-ADD$(2^i a)$-mod-$N$ gates.
 
 \begin{figure}[h!]
@@ -584,13 +627,38 @@ As a result, the controlled-$U$ gate implements $|x\rangle|0\rangle \mapsto |(ax
 \newpage
 \section{Results and discussion}
 
-The implementations was made using \textit{ProjectQ} \cite{projectq, steiger}. In fact, they provide an example code for Shor's algorithm\footnote{Available in: \url{https://github.com/ProjectQ-Framework/ProjectQ/blob/develop/examples/shor.py}}.
+The implementations were made in Python using \textit{ProjectQ}, which is an open-source software framework for quantum computing \cite{projectq, steiger}. Our codes are available on GitHub \cite{git} and presented in Appendix \ref{sec:ap}.
 
-\subsection{ }
+The following subsections present results and discussions on that implementation.
+
+\subsection{Factorisation}
+
+The quantum circuit for factorisation implements Shor's algorithm as described in \S\ref{section2} using the oracle as described in \S\ref{sec:oracle}. ProjectQ has a feature that generates circuits as \LaTeX\ images. Although the complete circuit and more complex blocks easily become too big to be presented here, some simpler blocks are showed in Figures \ref{fig:gen1}, \ref{fig:gen2}, \ref{fig:gen3}.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=8cm]{Figures/generated-qft}
+	\caption{Circuit example for the QFT with 4 qubits.}
+	\label{fig:gen1}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=10cm]{Figures/generated-adder}
+	\caption{Circuit for the adder block, with possible overflow.}
+	\label{fig:gen2}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=12cm]{Figures/generated-modadder}
+	\caption{Circuit for modular adder block.}
+	\label{fig:gen3}
+\end{figure}
 
 \subsection{Complexity Analysis}
 
-A complexity analysis is performed by \cite{beauregard}, presenting number of qubits, order of number of gates and order of depth for each part of the circuit proposed by them (cf. \S \ref{oracle-circuit}) to factorise an integer $N$ stored with $n=\lceil\log_2N\rceil$ bits. The results are summarised in Table \ref{table-complexity}.
+A complexity analysis is performed by \cite{beauregard}, presenting number of qubits, order of number of gates and order of depth for each part of the circuit proposed by them (cf. \S \ref{sec:oracle}) to factorise an integer $N$ stored with $n=\lceil\log_2N\rceil$ bits. The results are summarised in Table \ref{table-complexity}.
 
 \begin{table}[h!]
 	\centering
@@ -646,6 +714,9 @@ We have compared the number of gates of some of the circuits we have implemented
 
 We observe that all resulting polynomials fit well the sets of data, matching the theoretical results in Table \ref{table-complexity}.
 
+\subsection{Discussion}
+
+\clearpage
 \newpage
 \section{Probability superpositions}
 
@@ -663,25 +734,23 @@ As far as we know, the problem of when such a state \ref{eq:probdist} can be cre
 This method may have applications in non-uniform priors for quantum searching, sampling of non-log-concave distributions and estimating the magnitude of a Fourier component.
 
 \paragraph{Iterative method.}
-Let us consider a single variable probability distribution discretised over $N=2^n$ points. We present an iterative method to create the desired superposition. Suppose the distribution is discretised over $2^m$ regions ($m<n$) and we already have the state
+Let us consider a single variable probability distribution discretised over $N=2^n$ points. The authors of \cite{griffighs} present an iterative method to create the desired superposition. Suppose the distribution is discretised over $2^m$ regions ($m<n$) and we already have the state
 \begin{equation}
 	|\psi_m\rangle = \sum_{i=0}^{2^m-1}\sqrt{p_i^{(m)}}|i\rangle,
 \end{equation}
-
 where $p_i^{(m)}$ is the probability that the random variable $x$ lies in the $i$-th region of the discretisation.
 
 Now, we want to get a discretisation in $2^{m+1}$ regions of $p(x)$. To do so, each region will be split in two by adding one qubit to the previous state. We want to achieve the evolution
 \begin{equation} \label{eq:evo}
 	\sqrt{p_i^{(m)}}|i\rangle \rightarrow \sqrt{\alpha_i}|i\rangle|0\rangle + \sqrt{\beta_i}|i\rangle|1\rangle,
 \end{equation}
- 
 where $\alpha_i$ and $\beta_i$ are the probabilities of $x$ to lie, respectively, in the left and the right half region of $i$. Then, the new state shall be
 \begin{equation}
 	|\psi_{m+1}\rangle = \sum_{i=0}^{2^{m+1}-1}\sqrt{p_i^{({m+1})}}|i\rangle.
 \end{equation}
 The idea is to repeat this process until $m=n$, when we will have created the desired superposition.
 
-This method resembles the creation of a binary tree where the $i$-th node on the $m$-th level indicates the probability of the random variable $x$ lies in the $i$-th region of the discretisation with $2^m$ regions, as shall be discussed (Figure \ref{fig:binary-tree}).
+This method resembles the creation of a binary tree where the $i$-th node on the $m$-th level indicates the probability that the random variable $x$ lies in the $i$-th of $2^m$ regions, as shall be discussed later (Figure \ref{fig:binary-tree}).
 
 \begin{figure}[h!]
 	\centering
@@ -697,7 +766,7 @@ Let us define $x^i_L$ and $x^i_R$ as the left and right boundaries of region $i$
 \end{equation}
 which represents the probability that $x$ lies in the left half of region $i$.
 
-The challenge is to construct a circuit that efficiently performs the computation
+The critical step of the method, where the challenge resides, is to construct a circuit that efficiently performs the computation
 \begin{equation}
 	\sqrt{p_i^{(m)}}|i\rangle|0\cdots 0\rangle \rightarrow 	\sqrt{p_i^{(m)}}|i\rangle|\theta_i\rangle,
 \end{equation}
@@ -709,7 +778,7 @@ which can be identified with Equation (\ref{eq:evo}), up to uncomputing $|\theta
 
 \subsection{Proposed implementation}
 
-In the following we describe an implementation of the aforementioned procedure, based on \cite{chiang}. Consider Figure \ref{fig:binary-tree} and the notation $q_i=p_i$ for the discretised version of the probability distribution $p(x)$, we assume to have already calculated. We then have
+In the following we describe an implementation of the aforementioned procedure, based on \cite{chiang}. Consider Figure \ref{fig:binary-tree} and the notation $q_i:=p_i$ for the discretised version of the probability distribution $p(x)$, we assume to have already calculated. We then have
 \begin{equation}
 	q_i^{(k-1)} = q_{2i}^{(k)} + q_{2i+1}^{(k)}
 \end{equation}
@@ -722,7 +791,7 @@ In the first iteration, the goal is to prepare the state
 $$
 |\psi_1\rangle = \left(\sqrt{q_0^{(1)}}|0\rangle_0 + \sqrt{q_1^{(1)}}|0\rangle_1\right)|0\rangle_2 \cdots |0\rangle_n
 $$
-which is achieved by applying the transformation $R(\theta)|0\rangle_1$ where
+which is achieved by applying the transformation $R(\theta)|0\rangle_1$, where
 $$
 R(\theta) = \begin{pmatrix}
 \cos\theta & -\sin\theta \\
@@ -731,7 +800,7 @@ R(\theta) = \begin{pmatrix}
 $$
 is the rotation transform by an angle $\theta_0^{(1)}=\arccos\sqrt{q_0^{(1)}}$.
 
-After that, for the $j$-th iteration ($j=2,\dots,n$), the qubits $j$ and higher are still in state $|0\rangle$. So we apply a rotation to the $j$-th qubit of an angle
+After that we generalise for the following iterations: for the $j$-th iteration ($j=2,\dots,n$), the qubits $j$ and higher are still in state $|0\rangle$. So we apply a rotation to the $j$-th qubit of an angle
 \begin{equation} \label{eq:theta}
 	\theta_i^{(j)}=\arccos\sqrt{\frac{q_{2i}^{(j)}}{q_i^{(j-1)}}}
 \end{equation}
@@ -772,17 +841,75 @@ To perform those tests, the block SC is composed by two sub-blocks EQ, which mer
 	\label{fig:sc-circuit}
 \end{figure}
 
-The problem is that, so far, no circuit was proposed to the critical step, which is calculating the angle (sub-bloc $\theta$ in Figure \ref{fig:dac-circuit}). This operation is specially difficult because it involves calculating a division, a square root and an arc-cosine. The most difficult of them being the arc-cosine computation, we propose to approximate it by a polynomial series:
+\paragraph{Calculating $\theta$.}
+The problem is that, so far, no circuit was proposed to the critical step, which is calculating the angles $\theta_i$ (Equation \ref{eq:theta}, sub-block $\mathrm{\theta}$ in Figure \ref{fig:dac-circuit}). This operation is specially difficult because it involves calculating a division, a square root and an arc-cosine.
+
+The first two operations are addressed in the literature \cite{gokhale, hadfield}. For example \cite{hadfield} presents a method based on a two-stage Newton iteration. Suppose we want to compute $\sqrt{w}$: the first step computes $\hat{x}_{s1}\approx 1/w$, and then the second computes $\hat{y}_{s2}\approx1/\hat{x}_{s1}\approx\sqrt{w}$ (Figure \ref{fig:sqrt}). While it is not our objective to detail such implementations, we invite the reader to further explore the original document. Henceforth we will simply use the fact that there exists a quantum circuit that compute the square root.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=10cm]{Figures/square-root}
+	\caption{Circuit to calculate square root \cite{hadfield}.}
+	\label{fig:sqrt}
+\end{figure}
+
+The most challenging part in the computation of $\theta$ (or at least the one that is not present in the literature, as far as we know) is the arc-cosine computation. Thus we propose a method to obtain using the polynomial series of arc-sine function
 \begin{equation}
-	\arccos(x) = \frac{\pi}{2} -x -\frac{x^3}{6} - \frac{3x^5}{40} + O(x^6).
+\arcsin(x) = x +\frac{x^3}{6} + O(x^3)
+\end{equation}
+and a trigonometric relationship between arc-sine and arc-cosine:
+\begin{equation}
+	\arcsin(x) + \arccos(x) = \frac{\pi}{2}.
 \end{equation}
 
-The following subsection describes how to construct the circuit for each sub-block.
+The circuit that implements the calculus of arc-sine polynomial approximation up to order 3 is presented in Figure \ref{fig:arcsin}.
 
-\subsection{Circuit blocks}
+\begin{figure}[h!]
+	\centering
+	%\includegraphics[width=10cm]{Figures/square-root}
+	\caption{Circuit to calculate an approximation of $\arcsin(x)$.}
+	\label{fig:arcsin}
+\end{figure}
+
+\subsection{Discussion}
+
+
 
 \newpage
 \section{Final considerations}
+
+\newpage
+\begin{appendices}
+\section{Python codes}
+\label{sec:ap}
+
+This section presents the Pyhton codes with ProjectQ library used to implement Shor's algorithm. Each circuit block described in \S \ref{sec:oracle} is implemented as a separate file.
+
+\lstinputlisting[language=Python, frame=single, caption={adder}]{../homemade_code/adder.py}
+
+\lstinputlisting[language=Python, frame=single, caption={modularAdder}]{../homemade_code/modularAdder.py}
+
+\lstinputlisting[language=Python, frame=single, caption={phi\_adder}]{../homemade_code/phi_adder.py}
+
+\lstinputlisting[language=Python, frame=single, caption={inv\_phi\_adder}]{../homemade_code/inv_phi_adder.py}
+
+\lstinputlisting[language=Python, frame=single, caption={cMultModN\_non\_Dagger}]{../homemade_code/cMultModN_non_Dagger.py}
+
+\lstinputlisting[language=Python, frame=single, caption={inv\_cMultModN\_non\_Dagger}]{../homemade_code/inv_cMultModN_non_Dagger.py}
+
+\lstinputlisting[language=Python, frame=single, caption={gateUa}]{../homemade_code/gateUa.py}
+
+\lstinputlisting[language=Python, frame=single, caption={qft}]{../homemade_code/qft.py}
+
+\lstinputlisting[language=Python, frame=single, caption={iqft}]{../homemade_code/iqft.py}
+
+\lstinputlisting[language=Python, frame=single, caption={initialisation}]{../homemade_code/initialisation.py}
+
+\lstinputlisting[language=Python, frame=single, caption={shor}]{../homemade_code/shor.py}
+
+\lstinputlisting[language=Python, frame=single, caption={shor3n.}]{../homemade_code/shor_3n.py}
+	
+\end{appendices}
 
 \clearpage
 \newpage
@@ -813,9 +940,15 @@ theory of numbers}. 6th edition. Oxford : Oxford University Press, 2008.
 
 \bibitem{steiger} Steiger, Damian S.; Häner, Thomas and Troyer, Matthias. ``ProjectQ: an open source software framework for quantum computing''. \textit{Quantum}, vol. 2, p. 49, jan. 2018.
 
-\bibitem{grover} Grover, L. and Rudolph, T. ``Creating superpositions that correspond to efficiently integrable probability distributions''. Available in: \url{https://arxiv.org/abs/quant-ph/0208112}. Access on: 9 may 2019.
+\bibitem{git} GitHub. \textit{quantum-calculus}. Available in: \url{https://github.com/miyamotohk/quantum-calculus}. Access on: 11 jun. 2019.
+
+\bibitem{grover} Grover, L. and Rudolph, T. \textit{Creating superpositions that correspond to efficiently integrable probability distributions}. Available in: \url{https://arxiv.org/abs/quant-ph/0208112}. Access on: 9 may 2019.
 
 \bibitem{chiang} Chiang, Chen-Fu; Nagaj, Daniel; Wocjan, Pawel. ``Efficient Circuits for Quantum Walks''. \textit{Quantum Information \& Computation}, vol. 10, no. 5, pp. 420-434, 2010.
+
+\bibitem{gokhale} Gokhale, Pranav. \textit{Implementation of Square Root Function Using Quantum Circuits}. Princeton University, 2014. Available in: \url{http://www.undergraduatelibrary.org/2014/computer-sciences/implementation-square-root-function-using-quantum-circuits}. Access on: 19 jun. 2019.
+
+\bibitem{hadfield} Hadfield, Stuart Andrew. \textit{Quantum Algorithms for Scientific Computing and Approximate Optimization}. PhD Thesis, Columbia University, 2018. Available in: \url{https://arxiv.org/abs/1805.03265}. Access on: 19 jun. 2019.
 
 \end{thebibliography}
 

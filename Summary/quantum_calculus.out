@@ -20,9 +20,12 @@
 \BOOKMARK [2][-]{subsection.4.3}{Controlled multiplier gate}{section.4}% 20
 \BOOKMARK [2][-]{subsection.4.4}{Controlled U gate}{section.4}% 21
 \BOOKMARK [1][-]{section.5}{Results and discussion}{}% 22
-\BOOKMARK [2][-]{subsection.5.1}{ }{section.5}% 23
+\BOOKMARK [2][-]{subsection.5.1}{Factorisation}{section.5}% 23
 \BOOKMARK [2][-]{subsection.5.2}{Complexity Analysis}{section.5}% 24
-\BOOKMARK [1][-]{section.6}{Probability superpositions}{}% 25
-\BOOKMARK [2][-]{subsection.6.1}{Proposed implementation}{section.6}% 26
-\BOOKMARK [2][-]{subsection.6.2}{Circuit blocks}{section.6}% 27
-\BOOKMARK [1][-]{section.7}{Final considerations}{}% 28
+\BOOKMARK [2][-]{subsection.5.3}{Discussion}{section.5}% 25
+\BOOKMARK [1][-]{section.6}{Probability superpositions}{}% 26
+\BOOKMARK [2][-]{subsection.6.1}{Proposed implementation}{section.6}% 27
+\BOOKMARK [2][-]{subsection.6.2}{Discussion}{section.6}% 28
+\BOOKMARK [1][-]{section.7}{Final considerations}{}% 29
+\BOOKMARK [1][-]{Appendix.1.A}{Python codes}{}% 30
+\BOOKMARK [1][-]{section*.5}{References}{}% 31

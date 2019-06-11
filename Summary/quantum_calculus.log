@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.16)  7 JUN 2019 18:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.16)  11 JUN 2019 13:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -22,6 +22,19 @@ File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2017/06/30 v3.9a Extensive control of page headers and footer
+s
+\f@nch@headwidth=\skip43
+\f@nch@O@elh=\skip44
+\f@nch@O@erh=\skip45
+\f@nch@O@olh=\skip46
+\f@nch@O@orh=\skip47
+\f@nch@O@elf=\skip48
+\f@nch@O@erf=\skip49
+\f@nch@O@olf=\skip50
+\f@nch@O@orf=\skip51
 )
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2018/02/14 3.18 The Babel package
@@ -71,16 +84,16 @@ Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Bcount=\count90
 \calc@Adimen=\dimen104
 \calc@Bdimen=\dimen105
-\calc@Askip=\skip43
-\calc@Bskip=\skip44
+\calc@Askip=\skip52
+\calc@Bskip=\skip53
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
 \calc@Ccount=\count91
-\calc@Cskip=\skip45
+\calc@Cskip=\skip54
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2017/09/02 v2.17a AMS math features
-\@mathmargin=\skip46
+\@mathmargin=\skip55
 
 For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
@@ -130,8 +143,8 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
 \totwidth@=\dimen113
 \lineht@=\dimen114
 \@envbody=\toks20
-\multlinegap=\skip47
-\multlinetaggap=\skip48
+\multlinegap=\skip56
+\multlinetaggap=\skip57
 \mathdisplay@stack=\toks21
 LaTeX Info: Redefining \[ on input line 2817.
 LaTeX Info: Redefining \] on input line 2818.
@@ -142,7 +155,7 @@ LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
 \g_MT_multlinerow_int=\count104
 \l_MT_multwidth_dim=\dimen115
-\origjot=\skip49
+\origjot=\skip58
 \l_MT_shortvdotswithinadjustabove_dim=\dimen116
 \l_MT_shortvdotswithinadjustbelow_dim=\dimen117
 \l_MT_above_intertext_sep=\dimen118
@@ -183,9 +196,9 @@ Package: amsthm 2017/10/31 v2.20.4
 \thm@headfont=\toks24
 \thm@notefont=\toks25
 \thm@headpunct=\toks26
-\thm@preskip=\skip50
-\thm@postskip=\skip51
-\thm@headsep=\skip52
+\thm@preskip=\skip59
+\thm@postskip=\skip60
+\thm@headsep=\skip61
 \dth@everypar=\toks27
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tools/indentfirst.sty
@@ -305,7 +318,7 @@ Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
-\Hy@SectionHShift=\skip53
+\Hy@SectionHShift=\skip62
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
@@ -764,8 +777,8 @@ Package: multicol 2017/04/11 v1.8q multicolumn formatting (FMi)
 \page@free=\dimen259
 \premulticols=\dimen260
 \postmulticols=\dimen261
-\multicolsep=\skip54
-\multicolbaselineskip=\skip55
+\multicolsep=\skip63
+\multicolbaselineskip=\skip64
 \partial@page=\box45
 \last@line=\box46
 \maxbalancingoverflow=\dimen262
@@ -805,25 +818,18 @@ Package: stmaryrd 1994/03/03 St Mary's Road symbol package
 LaTeX Font Info:    Overwriting symbol font `stmry' in version `bold'
 (Font)                  U/stmry/m/n --> U/stmry/b/n on input line 89.
 )
-(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
-Package: fancyhdr 2017/06/30 v3.9a Extensive control of page headers and footer
-s
-\f@nch@headwidth=\skip56
-\f@nch@O@elh=\skip57
-\f@nch@O@erh=\skip58
-\f@nch@O@olh=\skip59
-\f@nch@O@orh=\skip60
-\f@nch@O@elf=\skip61
-\f@nch@O@erf=\skip62
-\f@nch@O@olf=\skip63
-\f@nch@O@orf=\skip64
+(/usr/share/texlive/texmf-dist/tex/latex/appendix/appendix.sty
+Package: appendix 2009/09/02 v1.2b extra appendix facilities
+\c@@pps=\count163
+\c@@ppsavesec=\count164
+\c@@ppsaveapp=\count165
 )
 (/usr/share/texlive/texmf-dist/tex/generic/genmisc/nth.sty
 Package: nth 2002/02/27
 )
 (/usr/share/texlive/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
 Package: algorithm2e 2017/07/18 v5.2 algorithms environments
-\c@AlgoLine=\count163
+\c@AlgoLine=\count166
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
@@ -832,7 +838,7 @@ Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 
 (/usr/share/texlive/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
 Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
-\c@checkoddpage=\count164
+\c@checkoddpage=\count167
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
@@ -870,46 +876,44 @@ Package: relsize 2013/03/29 ver 4.1
 \algoheightrule=\skip81
 \algotitleheightruledefault=\skip82
 \algotitleheightrule=\skip83
-\c@algocfline=\count165
-\c@algocfproc=\count166
-\c@algocf=\count167
+\c@algocfline=\count168
+\c@algocfproc=\count169
+\c@algocf=\count170
 \algocf@algoframe=\box76
 \algocf@algobox=\box77
 )
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
-zlibraryarrows.code.tex
-File: tikzlibraryarrows.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
-
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.
-tex
-File: pgflibraryarrows.code.tex 2013/09/23 v3.0.1a (rcs-revision 1.16)
-\arrowsize=\dimen272
-))
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
-zlibrarycalc.code.tex
-File: tikzlibrarycalc.code.tex 2013/07/15 v3.0.1a (rcs-revision 1.9)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/courier.sty
+Package: courier 2005/04/12 PSNFSS-v9.2a (WaS) 
 )
-\c@theorem=\count168
-\c@definition=\count169
+(/usr/share/texlive/texmf-dist/tex/latex/tocbibind/tocbibind.sty
+Package: tocbibind 2010/10/13 v1.5k extra ToC listings
+Package tocbibind Info: The document has section divisions on input line 50.
+
+
+Package tocbibind Note: Using section or other style headings.
+
+)
+\c@theorem=\count171
+\c@definition=\count172
  (./quantum_calculus.aux)
 \openout1 = `quantum_calculus.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
 \AtBeginShipoutBox=\box78
-Package hyperref Info: Link coloring OFF on input line 33.
+Package hyperref Info: Link coloring OFF on input line 48.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -917,11 +921,11 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count170
+\c@section@level=\count173
 )
-LaTeX Info: Redefining \ref on input line 33.
-LaTeX Info: Redefining \pageref on input line 33.
-LaTeX Info: Redefining \nameref on input line 33.
+LaTeX Info: Redefining \ref on input line 48.
+LaTeX Info: Redefining \pageref on input line 48.
+LaTeX Info: Redefining \nameref on input line 48.
 
 (./quantum_calculus.out) (./quantum_calculus.out)
 \@outlinefile=\write4
@@ -930,16 +934,16 @@ LaTeX Info: Redefining \nameref on input line 33.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count171
-\scratchdimen=\dimen273
+\scratchcounter=\count174
+\scratchdimen=\dimen272
 \scratchbox=\box79
-\nofMPsegments=\count172
-\nofMParguments=\count173
+\nofMPsegments=\count175
+\nofMParguments=\count176
 \everyMPshowfont=\toks47
-\MPscratchCnt=\count174
-\MPscratchDim=\dimen274
-\MPnumerator=\count175
-\makeMPintoPDFobject=\count176
+\MPscratchCnt=\count177
+\MPscratchDim=\dimen273
+\MPnumerator=\count178
+\makeMPintoPDFobject=\count179
 \everyMPtoPDFconversion=\toks48
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -963,24 +967,24 @@ ABD: EveryShipout initializing macros
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.15} into 
 your preamble.
- on input line 33.
+ on input line 48.
 
-\c@lstlisting=\count177
-<Figures/cs.jpg, id=119, 866.23625pt x 446.66875pt>
+\c@lstlisting=\count180
+<Figures/cs.jpg, id=131, 866.23625pt x 446.66875pt>
 File: Figures/cs.jpg Graphic file (type jpg)
 <use Figures/cs.jpg>
-Package pdftex.def Info: Figures/cs.jpg  used on input line 39.
+Package pdftex.def Info: Figures/cs.jpg  used on input line 54.
 (pdftex.def)             Requested size: 113.81102pt x 58.68237pt.
-LaTeX Font Info:    Try loading font information for U+msa on input line 46.
+LaTeX Font Info:    Try loading font information for U+msa on input line 61.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 46.
+LaTeX Font Info:    Try loading font information for U+msb on input line 61.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+stmry on input line 46.
+LaTeX Font Info:    Try loading font information for U+stmry on input line 61.
 
 (/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/Ustmry.fd) [1
 
@@ -993,30 +997,30 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.62 \newpage
+l.77 \newpage
               [1] [2]
-<Figures/bloch.png, id=171, 523.9575pt x 556.0775pt>
+<Figures/bloch.png, id=187, 523.9575pt x 556.0775pt>
 File: Figures/bloch.png Graphic file (type png)
 <use Figures/bloch.png>
-Package pdftex.def Info: Figures/bloch.png  used on input line 92.
+Package pdftex.def Info: Figures/bloch.png  used on input line 107.
 (pdftex.def)             Requested size: 113.81102pt x 120.78465pt.
  [3 <./Figures/bloch.png>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 107.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 122.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 107.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 122.
  [4] [5]
-<Figures/circuit.png, id=209, 333.245pt x 190.7125pt>
+<Figures/circuit.png, id=224, 333.245pt x 190.7125pt>
 File: Figures/circuit.png Graphic file (type png)
 <use Figures/circuit.png>
-Package pdftex.def Info: Figures/circuit.png  used on input line 226.
+Package pdftex.def Info: Figures/circuit.png  used on input line 241.
 (pdftex.def)             Requested size: 113.81102pt x 65.13239pt.
  [6 <./Figures/circuit.png>] [7]
-Overfull \hbox (3.16013pt too wide) in paragraph at lines 302--304
+Overfull \hbox (3.16013pt too wide) in paragraph at lines 327--329
 \OT1/cmr/m/n/10 The op-er-a-tor is uni-tary be-cause $\OML/cmm/m/it/10 x$ \OT1/
 cmr/m/n/10 and $\OML/cmm/m/it/10 N$ \OT1/cmr/m/n/10 are co-primes and the im-ag
 e of $\OMS/cmsy/m/n/10 f\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 ; :::; N \OMS/cmsy/m/
@@ -1024,26 +1028,26 @@ n/10 ^^@
  []
 
 [8]
-Overfull \hbox (23.85469pt too wide) detected at line 324
-\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 j[] [] j[]\OMS/cmsy/m/n/10 i 7! []\OML/cmm/m
-/it/10 :
+Overfull \hbox (23.85469pt too wide) detected at line 354
+[][]\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 j[] [] j[]\OMS/cmsy/m/n/10 i 7! []\OML/c
+mm/m/it/10 :
  []
 
 
-Overfull \hbox (2.98448pt too wide) detected at line 334
+Overfull \hbox (2.98448pt too wide) detected at line 364
 []
  []
 
 [9]
-<Figures/qft-circuit.png, id=266, 1701.35625pt x 419.5675pt>
+<Figures/qft-circuit.png, id=290, 1701.35625pt x 419.5675pt>
 File: Figures/qft-circuit.png Graphic file (type png)
 <use Figures/qft-circuit.png>
-Package pdftex.def Info: Figures/qft-circuit.png  used on input line 341.
+Package pdftex.def Info: Figures/qft-circuit.png  used on input line 373.
 (pdftex.def)             Requested size: 341.43306pt x 84.2001pt.
-<Figures/phase-estimation-1.png, id=269, 937.5025pt x 447.6725pt>
+<Figures/phase-estimation-1.png, id=293, 937.5025pt x 447.6725pt>
 File: Figures/phase-estimation-1.png Graphic file (type png)
 <use Figures/phase-estimation-1.png>
-Package pdftex.def Info: Figures/phase-estimation-1.png  used on input line 369
+Package pdftex.def Info: Figures/phase-estimation-1.png  used on input line 402
 .
 (pdftex.def)             Requested size: 284.52756pt x 135.86023pt.
 
@@ -1051,192 +1055,312 @@ Package pdftex.def Info: Figures/phase-estimation-1.png  used on input line 369
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [10 <./Figures/qft-circuit.png>]
-<Figures/phase-estimation-2.png, id=282, 587.19376pt x 221.82875pt>
+<Figures/phase-estimation-2.png, id=308, 587.19376pt x 221.82875pt>
 File: Figures/phase-estimation-2.png Graphic file (type png)
 <use Figures/phase-estimation-2.png>
-Package pdftex.def Info: Figures/phase-estimation-2.png  used on input line 385
+Package pdftex.def Info: Figures/phase-estimation-2.png  used on input line 418
 .
 (pdftex.def)             Requested size: 170.71652pt x 64.49115pt.
  [11 <./Figures/phase-estimation-1.png> <./Figures/phase-estimation-2.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 438--439
+Underfull \hbox (badness 10000) in paragraph at lines 477--478
 
  []
 
 [12] [13]
-<Figures/rotation-k.png, id=324, 641.39626pt x 213.79875pt>
+<Figures/rotation-k.png, id=354, 641.39626pt x 213.79875pt>
 File: Figures/rotation-k.png Graphic file (type png)
 <use Figures/rotation-k.png>
-Package pdftex.def Info: Figures/rotation-k.png  used on input line 480.
+Package pdftex.def Info: Figures/rotation-k.png  used on input line 521.
 (pdftex.def)             Requested size: 170.71652pt x 56.90433pt.
-<Figures/adder1.png, id=325, 1516.66624pt x 704.6325pt>
+<Figures/adder1.png, id=355, 1516.66624pt x 704.6325pt>
 File: Figures/adder1.png Graphic file (type png)
 <use Figures/adder1.png>
-Package pdftex.def Info: Figures/adder1.png  used on input line 485.
+Package pdftex.def Info: Figures/adder1.png  used on input line 526.
 (pdftex.def)             Requested size: 284.52756pt x 132.18279pt.
  [14 <./Figures/rotation-k.png> <./Figures/adder1.png>]
-Overfull \hbox (16.63298pt too wide) detected at line 500
+Overfull \hbox (16.63298pt too wide) detected at line 541
 []
  []
 
-<Figures/adder2.png, id=343, 591.20876pt x 181.67876pt>
+<Figures/adder2.png, id=373, 591.20876pt x 181.67876pt>
 File: Figures/adder2.png Graphic file (type png)
 <use Figures/adder2.png>
-Package pdftex.def Info: Figures/adder2.png  used on input line 506.
+Package pdftex.def Info: Figures/adder2.png  used on input line 547.
 (pdftex.def)             Requested size: 227.62204pt x 69.9479pt.
-<Figures/adder3.png, id=345, 986.68625pt x 280.04625pt>
+<Figures/adder3.png, id=375, 986.68625pt x 280.04625pt>
 File: Figures/adder3.png Graphic file (type png)
 <use Figures/adder3.png>
-Package pdftex.def Info: Figures/adder3.png  used on input line 514.
+Package pdftex.def Info: Figures/adder3.png  used on input line 555.
 (pdftex.def)             Requested size: 170.71652pt x 48.45331pt.
 [15 <./Figures/adder2.png> <./Figures/adder3.png>]
-<Figures/modadder.png, id=357, 1408.26125pt x 750.805pt>
+<Figures/modadder.png, id=387, 1408.26125pt x 750.805pt>
 File: Figures/modadder.png Graphic file (type png)
 <use Figures/modadder.png>
-Package pdftex.def Info: Figures/modadder.png  used on input line 536.
-(pdftex.def)             Requested size: 284.52756pt x 151.69348pt.
+Package pdftex.def Info: Figures/modadder.png  used on input line 577.
+(pdftex.def)             Requested size: 256.0748pt x 136.52528pt.
  [16 <./Figures/modadder.png>]
-<Figures/cmult.png, id=365, 1317.92375pt x 580.1675pt>
+<Figures/cmult.png, id=396, 1317.92375pt x 580.1675pt>
 File: Figures/cmult.png Graphic file (type png)
 <use Figures/cmult.png>
-Package pdftex.def Info: Figures/cmult.png  used on input line 551.
+Package pdftex.def Info: Figures/cmult.png  used on input line 594.
 (pdftex.def)             Requested size: 227.62204pt x 100.20293pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 556.
+(hyperref)                removing `math shift' on input line 599.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 556.
+(hyperref)                removing `math shift' on input line 599.
 
-<Figures/ugate.png, id=369, 1268.74pt x 388.45125pt>
+<Figures/ugate.png, id=400, 1268.74pt x 388.45125pt>
 File: Figures/ugate.png Graphic file (type png)
 <use Figures/ugate.png>
-Package pdftex.def Info: Figures/ugate.png  used on input line 578.
+Package pdftex.def Info: Figures/ugate.png  used on input line 621.
 (pdftex.def)             Requested size: 227.62204pt x 69.68704pt.
+[17 <./Figures/cmult.png> <./Figures/ugate.png>]
+<Figures/generated-qft.png, id=421, 1004.75375pt x 347.2975pt>
+File: Figures/generated-qft.png Graphic file (type png)
+<use Figures/generated-qft.png>
+Package pdftex.def Info: Figures/generated-qft.png  used on input line 640.
+(pdftex.def)             Requested size: 227.62204pt x 78.6738pt.
+<Figures/generated-adder.png, id=422, 1216.545pt x 406.51875pt>
+File: Figures/generated-adder.png Graphic file (type png)
+<use Figures/generated-adder.png>
+Package pdftex.def Info: Figures/generated-adder.png  used on input line 647.
+(pdftex.def)             Requested size: 284.52756pt x 95.07289pt.
+<Figures/generated-modadder.png, id=423, 1768.6075pt x 649.42625pt>
+File: Figures/generated-modadder.png Graphic file (type png)
+<use Figures/generated-modadder.png>
+Package pdftex.def Info: Figures/generated-modadder.png  used on input line 654
+.
+(pdftex.def)             Requested size: 341.43306pt x 125.36424pt.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[17 <./Figures/cmult.png>] [18 <./Figures/ugate.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 587--587
-[][][]\OT1/cmr/m/n/8 Available in: []$\OT1/cmtt/m/n/8 https : / / github . com 
-/ ProjectQ-[]Framework / ProjectQ / blob / develop /
- []
 
-<Figures/data-cmult.png, id=400, 421.575pt x 316.18124pt>
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[18
+
+ <./Figures/generated-qft.png> <./Figures/generated-adder.png>]
+<Figures/data-cmult.png, id=453, 421.575pt x 316.18124pt>
 File: Figures/data-cmult.png Graphic file (type png)
 <use Figures/data-cmult.png>
-Package pdftex.def Info: Figures/data-cmult.png  used on input line 628.
+Package pdftex.def Info: Figures/data-cmult.png  used on input line 696.
 (pdftex.def)             Requested size: 199.16928pt x 149.37712pt.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Figures/data-Ua.png, id=401, 421.575pt x 316.18124pt>
+<Figures/data-Ua.png, id=454, 421.575pt x 316.18124pt>
 File: Figures/data-Ua.png Graphic file (type png)
 <use Figures/data-Ua.png>
-Package pdftex.def Info: Figures/data-Ua.png  used on input line 635.
+Package pdftex.def Info: Figures/data-Ua.png  used on input line 703.
 (pdftex.def)             Requested size: 199.16928pt x 149.37712pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Figures/data-shor.png, id=402, 421.575pt x 316.18124pt>
+<Figures/data-shor.png, id=455, 421.575pt x 316.18124pt>
 File: Figures/data-shor.png Graphic file (type png)
 <use Figures/data-shor.png>
-Package pdftex.def Info: Figures/data-shor.png  used on input line 642.
+Package pdftex.def Info: Figures/data-shor.png  used on input line 710.
 (pdftex.def)             Requested size: 199.16928pt x 149.37712pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[19
-
-] [20 <./Figures/data-cmult.png (PNG copy)> <./Figures/data-Ua.png (PNG copy)> 
-<./Figures/data-shor.png (PNG copy)>]
-Overfull \hbox (3.41731pt too wide) in paragraph at lines 663--664
+[19 <./Figures/generated-modadder.png>] [20 <./Figures/data-cmult.png (PNG copy
+)> <./Figures/data-Ua.png (PNG copy)> <./Figures/data-shor.png (PNG copy)>]
+Overfull \hbox (3.41731pt too wide) in paragraph at lines 734--735
 []\OT1/cmr/m/n/10 This method may have ap-pli-ca-tions in non-uniform pri-ors f
 or quan-tum search-
  []
 
-<Figures/binarytree.png, id=428, 1175.39125pt x 477.785pt>
+<Figures/binarytree.png, id=473, 1175.39125pt x 477.785pt>
 File: Figures/binarytree.png Graphic file (type png)
 <use Figures/binarytree.png>
-Package pdftex.def Info: Figures/binarytree.png  used on input line 689.
+Package pdftex.def Info: Figures/binarytree.png  used on input line 758.
 (pdftex.def)             Requested size: 284.52756pt x 115.65494pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[21] [22 <./Figures/binarytree.png>]
-<Figures/dac-circuit.png, id=460, 624.3325pt x 307.1475pt>
+[21
+
+] [22 <./Figures/binarytree.png>]
+<Figures/dac-circuit.png, id=504, 624.3325pt x 307.1475pt>
 File: Figures/dac-circuit.png Graphic file (type png)
 <use Figures/dac-circuit.png>
-Package pdftex.def Info: Figures/dac-circuit.png  used on input line 746.
+Package pdftex.def Info: Figures/dac-circuit.png  used on input line 815.
 (pdftex.def)             Requested size: 170.71652pt x 83.98543pt.
-<Figures/sc-circuit.png, id=464, 672.5125pt x 385.44pt>
+<Figures/sc-circuit.png, id=508, 672.5125pt x 385.44pt>
 File: Figures/sc-circuit.png Graphic file (type png)
 <use Figures/sc-circuit.png>
-Package pdftex.def Info: Figures/sc-circuit.png  used on input line 770.
+Package pdftex.def Info: Figures/sc-circuit.png  used on input line 839.
 (pdftex.def)             Requested size: 170.71652pt x 97.84186pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[23 <./Figures/dac-circuit.png>] [24 <./Figures/sc-circuit.png>] [25]
-Underfull \hbox (badness 1442) in paragraph at lines 803--804
-[]\OT1/cmr/m/n/10 Wikipedia. \OT1/cmr/m/it/10 Quan-tum Fourier trans-form\OT1/c
-mr/m/n/10 . Avail-able in: []$\OT1/cmtt/m/n/10 https : / / en .
+[23 <./Figures/dac-circuit.png>]
+<Figures/square-root.png, id=526, 879.285pt x 270.00874pt>
+File: Figures/square-root.png Graphic file (type png)
+<use Figures/square-root.png>
+Package pdftex.def Info: Figures/square-root.png  used on input line 851.
+(pdftex.def)             Requested size: 284.52756pt x 87.36864pt.
+ [24 <./Figures/sc-circuit.png> <./Figures/square-root.png>] [25]
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 888.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 888.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+(../homemade_code/adder.py) (../homemade_code/modularAdder.py [26])
+(../homemade_code/phi_adder.py) (../homemade_code/inv_phi_adder.py [27])
+(../homemade_code/cMultModN_non_Dagger.py)
+(../homemade_code/inv_cMultModN_non_Dagger.py [28]) (../homemade_code/gateUa.py
+
+Overfull \hbox (92.60425pt too wide) in paragraph at lines 6--9
+[][][][] 
  []
 
-[26
+) (../homemade_code/qft.py [29]) (../homemade_code/iqft.py)
+(../homemade_code/initialisation.py [30]
+LaTeX Font Info:    Try loading font information for OMS+pcr on input line 34.
 
-]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 822.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 822.
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omspcr.fd
+File: omspcr.fd 
+)
+LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <8> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 34.
+ [31])
+(../homemade_code/shor.py [32] [33] [34]
+Overfull \hbox (19.80371pt too wide) in paragraph at lines 174--176
+[][][][][] 
+ []
+
+
+Overfull \hbox (35.00366pt too wide) in paragraph at lines 174--176
+[][] 
+ []
+
+
+Overfull \hbox (35.00366pt too wide) in paragraph at lines 174--176
+[][] 
+ []
+
+
+Overfull \hbox (30.20361pt too wide) in paragraph at lines 174--176
+[]  
+ []
+
+) (../homemade_code/shor_3n.py [35] [36]
+Overfull \hbox (19.80371pt too wide) in paragraph at lines 128--130
+[][][][][] 
+ []
+
+
+Overfull \hbox (35.00366pt too wide) in paragraph at lines 128--130
+[][] 
+ []
+
+
+Overfull \hbox (35.00366pt too wide) in paragraph at lines 128--130
+[][] 
+ []
+
+
+Overfull \hbox (30.20361pt too wide) in paragraph at lines 128--130
+[]  
+ []
+
+) [37]
+Underfull \hbox (badness 1924) in paragraph at lines 930--931
+\OT1/pcr/m/n/10 wikipedia . org / wiki / Quantum _ Fourier _ transform$[]\OT1/c
+mr/m/n/10 . Ac-cess on:
+ []
+
+
+Underfull \hbox (badness 5022) in paragraph at lines 943--944
+[]\OT1/cmr/m/n/10 GitHub. \OT1/cmr/m/it/10 quantum-calculus\OT1/cmr/m/n/10 . Av
+ail-able in: []$\OT1/pcr/m/n/10 https : / / github . com /
+ []
+
+
+Underfull \hbox (badness 3861) in paragraph at lines 949--950
+[]\OT1/cmr/m/n/10 Gokhale, Pranav. \OT1/cmr/m/it/10 Im-ple-men-ta-tion of Squar
+e Root Func-tion Us-ing
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 949--950
+\OT1/pcr/m/n/10 www . undergraduatelibrary . org / 2014 / computer-[]sciences /
+
+ []
+
+
+Overfull \hbox (29.33339pt too wide) in paragraph at lines 949--950
+\OT1/pcr/m/n/10 implementation-[]square-[]root-[]function-[]using-[]quantum-[]c
+ircuits$[]\OT1/cmr/m/n/10 .
+ []
+
+[38
+
+] [39]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 955.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 955.
  (./quantum_calculus.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 822.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 822.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 955.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 955.
 Package rerunfilecheck Info: File `quantum_calculus.out' has not changed.
-(rerunfilecheck)             Checksum: 9B8F8CAD7C1B2D9EAE2337B13E2FB489;1765.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 822.
+(rerunfilecheck)             Checksum: ED66332739F6033F15F8365F6CFE0186;1931.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 955.
  ) 
 Here is how much of TeX's memory you used:
- 30520 strings out of 492982
- 707812 string characters out of 6134895
- 890432 words of memory out of 5000000
- 33407 multiletter control sequences out of 15000+600000
- 16819 words of font info for 66 fonts, out of 8000000 for 9000
+ 31529 strings out of 492982
+ 713029 string characters out of 6134895
+ 1098483 words of memory out of 5000000
+ 33668 multiletter control sequences out of 15000+600000
+ 17513 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,13n,96p,759b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
-i8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
-8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/stmaryrd/stmary10.pfb>
-Output written on quantum_calculus.pdf (27 pages, 900710 bytes).
+ 62i,13n,96p,759b,2068s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cmextra/cmex7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cmextra/cmex8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+mi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+y5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/stmaryrd/stmary10.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/urw/courier/ucrr8a.pfb>
+Output written on quantum_calculus.pdf (40 pages, 1217150 bytes).
 PDF statistics:
- 626 PDF objects out of 1000 (max. 8388607)
- 525 compressed objects within 6 object streams
- 143 named destinations out of 1000 (max. 500000)
- 332 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1546 PDF objects out of 1728 (max. 8388607)
+ 1416 compressed objects within 15 object streams
+ 836 named destinations out of 1000 (max. 500000)
+ 376 words of extra memory for PDF output out of 10000 (max. 10000000)
 

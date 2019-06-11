@@ -67,7 +67,7 @@
 \citation{draper}
 \citation{draper}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Oracle circuit}{14}{section.4}}
-\newlabel{oracle-circuit}{{4}{14}{Oracle circuit}{section.4}{}}
+\newlabel{sec:oracle}{{4}{14}{Oracle circuit}{section.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Adder gate}{14}{subsection.4.1}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Quantum adder based on QFT, as presented in \cite  {draper}. The QFT operator is denoted $\phi (\cdot )$.}}{14}{figure.4.1}}
 \newlabel{fig-adder}{{4.1}{14}{Quantum adder based on QFT, as presented in \cite {draper}. The QFT operator is denoted $\phi (\cdot )$}{figure.4.1}{}}
@@ -86,28 +86,37 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Circuit of CMULT$(a)$-mod-$N$ as presented in \cite  {beauregard}.}}{17}{figure.4.5}}
 \newlabel{fig-cmult}{{4.5}{17}{Circuit of CMULT$(a)$-mod-$N$ as presented in \cite {beauregard}}{figure.4.5}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Controlled $U$ gate}{17}{subsection.4.4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Circuit of controlled $U$-gate as presented in \cite  {beauregard}.}}{18}{figure.4.6}}
-\newlabel{fig-ugate}{{4.6}{18}{Circuit of controlled $U$-gate as presented in \cite {beauregard}}{figure.4.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Circuit of controlled $U$-gate as presented in \cite  {beauregard}.}}{17}{figure.4.6}}
+\newlabel{fig-ugate}{{4.6}{17}{Circuit of controlled $U$-gate as presented in \cite {beauregard}}{figure.4.6}{}}
 \citation{projectq}
 \citation{steiger}
+\citation{git}
 \citation{beauregard}
 \citation{beauregard}
 \citation{beauregard}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Results and discussion}{19}{section.5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1} }{19}{subsection.5.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Complexity Analysis}{19}{subsection.5.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Results and discussion}{18}{section.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Factorisation}{18}{subsection.5.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Circuit example for the QFT with 4 qubits.}}{18}{figure.5.1}}
+\newlabel{fig:gen1}{{5.1}{18}{Circuit example for the QFT with 4 qubits}{figure.5.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Circuit for the adder block, with possible overflow.}}{18}{figure.5.2}}
+\newlabel{fig:gen2}{{5.2}{18}{Circuit for the adder block, with possible overflow}{figure.5.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Complexity Analysis}{18}{subsection.5.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces Circuit for modular adder block.}}{19}{figure.5.3}}
+\newlabel{fig:gen3}{{5.3}{19}{Circuit for modular adder block}{figure.5.3}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces Complexity analysis of circuit parts \cite  {beauregard}.}}{19}{table.5.1}}
 \newlabel{table-complexity}{{5.1}{19}{Complexity analysis of circuit parts \cite {beauregard}}{table.5.1}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {5.2}{\ignorespaces Order of number of gates and fitting polynomials in $n$.}}{19}{table.5.2}}
 \newlabel{table-results}{{5.2}{19}{Order of number of gates and fitting polynomials in $n$}{table.5.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Discussion}{19}{subsection.5.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces Number of gates of CMULT$(a)$-mod-$N$ circuit as function of $n$.}}{20}{figure.5.4}}
+\newlabel{fit-cmult}{{5.4}{20}{Number of gates of CMULT$(a)$-mod-$N$ circuit as function of $n$}{figure.5.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces Number of gates of $U_a$ gate circuit as function of $n$.}}{20}{figure.5.5}}
+\newlabel{fit-ua}{{5.5}{20}{Number of gates of $U_a$ gate circuit as function of $n$}{figure.5.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces Number of gates of Shor's algorithm circuit as function of $n$.}}{20}{figure.5.6}}
+\newlabel{fit-shor}{{5.6}{20}{Number of gates of Shor's algorithm circuit as function of $n$}{figure.5.6}{}}
 \citation{grover}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Number of gates of CMULT$(a)$-mod-$N$ circuit as function of $n$.}}{20}{figure.5.1}}
-\newlabel{fit-cmult}{{5.1}{20}{Number of gates of CMULT$(a)$-mod-$N$ circuit as function of $n$}{figure.5.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Number of gates of $U_a$ gate circuit as function of $n$.}}{20}{figure.5.2}}
-\newlabel{fit-ua}{{5.2}{20}{Number of gates of $U_a$ gate circuit as function of $n$}{figure.5.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces Number of gates of Shor's algorithm circuit as function of $n$.}}{20}{figure.5.3}}
-\newlabel{fit-shor}{{5.3}{20}{Number of gates of Shor's algorithm circuit as function of $n$}{figure.5.3}{}}
 \citation{grover}
+\citation{griffighs}
 \@writefile{toc}{\contentsline {section}{\numberline {6}Probability superpositions}{21}{section.6}}
 \newlabel{eq:probdist}{{6.1}{21}{Probability superpositions}{equation.6.1}{}}
 \@writefile{toc}{\contentsline {paragraph}{Iterative method.}{21}{section*.2}}
@@ -120,15 +129,38 @@
 \citation{chiang}
 \citation{chiang}
 \citation{chiang}
+\citation{gokhale}
+\citation{hadfield}
+\citation{hadfield}
 \newlabel{eq:theta}{{6.9}{23}{Proposed implementation}{equation.6.9}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6.2}{\ignorespaces DAC circuit \cite  {chiang}.}}{23}{figure.6.2}}
 \newlabel{fig:dac-circuit}{{6.2}{23}{DAC circuit \cite {chiang}}{figure.6.2}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {6.1}{\ignorespaces Special cases treatment.}}{23}{table.6.1}}
 \newlabel{tab:sc}{{6.1}{23}{Special cases treatment}{table.6.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{Calculating $\theta $.}{23}{section*.4}}
+\citation{hadfield}
 \@writefile{lof}{\contentsline {figure}{\numberline {6.3}{\ignorespaces SC circuit \cite  {chiang}.}}{24}{figure.6.3}}
 \newlabel{fig:sc-circuit}{{6.3}{24}{SC circuit \cite {chiang}}{figure.6.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Circuit blocks}{24}{subsection.6.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.4}{\ignorespaces Circuit to calculate square root \cite  {hadfield}.}}{24}{figure.6.4}}
+\newlabel{fig:sqrt}{{6.4}{24}{Circuit to calculate square root \cite {hadfield}}{figure.6.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.5}{\ignorespaces Circuit to calculate an approximation of $\qopname  \relax o{arcsin}(x)$.}}{24}{figure.6.5}}
+\newlabel{fig:arcsin}{{6.5}{24}{Circuit to calculate an approximation of $\arcsin (x)$}{figure.6.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Discussion}{24}{subsection.6.2}}
 \@writefile{toc}{\contentsline {section}{\numberline {7}Final considerations}{25}{section.7}}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Python codes}{26}{Appendix.1.A}}
+\newlabel{sec:ap}{{A}{26}{Python codes}{Appendix.1.A}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {1}adder}{26}{lstlisting.1}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2}modularAdder}{26}{lstlisting.2}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {3}phi\_adder}{27}{lstlisting.3}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {4}inv\_phi\_adder}{27}{lstlisting.4}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {5}cMultModN\_non\_Dagger}{28}{lstlisting.5}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {6}inv\_cMultModN\_non\_Dagger}{28}{lstlisting.6}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {7}gateUa}{29}{lstlisting.7}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8}qft}{29}{lstlisting.8}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {9}iqft}{30}{lstlisting.9}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {10}initialisation}{30}{lstlisting.10}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {11}shor}{32}{lstlisting.11}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {12}shor3n.}{35}{lstlisting.12}}
 \bibcite{valiron}{1}
 \bibcite{portugal}{2}
 \bibcite{nielsen}{3}
@@ -141,5 +173,9 @@
 \bibcite{draper}{10}
 \bibcite{projectq}{11}
 \bibcite{steiger}{12}
-\bibcite{grover}{13}
-\bibcite{chiang}{14}
+\bibcite{git}{13}
+\bibcite{grover}{14}
+\bibcite{chiang}{15}
+\bibcite{gokhale}{16}
+\@writefile{toc}{\contentsline {section}{References}{38}{section*.5}}
+\bibcite{hadfield}{17}
