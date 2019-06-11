@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.16)  11 JUN 2019 13:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.16)  11 JUN 2019 15:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1148,7 +1148,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <Figures/data-cmult.png, id=453, 421.575pt x 316.18124pt>
 File: Figures/data-cmult.png Graphic file (type png)
 <use Figures/data-cmult.png>
-Package pdftex.def Info: Figures/data-cmult.png  used on input line 696.
+Package pdftex.def Info: Figures/data-cmult.png  used on input line 699.
 (pdftex.def)             Requested size: 199.16928pt x 149.37712pt.
 
 
@@ -1157,7 +1157,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <Figures/data-Ua.png, id=454, 421.575pt x 316.18124pt>
 File: Figures/data-Ua.png Graphic file (type png)
 <use Figures/data-Ua.png>
-Package pdftex.def Info: Figures/data-Ua.png  used on input line 703.
+Package pdftex.def Info: Figures/data-Ua.png  used on input line 706.
 (pdftex.def)             Requested size: 199.16928pt x 149.37712pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1165,14 +1165,14 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <Figures/data-shor.png, id=455, 421.575pt x 316.18124pt>
 File: Figures/data-shor.png Graphic file (type png)
 <use Figures/data-shor.png>
-Package pdftex.def Info: Figures/data-shor.png  used on input line 710.
+Package pdftex.def Info: Figures/data-shor.png  used on input line 713.
 (pdftex.def)             Requested size: 199.16928pt x 149.37712pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [19 <./Figures/generated-modadder.png>] [20 <./Figures/data-cmult.png (PNG copy
 )> <./Figures/data-Ua.png (PNG copy)> <./Figures/data-shor.png (PNG copy)>]
-Overfull \hbox (3.41731pt too wide) in paragraph at lines 734--735
+Overfull \hbox (3.41731pt too wide) in paragraph at lines 738--739
 []\OT1/cmr/m/n/10 This method may have ap-pli-ca-tions in non-uniform pri-ors f
 or quan-tum search-
  []
@@ -1180,7 +1180,7 @@ or quan-tum search-
 <Figures/binarytree.png, id=473, 1175.39125pt x 477.785pt>
 File: Figures/binarytree.png Graphic file (type png)
 <use Figures/binarytree.png>
-Package pdftex.def Info: Figures/binarytree.png  used on input line 758.
+Package pdftex.def Info: Figures/binarytree.png  used on input line 762.
 (pdftex.def)             Requested size: 284.52756pt x 115.65494pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1191,12 +1191,12 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <Figures/dac-circuit.png, id=504, 624.3325pt x 307.1475pt>
 File: Figures/dac-circuit.png Graphic file (type png)
 <use Figures/dac-circuit.png>
-Package pdftex.def Info: Figures/dac-circuit.png  used on input line 815.
+Package pdftex.def Info: Figures/dac-circuit.png  used on input line 819.
 (pdftex.def)             Requested size: 170.71652pt x 83.98543pt.
 <Figures/sc-circuit.png, id=508, 672.5125pt x 385.44pt>
 File: Figures/sc-circuit.png Graphic file (type png)
 <use Figures/sc-circuit.png>
-Package pdftex.def Info: Figures/sc-circuit.png  used on input line 839.
+Package pdftex.def Info: Figures/sc-circuit.png  used on input line 843.
 (pdftex.def)             Requested size: 170.71652pt x 97.84186pt.
 
 
@@ -1206,31 +1206,39 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <Figures/square-root.png, id=526, 879.285pt x 270.00874pt>
 File: Figures/square-root.png Graphic file (type png)
 <use Figures/square-root.png>
-Package pdftex.def Info: Figures/square-root.png  used on input line 851.
+Package pdftex.def Info: Figures/square-root.png  used on input line 855.
 (pdftex.def)             Requested size: 284.52756pt x 87.36864pt.
- [24 <./Figures/sc-circuit.png> <./Figures/square-root.png>] [25]
+ [24 <./Figures/sc-circuit.png> <./Figures/square-root.png>]
+<Figures/data-arcsin.png, id=546, 427.5975pt x 319.94531pt>
+File: Figures/data-arcsin.png Graphic file (type png)
+<use Figures/data-arcsin.png>
+Package pdftex.def Info: Figures/data-arcsin.png  used on input line 892.
+(pdftex.def)             Requested size: 199.16928pt x 149.02689pt.
+ [25 <./Figures/data-arcsin.png (PNG copy)>] [26
+
+]
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 888.
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 888.
+nput line 915.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 915.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-(../homemade_code/adder.py) (../homemade_code/modularAdder.py [26])
-(../homemade_code/phi_adder.py) (../homemade_code/inv_phi_adder.py [27])
+(../homemade_code/adder.py) (../homemade_code/modularAdder.py [27])
+(../homemade_code/phi_adder.py) (../homemade_code/inv_phi_adder.py [28])
 (../homemade_code/cMultModN_non_Dagger.py)
-(../homemade_code/inv_cMultModN_non_Dagger.py [28]) (../homemade_code/gateUa.py
+(../homemade_code/inv_cMultModN_non_Dagger.py [29]) (../homemade_code/gateUa.py
 
 Overfull \hbox (92.60425pt too wide) in paragraph at lines 6--9
 [][][][] 
  []
 
-) (../homemade_code/qft.py [29]) (../homemade_code/iqft.py)
-(../homemade_code/initialisation.py [30]
+) (../homemade_code/qft.py [30]) (../homemade_code/iqft.py)
+(../homemade_code/initialisation.py [31]
 LaTeX Font Info:    Try loading font information for OMS+pcr on input line 34.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omspcr.fd
@@ -1238,8 +1246,8 @@ File: omspcr.fd
 )
 LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <8> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 34.
- [31])
-(../homemade_code/shor.py [32] [33] [34]
+ [32])
+(../homemade_code/shor.py [33] [34] [35]
 Overfull \hbox (19.80371pt too wide) in paragraph at lines 174--176
 [][][][][] 
  []
@@ -1259,7 +1267,7 @@ Overfull \hbox (30.20361pt too wide) in paragraph at lines 174--176
 []  
  []
 
-) (../homemade_code/shor_3n.py [35] [36]
+) (../homemade_code/shor_3n.py [36] [37]
 Overfull \hbox (19.80371pt too wide) in paragraph at lines 128--130
 [][][][][] 
  []
@@ -1279,53 +1287,53 @@ Overfull \hbox (30.20361pt too wide) in paragraph at lines 128--130
 []  
  []
 
-) [37]
-Underfull \hbox (badness 1924) in paragraph at lines 930--931
+) [38]
+Underfull \hbox (badness 1924) in paragraph at lines 957--958
 \OT1/pcr/m/n/10 wikipedia . org / wiki / Quantum _ Fourier _ transform$[]\OT1/c
 mr/m/n/10 . Ac-cess on:
  []
 
 
-Underfull \hbox (badness 5022) in paragraph at lines 943--944
+Underfull \hbox (badness 5022) in paragraph at lines 970--971
 []\OT1/cmr/m/n/10 GitHub. \OT1/cmr/m/it/10 quantum-calculus\OT1/cmr/m/n/10 . Av
 ail-able in: []$\OT1/pcr/m/n/10 https : / / github . com /
  []
 
 
-Underfull \hbox (badness 3861) in paragraph at lines 949--950
+Underfull \hbox (badness 3861) in paragraph at lines 976--977
 []\OT1/cmr/m/n/10 Gokhale, Pranav. \OT1/cmr/m/it/10 Im-ple-men-ta-tion of Squar
 e Root Func-tion Us-ing
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 949--950
+Underfull \hbox (badness 10000) in paragraph at lines 976--977
 \OT1/pcr/m/n/10 www . undergraduatelibrary . org / 2014 / computer-[]sciences /
 
  []
 
 
-Overfull \hbox (29.33339pt too wide) in paragraph at lines 949--950
+Overfull \hbox (29.33339pt too wide) in paragraph at lines 976--977
 \OT1/pcr/m/n/10 implementation-[]square-[]root-[]function-[]using-[]quantum-[]c
 ircuits$[]\OT1/cmr/m/n/10 .
  []
 
-[38
+[39
 
-] [39]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 955.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 955.
+] [40]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 982.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 982.
  (./quantum_calculus.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 955.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 955.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 982.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 982.
 Package rerunfilecheck Info: File `quantum_calculus.out' has not changed.
-(rerunfilecheck)             Checksum: ED66332739F6033F15F8365F6CFE0186;1931.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 955.
+(rerunfilecheck)             Checksum: 7F2CE2CA608D6E0B06DE3A707506134D;1931.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 982.
  ) 
 Here is how much of TeX's memory you used:
- 31529 strings out of 492982
- 713029 string characters out of 6134895
- 1098483 words of memory out of 5000000
- 33668 multiletter control sequences out of 15000+600000
+ 31540 strings out of 492982
+ 713225 string characters out of 6134895
+ 1098680 words of memory out of 5000000
+ 33674 multiletter control sequences out of 15000+600000
  17513 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,13n,96p,759b,2068s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1357,10 +1365,10 @@ texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/public/stmaryrd/stmary10.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/urw/courier/ucrr8a.pfb>
-Output written on quantum_calculus.pdf (40 pages, 1217150 bytes).
+Output written on quantum_calculus.pdf (41 pages, 1236245 bytes).
 PDF statistics:
- 1546 PDF objects out of 1728 (max. 8388607)
- 1416 compressed objects within 15 object streams
- 836 named destinations out of 1000 (max. 500000)
- 376 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1557 PDF objects out of 1728 (max. 8388607)
+ 1425 compressed objects within 15 object streams
+ 840 named destinations out of 1000 (max. 500000)
+ 381 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -30,6 +30,8 @@
 \contentsline {subsection}{\numberline {6.1}Proposed implementation}{22}{subsection.6.1}
 \contentsline {paragraph}{Calculating $\theta $.}{23}{section*.4}
 \contentsline {subsection}{\numberline {6.2}Discussion}{24}{subsection.6.2}
-\contentsline {section}{\numberline {7}Final considerations}{25}{section.7}
-\contentsline {section}{\numberline {A}Python codes}{26}{Appendix.1.A}
-\contentsline {section}{References}{38}{section*.5}
+\contentsline {paragraph}{Complexity.}{24}{section*.5}
+\contentsline {paragraph}{Representation.}{25}{section*.6}
+\contentsline {section}{\numberline {7}Final considerations}{26}{section.7}
+\contentsline {section}{\numberline {A}Python codes}{27}{Appendix.1.A}
+\contentsline {section}{References}{39}{section*.7}

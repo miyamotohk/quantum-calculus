@@ -76,7 +76,7 @@
 
 \newpage
 \section{Introduction}
-
+{\color{red} TO DO}
 
 \newpage
 \section{Basic concepts}
@@ -656,7 +656,10 @@ The quantum circuit for factorisation implements Shor's algorithm as described i
 	\label{fig:gen3}
 \end{figure}
 
+{\color{red} TO COMPLETE}
+
 \subsection{Complexity Analysis}
+\label{sec:complexity}
 
 A complexity analysis is performed by \cite{beauregard}, presenting number of qubits, order of number of gates and order of depth for each part of the circuit proposed by them (cf. \S \ref{sec:oracle}) to factorise an integer $N$ stored with $n=\lceil\log_2N\rceil$ bits. The results are summarised in Table \ref{table-complexity}.
 
@@ -715,6 +718,7 @@ We have compared the number of gates of some of the circuits we have implemented
 We observe that all resulting polynomials fit well the sets of data, matching the theoretical results in Table \ref{table-complexity}.
 
 \subsection{Discussion}
+{\color{red} TO DO}
 
 \clearpage
 \newpage
@@ -873,10 +877,33 @@ The circuit that implements the calculus of arc-sine polynomial approximation up
 
 \subsection{Discussion}
 
+\paragraph{Complexity.}
+An empirical complexity analysis is performed on the approximate arc-sine circuit, considering that this circuit is formed by blocks exponentiation, controlled multiplier, modular adder and QFT (Figure \ref{fig:arcsin}).
 
+From the analysis in \S \ref{sec:complexity}, we already know that CMULT$(a)$-mod-$N$ has complexity $O(n^3)$. Modular adder and QFT blocks have at most the same complexity given that they are used to build CMULT$(a)$-mod-$N$. On the other hand, exponentiation is built as a loop that applies $U_a$-gate $n$ times. As $U_a$-gate has complexity $O(n^3)$, exponential must be $O(n^4)$. Thus, the complete block for computing arc-sine must have complexity of order $O(n^4)$.
 
+We used MATLAB to fit data total number of gates in the circuit as function of $n$, the number of qubits in the input (Figure \ref{fig:data-arcsin}) with $n\in\llbracket 3, 9\rrbracket$. Fitting data to a fourth-degree polynomial we get
+\begin{equation*}
+	4.584\ n^4 + 31.07\ n^3 -99.99\ n^2 + 605.6\ n - 790.1.
+\end{equation*}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=7cm]{Figures/data-arcsin}
+	\caption{Circuit to calculate an approximation of $\arcsin(x)$.}
+	\label{fig:data-arcsin}
+\end{figure}
+
+Indeed, this is promising news for our implementation idea, because the final circuit may then be polynomial complex, i.e., there may be an efficient implementation for a circuit that solves the initial problem of creating superpositions that correspond to probability densities.
+
+\paragraph{Representation.}
+{\color{red} TO DO}
+
+\clearpage
 \newpage
 \section{Final considerations}
+{\color{red} TO DO}
+
 
 \newpage
 \begin{appendices}
