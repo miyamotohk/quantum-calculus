@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usepackage{pdflscape}
+\usetikzlibrary{quantikz}
+\usepackage{mathrsfs}
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=10mm,
+ top=20mm,
+ }
+
+\title{Circuit de la fonction $x \mapsto Arcsin(x)$}
+
+
+\begin{document}
+\begin{landscape}
+
+\small
+\begin{quantikz}
+\lstick{\ket{x}} & \qw  & \qw & \qw  &  \gate{QFT} & \qw  & \qw & \push{\ket{\Phi(x)}} & \qw &  \gate[7,disable auto height]{\begin{array}{c}
+ \text{}\\ \text{$\Phi - ADD $} \\ \text{ (\ket{X},\ket{ \frac{X^{3}}{6}}}) \mapsto \ket{\Phi(x+\frac{X^{3}}{6})}  \end{array}} & \push{\ket{\Phi(x+\frac{X^{3}}{6})}} & \gate{iQFT} & \push{\ket{\simeq arcsin(x)}}  \\
+\lstick{\ket{1}} &  \gate[5,disable auto height]{\begin{array}{c}
+\text{\textit{Input : x} } \\ \text{\bold{$U_{x^{3}}$}} \\ \text{ $ x \mapsto X^{3} mod N $} \end{array}} & \qw & \push{\ket{X^{3}}}  &    \qw \vqw{4} & \lstick{\ket{1}} & \gate[5,disable auto height]{\begin{array}{c}
+ \text{\textit{Input : a = 1/6} }  \\ \text{CMULT} \\ \text{$ X^{3} \mapsto \frac{X^{3}}{6} mod N $} \end{array}} &  \push{\ket{1}} & & &\\
+\lstick{\ket{0}} &  & \qw  & \push{\ket{0}=\ket{b}} & \qw  & \qw &  \qw   &  \push{\ket{ax+b}=\ket{\frac{X^{3}}{6}}} & \qw & \qw & \qw & \qw  & \push{\ket{\frac{X^{3}}{6}}} \\
+\lstick{\ket{N}} &  & \qw &\push{\ket{N}} & \qw  &  \qw & \qw &  \push{\ket{N}} & \qw & \qw & \qw &\qw  & \push{\ket{N}} \\
+\lstick{\ket{0}} &  & \qw & \push{\ket{0}} & \qw  &  \qw  &  \qw  & \push{\ket{0}} & \lstick{\ket{1}} & \qw & \qw & \qw  & \push{\ket{1}} \\
+\lstick{\ket{3}} &  & \qw  & \push{\ket{3}} &  & \qw & \qw  &  \push{\ket{X^{3}}} & \lstick{\ket{0}} & \qw & \qw & \qw  & \push{\ket{0}}  \\
+\lstick{\ket{0}} & \qw   &  \qw  & \qw   & \qw   & \qw   & \qw   & \qw   & \qw & \qw   & \qw  & \qw  & \push{\ket{0}} \\
+\end{quantikz}
+
+\begin{center}
+    \textbf{Circuit de la fonction $x \mapsto Arcsin(x)$}
+\end{center}
+\end{landscape}
+\end{document}
