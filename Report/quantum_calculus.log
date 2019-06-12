@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.16)  12 JUN 2019 15:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.16)  12 JUN 2019 17:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1276,21 +1276,21 @@ ircuits$[]\OT1/cmr/m/n/10 .
  []
 
 [29]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1015.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1015.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1017.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1017.
  (./quantum_calculus.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1015.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1015.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1017.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1017.
 
 Package rerunfilecheck Info: File `quantum_calculus.out' has not changed.
 (rerunfilecheck)             Checksum: CFA20F2E83D8637C7263EF0A07859E42;1875.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1015.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1017.
  ) 
 Here is how much of TeX's memory you used:
- 30244 strings out of 492982
- 696861 string characters out of 6134895
+ 30246 strings out of 492982
+ 696884 string characters out of 6134895
  892454 words of memory out of 5000000
- 33086 multiletter control sequences out of 15000+600000
+ 33087 multiletter control sequences out of 15000+600000
  16998 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,13n,96p,759b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1322,10 +1322,10 @@ texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/public/stmaryrd/stmary10.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/urw/courier/ucrr8a.pfb>
-Output written on quantum_calculus.pdf (30 pages, 1209204 bytes).
+Output written on quantum_calculus.pdf (30 pages, 1210366 bytes).
 PDF statistics:
- 725 PDF objects out of 1000 (max. 8388607)
- 610 compressed objects within 7 object streams
- 178 named destinations out of 1000 (max. 500000)
+ 730 PDF objects out of 1000 (max. 8388607)
+ 614 compressed objects within 7 object streams
+ 179 named destinations out of 1000 (max. 500000)
  378 words of extra memory for PDF output out of 10000 (max. 10000000)
 
