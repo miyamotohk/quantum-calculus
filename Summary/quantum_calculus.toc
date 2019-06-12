@@ -21,7 +21,7 @@
 \contentsline {subsection}{\numberline {4.3}Controlled multiplier gate}{16}{subsection.4.3}
 \contentsline {subsection}{\numberline {4.4}Controlled $U$ gate}{17}{subsection.4.4}
 \contentsline {section}{\numberline {5}Results and discussion}{18}{section.5}
-\contentsline {subsection}{\numberline {5.1}Factorisation}{18}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.1}Circuits}{18}{subsection.5.1}
 \contentsline {subsection}{\numberline {5.2}Complexity Analysis}{18}{subsection.5.2}
 \contentsline {subsection}{\numberline {5.3}Discussion}{19}{subsection.5.3}
 \contentsline {section}{\numberline {6}Probability superpositions}{21}{section.6}
@@ -32,6 +32,5 @@
 \contentsline {subsection}{\numberline {6.2}Discussion}{24}{subsection.6.2}
 \contentsline {paragraph}{Complexity.}{24}{section*.5}
 \contentsline {paragraph}{Representation.}{25}{section*.6}
-\contentsline {section}{\numberline {7}Final considerations}{26}{section.7}
-\contentsline {section}{\numberline {A}Python codes}{27}{Appendix.1.A}
-\contentsline {section}{References}{39}{section*.7}
+\contentsline {section}{\numberline {7}Final considerations}{27}{section.7}
+\contentsline {section}{References}{28}{section*.7}

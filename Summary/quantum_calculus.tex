@@ -67,7 +67,7 @@
 			Pierre MINSSEN\par}
 	\vspace{1.5cm}
 	{\large \textit{Supervisor:}\\
-			Prof. Benoï¿½t VALIRON \par}
+			Prof. Benoît VALIRON \par}
 	\vfill
 	\large \today
 \end{titlepage}
@@ -76,15 +76,21 @@
 
 \newpage
 \section{Introduction}
-{\color{red} TO DO}
-In 2017, thirty years after Richard Feynman, David Deutsch and other renown scientists set the first concepts and definitions of quantum computing, IBM launched the IBM Q Experience the first commercially usable quantum computer. This put forward a new horizon of possibilities regarding this groundbreaking technology.\\
-A quantum computer uses quantum mechanics principles such as superposition and entanglement to perform computation. This type of computer provides an exponential speed growth compared to classical computer.\\
-One of the most famous quantum algorithms was developed by Peter Shor in 1994. It allows quantum computers to factorize integers exponentially quicker than the best classical algorithm. This could mean the end of the current cryptographic system that is largely based on the fact that classical algorithm takes an unrealistic amount of time to make such a factorization on large integers.\\
-Another example of a quantum algorithm is the creation of superpositions that corresponds to efficiently integrable probability distributions.\\
-In this paper, we explore these two algorithms on more depth, with an example of an implementation and a complexity study.\\
+In 2017, thirty years after Richard Feynman, David Deutsch and other renown scientists set the first concepts and definitions of quantum computing, IBM launched the IBM Q Experience the first commercially usable quantum computer. This put forward a new horizon of possibilities regarding this ground-breaking technology \cite{medium}.
+
+A quantum computer uses quantum mechanics principles such as superposition and entanglement to perform computation. This type of computer provides an exponential speed growth compared to classical computer.
+
+One of the most famous quantum algorithms was developed by Peter Shor in 1994 \cite{shor}. It allows quantum computers to factorize integers exponentially quicker than the best classical algorithm. This could mean the end of the current cryptographic system that is largely based on the fact that classical algorithm takes an unrealistic amount of time to make such a factorization on large integers.
+
+Another example of a quantum algorithm is the creation of superpositions that corresponds to efficiently integrable probability distributions.
+
+In this report, we explore these two algorithms on more depth, with an example of an implementation and a complexity study. The document is organised as follows: Section \ref{sec:basics} is a reminder on basic concepts of quantum calculus; Section \ref{section2} presents Shor's algorithm from a theoretical point of view; Section \ref{sec:oracle} presents a construction for the oracle used in Shor's algorithm from a circuit point of view; Section \ref{sec:results} presents some results and discussions; and finally Section \ref{sec:prob} presents the problem of probability superpositions and the proposed implementation.
+
+The material is available on GitHub \cite{git}.
 
 \newpage
 \section{Basic concepts}
+\label{sec:basics}
 
 \subsection{Qubits}
 Classical computers operate on strings of bits (0 or 1) and produce other strings of bits. Classical data is supposed to be clonable, erasable, readable and not supposed to change when left untouched.
@@ -259,7 +265,7 @@ Some interesting problems in algebra and number theory reduce to the problem of 
 
 \subsection{Factorisation}
 
-The objective of the \textit{factorisation problem} is to factorise a big number $N$ into prime numbers. Note that at least $n=\lceil\log_2N\rceil$ qubits are needed to store $N$ and that $n$ is the maximum number of prime factors. We will show how this problem reduces to the problem of finding the order of a randomly generated integer $x<N$ generated randomly.
+The objective of the \textit{factorisation problem} is to factorise a big number $N$ into prime numbers. Note that at least $n=\lceil\log_2N\rceil$ qubits are needed to store $N$ and that $n$ is the maximum number of prime factors. We will show how this problem reduces to the problem of finding the order of a randomly generated integer $x<N$.
 
 If $N$ is even, 2 is trivially a factor. In addition, if $x$ and $N$ have common factors, then $\gcd(x,N)$ gives a factor of $N$; so we focus on investigating the case when $x$ and $N$ are coprimes.
 
@@ -631,12 +637,13 @@ As a result, the controlled-$U$ gate implements $|x\rangle|0\rangle \mapsto |(ax
 \clearpage
 \newpage
 \section{Results and discussion}
+\label{sec:results}
 
-The implementations were made in Python using \textit{ProjectQ}, which is an open-source software framework for quantum computing \cite{projectq, steiger}. Our codes are available on GitHub \cite{git} and presented in Appendix \ref{sec:ap}.
+The implementations were made in Python using \textit{ProjectQ}, which is an open-source software framework for quantum computing \cite{projectq, steiger}. We remember our codes are available on GitHub \cite{git}.
 
 The following subsections present results and discussions on that implementation.
 
-\subsection{Factorisation}
+\subsection{Circuits}
 
 The quantum circuit for factorisation implements Shor's algorithm as described in \S\ref{section2} using the oracle as described in \S\ref{sec:oracle}. ProjectQ has a feature that generates circuits as \LaTeX\ images. Although the complete circuit and more complex blocks easily become too big to be presented here, some simpler blocks are showed in Figures \ref{fig:gen1}, \ref{fig:gen2}, \ref{fig:gen3}.
 
@@ -660,8 +667,6 @@ The quantum circuit for factorisation implements Shor's algorithm as described i
 	\caption{Circuit for modular adder block.}
 	\label{fig:gen3}
 \end{figure}
-
-{\color{red} TO COMPLETE}
 
 \subsection{Complexity Analysis}
 \label{sec:complexity}
@@ -723,19 +728,13 @@ We have compared the number of gates of some of the circuits we have implemented
 We observe that all resulting polynomials fit well the sets of data, matching the theoretical results in Table \ref{table-complexity}.
 
 \subsection{Discussion}
-{\color{red} TO DO}
 
-We encounter some limitations while trying to run Shor's algorithm with big numbers because of the low capacities of our PC. We use the C++ simulator(instead of the Python simulator) to improve the testing.\\
-We are able to use 5 qubits of entry at best\\
-Here are the specifications of the PC we are using:\\
-Processor : AMD A9-9420 RADEON R5, 5 COMPUTE CORES 2C+3G 3.00 GHz\\
-RAM : 4 Gb (3,45 usable)
-
-
+Although we are able to successfully factorise integer numbers, we find limitations to run Shor's algorithm with big numbers because of the low capacities of our PC\footnote{We use a 4GB PC with AMD A9-9420 Radeon 3.00 GHz.}. The largest number we have been able to (non-trivially) factorise was $21=3\times7$. Even if we use the C++ simulator (instead of the Python one) of ProjectQ to improve the testing, we are able to use 5 qubits of entry at best. The running of the algorithm in full-capacity shall wait further development of a quantum computer.
 
 \clearpage
 \newpage
 \section{Probability superpositions}
+\label{sec:prob}
 
 After successfully implementing Shor's algorithm, we devoted our attention to the problem of creating quantum superpositions that correspond to efficiently integrable probability distributions, as presented in the paper \textit{Creating superpositions that correspond to efficiently integrable probability distributions} \cite{grover}.
 
@@ -861,7 +860,7 @@ To perform those tests, the block SC is composed by two sub-blocks EQ, which mer
 \paragraph{Calculating $\theta$.}
 The problem is that, so far, no circuit was proposed to the critical step, which is calculating the angles $\theta_i$ (Equation \ref{eq:theta}, sub-block $\mathrm{\theta}$ in Figure \ref{fig:dac-circuit}). This operation is specially difficult because it involves calculating a division, a square root and an arc-cosine.
 
-The first two operations are addressed in the literature \cite{gokhale, hadfield}. For example \cite{hadfield} presents a method based on a two-stage Newton iteration. Suppose we want to compute $\sqrt{w}$: the first step computes $\hat{x}_{s1}\approx 1/w$, and then the second computes $\hat{y}_{s2}\approx1/\hat{x}_{s1}\approx\sqrt{w}$ (Figure \ref{fig:sqrt}). While it is not our objective to detail such implementations, we invite the reader to further explore the original document. Henceforth we will simply use the fact that there exists a quantum circuit that compute the square root.
+The first two operations are addressed in the literature \cite{gokhale, hadfield}. For example \cite{hadfield} presents a method based on a two-stage Newton iteration. Suppose we want to compute $\sqrt{w}$: the first step computes $\hat{x}_{s1}\approx 1/w$, and then the second computes $\hat{y}_{s2}\approx1/\sqrt{\hat{x}_{s1}}\approx\sqrt{w}$ (Figure \ref{fig:sqrt}). While it is not our objective to detail such implementations, we invite the reader to further explore the original document. Henceforth we will simply use the fact that there exists a quantum circuit that compute the square root.
 
 \begin{figure}[h!]
 	\centering
@@ -883,7 +882,7 @@ The circuit that implements the calculus of arc-sine polynomial approximation up
 
 \begin{figure}[h!]
 	\centering
-	%\includegraphics[width=10cm]{Figures/square-root}
+	\includegraphics[width=12cm]{Figures/arcsin.png}
 	\caption{Circuit to calculate an approximation of $\arcsin(x)$.}
 	\label{fig:arcsin}
 \end{figure}
@@ -910,68 +909,81 @@ We used MATLAB to fit data total number of gates in the circuit as function of $
 Indeed, this is promising news for our implementation idea, because the final circuit may then be polynomial complex, i.e., there may be an efficient implementation for a circuit that solves the initial problem of creating superpositions that correspond to probability densities.
 
 \paragraph{Representation.}
-{\color{red} TO DO}
 
-Yet our measured qubits were integers written in binary. However now, we are interested in real numbers, thus we need a bijection from $\{0,1\}^{n}$ (set of infinite list of 0 and 1) to [0,1]. The dyadic development is such a bijection.\\
-$F(X)=\sum_{j=1}^\infty \frac{X_j}{2^j}$ , where $X_j$ is either 0 or 1. (Note there should not be a infinite sequence of 1 if we are not representing the number 1).\\
-Here we are limited to our qubits register size $N_{hat}$. Thus, our precision in [0,1] is $1/2^{N_{hat}}$ and our bijection is now:\\
-$F(X) =\sum_{j=1}^{N_{hat}} \frac{X_j}{2^j}$\\
-Our bijection F should have some nice properties like $f(X*Y) = f(X)*f(Y)$. However, as our number of qubits is finite, we encounter overflows issue. For example, $X = Y = \frac{1}{2^{N_{hat}}}$, $X*Y = \frac{1}{2^{(1+ N_{hat})}}$ is outside the definition set of F.\\
-Knowing that we managed to simulate quantum circuit with only 4 or 5 qubits. In our attempt to create an arcsin gate, we used the approximation $x + \frac{x^{3}}{6}$. Even with our biggest input $x = \frac{1}{2}$ we cannot correctly represent the $\frac{x^{3}}{6}$ term, since $\frac{x^{3}}{6}< \frac{x^{3}}{4} = \frac{1}{2^5}$ (our smallest number)
+So far our measured qubits were binary qubits interpreted as integers. However, now we are interested in real numbers, thus we need a bijection from $\{0,1\}^{n}$ (set of infinite list of 0 and 1) to [0,1]. The dyadic development is such a bijection:
+$$f(x)=\sum_{j=1}^\infty \frac{x_j}{2^j},$$
+where $x_j \in \{0,1\}$\footnote{Note there should not be a infinite sequence of 1 if we are not representing the number 1.}.
+
+Here we are limited to our qubits register size $\hat{N}$. Thus, our precision in $[0,1]$ is $1/2^{\hat{N}}$ and our bijection is now
+$$f(x) =\sum_{j=1}^{\hat{N}} \frac{x_j}{2^j}.$$
+
+Our bijection $f$ should have some nice properties such as $f(x\times y) = f(x)\times f(y)$. However, as our number of qubits is finite, we encounter overflows issues. For example, for
+$$x = y = \frac{1}{2^{\hat{N}}},$$
+$$x \times y = \frac{1}{2^{(1+ \hat{N})}}$$
+is outside the definition set of $f$.
+
+We managed to simulate quantum circuit with only 4 or 5 qubits. In our attempt to create an $\arcsin$ gate, we used the approximation $x + \frac{x^{3}}{6}$. Even with our biggest input $x = \frac{1}{2}$ we cannot correctly represent the $\frac{x^{3}}{6}$ term, since $\frac{x^{3}}{6}< \frac{x^{3}}{4} = \frac{1}{2^5}$ (our smallest number).
 
 \clearpage
 \newpage
 \section{Final considerations}
-{\color{red} TO DO}
 
-We have shown here an example of two quantum algorithm. Through this implementation, the basics and principles of quantum computation are presented. This also proves the importance of this new technology for the future of computer science and the incredible improvements it brings to calculations and problem solving.\\
-However, the limitations of classical computers prevent us from doing costly operations on a high number of qubits. Although some primary quantum computers have been developed, we do not yet have a concrete example of a completely functional one, due to the difficulties of mastering the creation of qubits and controlling quantum properties.\\
-A lot of investments are being dedicated to the buildup of quantum computing and the improvements rates are of the charts. Major companies claim to being close to introducing the first fully-working quantum computer in the near future.\\
+In this work, we have studied two quantum algorithm: the well-known Shor's algorithm and one for the problem of creating quantum superpositions that correspond to a probability distribution. We were able to implement the former in ProjectQ framework using Python language and to perform factorisation of small numbers (say, 21). For the latter, we propose an implementation based on previous literature, but with the advantage of explicitly presenting a solution to a whole that was left, namely the circuit that computes the angle $\theta$. This circuit has polynomial complexity, which indicates that the whole circuit may be efficient enough to solve the initial problem.
 
-\newpage
-\begin{appendices}
-\section{Python codes}
-\label{sec:ap}
+Through this implementation, the basics and principles of quantum computation are presented. This also supports the importance of this new technology for the future of computer science and the incredible improvements it brings to calculations and problem solving.
 
-This section presents the Pyhton codes with ProjectQ library used to implement Shor's algorithm. Each circuit block described in \S \ref{sec:oracle} is implemented as a separate file.
+However, the limitations of classical computers for simulating prevent us from doing costly operations on a high number of qubits. Although some primary quantum computers have been developed, we do not yet have a concrete example of a completely functional one, due to the difficulties of mastering the creation of qubits and controlling quantum properties.
 
-\lstinputlisting[language=Python, frame=single, caption={adder}]{../homemade_code/adder.py}
+A lot of investments are being dedicated to the buildup of quantum computing and the improvements rates are of the charts. Major companies claim to being close to introducing the first fully-working quantum computer in the near future.
 
-\lstinputlisting[language=Python, frame=single, caption={modularAdder}]{../homemade_code/modularAdder.py}
+%\newpage
+%\begin{appendices}
+%\section{Python codes}
+%\label{sec:ap}
 
-\lstinputlisting[language=Python, frame=single, caption={phi\_adder}]{../homemade_code/phi_adder.py}
+%This section presents the Pyhton codes with ProjectQ library used to implement Shor's algorithm. Each circuit block described in \S \ref{sec:oracle} is implemented as a separate file.
 
-\lstinputlisting[language=Python, frame=single, caption={inv\_phi\_adder}]{../homemade_code/inv_phi_adder.py}
+%\lstinputlisting[language=Python, frame=single, caption={adder}]{../homemade_code/adder.py}
 
-\lstinputlisting[language=Python, frame=single, caption={cMultModN\_non\_Dagger}]{../homemade_code/cMultModN_non_Dagger.py}
+%\lstinputlisting[language=Python, frame=single, caption={modularAdder}]{../homemade_code/modularAdder.py}
 
-\lstinputlisting[language=Python, frame=single, caption={inv\_cMultModN\_non\_Dagger}]{../homemade_code/inv_cMultModN_non_Dagger.py}
+%\lstinputlisting[language=Python, frame=single, caption={phi\_adder}]{../homemade_code/phi_adder.py}
 
-\lstinputlisting[language=Python, frame=single, caption={gateUa}]{../homemade_code/gateUa.py}
+%\lstinputlisting[language=Python, frame=single, caption={inv\_phi\_adder}]{../homemade_code/inv_phi_adder.py}
 
-\lstinputlisting[language=Python, frame=single, caption={qft}]{../homemade_code/qft.py}
+%\lstinputlisting[language=Python, frame=single, caption={cMultModN\_non\_Dagger}]{../homemade_code/cMultModN_non_Dagger.py}
 
-\lstinputlisting[language=Python, frame=single, caption={iqft}]{../homemade_code/iqft.py}
+%\lstinputlisting[language=Python, frame=single, caption={inv\_cMultModN\_non\_Dagger}]{../homemade_code/inv_cMultModN_non_Dagger.py}
 
-\lstinputlisting[language=Python, frame=single, caption={initialisation}]{../homemade_code/initialisation.py}
+%\lstinputlisting[language=Python, frame=single, caption={gateUa}]{../homemade_code/gateUa.py}
 
-\lstinputlisting[language=Python, frame=single, caption={shor}]{../homemade_code/shor.py}
+%\lstinputlisting[language=Python, frame=single, caption={qft}]{../homemade_code/qft.py}
 
-\lstinputlisting[language=Python, frame=single, caption={shor3n.}]{../homemade_code/shor_3n.py}
+%\lstinputlisting[language=Python, frame=single, caption={iqft}]{../homemade_code/iqft.py}
+
+%\lstinputlisting[language=Python, frame=single, caption={initialisation}]{../homemade_code/initialisation.py}
+
+%\lstinputlisting[language=Python, frame=single, caption={shor}]{../homemade_code/shor.py}
+
+%\lstinputlisting[language=Python, frame=single, caption={shor3n.}]{../homemade_code/shor_3n.py}
 	
-\end{appendices}
+%\end{appendices}
 
 \clearpage
 \newpage
 \begin{thebibliography}{10}
+	
+\bibitem{medium} Braun, Markus C. ``A brief history of quantum computing''. \textit{Medium}. Available in: \url{https://medium.com/@markus.c.braun/a-brief-history-of-quantum-computing-a5babea5d0bd}. Access on: 12 jun. 2019.
+
+\bibitem{shor} Shor, Peter. ``Polynomial-Time Algorithms for Prime Factorization and Discrete Logarithms on a Quantum Computer''. \textit{SIAM Journal on Computing}, vol. 26, no. 5, pp. 1484-1509, 1997.
+
+\bibitem{git} GitHub. \textit{quantum-calculus}. Available in: \url{https://github.com/miyamotohk/quantum-calculus}. Access on: 11 jun. 2019.
 
 \bibitem{valiron} Valiron, B. ``Quantum computation: a tutorial''. \textit{New Generation Computing}, vol. 30, no. 4, pp. 271-296, oct. 2012.
 
-\bibitem{portugal} Portugal, R. et al. \textit{Uma introduï¿½ï¿½o ï¿½ computaï¿½ï¿½o quï¿½ntica}. Sï¿½o Carlos: SBMAC, 2004.
+\bibitem{portugal} Portugal, R. et al. \textit{Uma introdução à computação quântica}. São Carlos: SBMAC, 2004.
 
 \bibitem{nielsen} Nielsen, Michael A. and Chuang, Isaac L. \textit{Quantum computation and quantum information}. 10th anniversary edition. Cambridge: Cambridge University Press, 2010.
-
-\bibitem{shor} Shor, Peter. ``Polynomial-Time Algorithms for Prime Factorization and Discrete Logarithms on a Quantum Computer''. \textit{SIAM Journal on Computing}, vol. 26, no. 5, pp. 1484-1509, 1997.
 
 \bibitem{ekert} Ekert, A. and Jozsa, R. ``Quantum computation and Shor's factoring algorithm''. \textit{Reviews of Modern Physics}, vol. 68, no. 3, pp. 733-753, 1996.
 
@@ -988,9 +1000,7 @@ theory of numbers}. 6th edition. Oxford : Oxford University Press, 2008.
 
 \bibitem{projectq} ProjectQ. Availabe in: \url{https://projectq.ch/}. Access on: 28 nov. 2018.
 
-\bibitem{steiger} Steiger, Damian S.; Hï¿½ner, Thomas and Troyer, Matthias. ``ProjectQ: an open source software framework for quantum computing''. \textit{Quantum}, vol. 2, p. 49, jan. 2018.
-
-\bibitem{git} GitHub. \textit{quantum-calculus}. Available in: \url{https://github.com/miyamotohk/quantum-calculus}. Access on: 11 jun. 2019.
+\bibitem{steiger} Steiger, Damian S.; Häner, Thomas and Troyer, Matthias. ``ProjectQ: an open source software framework for quantum computing''. \textit{Quantum}, vol. 2, p. 49, jan. 2018.
 
 \bibitem{grover} Grover, L. and Rudolph, T. \textit{Creating superpositions that correspond to efficiently integrable probability distributions}. Available in: \url{https://arxiv.org/abs/quant-ph/0208112}. Access on: 9 may 2019.
 
