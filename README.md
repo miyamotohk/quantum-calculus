@@ -8,6 +8,8 @@ In this project we studied Shor's algorithm for factorisation [1] and implement 
 
 The details of the project development are described in [Report](https://github.com/miyamotohk/quantum-calculus/tree/master/Report). [Shor's algorithm](https://github.com/miyamotohk/quantum-calculus/tree/master/Shor's%20algorithm) and [Probaility distributions](https://github.com/miyamotohk/quantum-calculus/tree/master/Probability%20distributions) contain the Python codes of the respective algorithms. In [Other codes](https://github.com/miyamotohk/quantum-calculus/tree/master/Other%20codes) contains the MATLAB code used in complexity evaluation and [Arcsin circuit drawing](https://github.com/miyamotohk/quantum-calculus/tree/master/Arcsin%20circuit%20drawing) the TeX files for drawing arcsin circuit for the probability distributions problem.
 
+![QFT circuit](https://github.com/miyamotohk/quantum-calculus/blob/master/Report/Figures/generated-qft.png)
+
 ###### References
 
 [1] Shor, Peter. “Polynomial-Time Algorithms for Prime Factorization and Discrete Logarithms on a Quantum Computer”. _SIAM Journal on Computing_, vol. 26, no. 5, pp. 1484-1509, 1997.
